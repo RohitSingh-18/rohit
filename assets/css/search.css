@@ -1,0 +1,142 @@
+.b-search {
+    background-color: #fff;
+    padding: 30px 40px;
+    border-radius: 0px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    margin-top: -17px;
+    max-width: 1172px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.b-search__main h4 {
+    font-size: 16px;
+    color: #00a9e0;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+}
+
+.b-search__main h4:after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 2px;
+    background: #ddd;
+    margin: 10px auto;
+}
+
+.m-firstSelects, .m-secondSelects {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.m-firstSelects .col-xs-4, .m-secondSelects .col-xs-4 {
+    position: relative;
+    flex: 1;
+    margin: 0 10px;
+}
+
+.m-firstSelects select, .m-secondSelects select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 50px;
+    font-size: 14px;
+    color: #333;
+    background: #fff;
+    appearance: none;
+}
+
+.m-firstSelects select:focus, .m-secondSelects select:focus {
+    border-color: #00a9e0;
+}
+
+.m-firstSelects p, .m-secondSelects p {
+    font-size: 12px;
+    color: #bbb;
+    margin-top: 5px;
+}
+
+.b-search__main-form-range {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.b-search__main-form-range label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+
+.b-search__main-form-range .price-values {
+    font-size: 14px;
+    margin-top: 10px;
+    color: #333;
+}
+
+.b-search__main-form-submit {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.b-search__main-form-submit a {
+    font-size: 14px;
+    color: #00a9e0;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.b-search__main-form-submit a:hover {
+    text-decoration: underline;
+}
+
+.b-search__main-form-submit .btn {
+    background-color: #333;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+}
+
+.b-search__main-form-submit .btn span {
+    margin-left: 5px;
+}
+
+.b-search__main-form-submit .btn:hover {
+    background-color: #00a9e0;
+}
+
+/* Slider */
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 5px;
+    border-radius: 5px;
+    background: #ddd;
+    outline: none;
+    margin-top: 5px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: #00a9e0;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    background: #00a9e0;
+    border-radius: 50%;
+    cursor: pointer;
+}
