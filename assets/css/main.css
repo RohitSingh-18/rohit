@@ -1031,8 +1031,10 @@ html, body {
 }
 
 .section-carousel__inner {
-  margin-top: 30px;
-  padding-bottom: 55px;
+  /* margin-top: 30px; */
+  /* padding-bottom: 55px;
+  padding-top: 55px; */
+  padding: 55px 30px 55px 25px;
 }
 
 .section-carousel__btn {
