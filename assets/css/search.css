@@ -3,15 +3,16 @@
     padding: 30px 40px;
     border-radius: 0px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    margin-top: -17px;
+    margin-top: -70px;
     max-width: 1172px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 55px;
 }
 
 .b-search__main h4 {
     font-size: 16px;
-    color: #00a9e0;
+    color: #d01818;
     margin-bottom: 10px;
     text-transform: uppercase;
     text-align: center;
@@ -51,7 +52,7 @@
 }
 
 .m-firstSelects select:focus, .m-secondSelects select:focus {
-    border-color: #00a9e0;
+    border-color: #d01818;
 }
 
 .m-firstSelects p, .m-secondSelects p {
@@ -68,7 +69,7 @@
 .b-search__main-form-range label {
     font-size: 14px;
     font-weight: bold;
-    color: #333;
+    color: #d01818;
 }
 
 .b-search__main-form-range .price-values {
@@ -85,7 +86,7 @@
 
 .b-search__main-form-submit a {
     font-size: 14px;
-    color: #00a9e0;
+    color: #333;
     text-decoration: none;
     margin-right: 10px;
 }
@@ -95,7 +96,7 @@
 }
 
 .b-search__main-form-submit .btn {
-    background-color: #333;
+    background-color: #d01818;
     color: #fff;
     padding: 12px 20px;
     border-radius: 50px;
@@ -109,7 +110,7 @@
 }
 
 .b-search__main-form-submit .btn:hover {
-    background-color: #00a9e0;
+    background-color: #333;
 }
 
 /* Slider */
@@ -128,7 +129,7 @@ input[type="range"]::-webkit-slider-thumb {
     appearance: none;
     width: 15px;
     height: 15px;
-    background: #00a9e0;
+    background: #d01818;
     border-radius: 50%;
     cursor: pointer;
 }
@@ -136,7 +137,7 @@ input[type="range"]::-webkit-slider-thumb {
 input[type="range"]::-moz-range-thumb {
     width: 15px;
     height: 15px;
-    background: #00a9e0;
+    background: #d01818;
     border-radius: 50%;
     cursor: pointer;
 }

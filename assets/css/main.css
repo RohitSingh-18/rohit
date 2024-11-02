@@ -71,6 +71,7 @@ body {
   font: 600 12px/1 "Open Sans";
   text-transform: uppercase;
   margin-bottom: 3px;
+  margin-top: 60px;
 }
 
 .ui-title-inner {
@@ -838,6 +839,7 @@ html, body {
 
 .b-bnr {
   padding: 90px 0 120px;
+  margin-top: 50px;
 }
 
 .b-bnr__info {
@@ -2288,15 +2290,15 @@ html, body {
 }
 
 .b-goods-vip_1 {
-  background-image: url("../media/content/b-goods/vip/bg-1.jpg");
+  background-image: url("../media/content/b-goods/vip/1.1.jpg");
 }
 
 .b-goods-vip_2 {
-  background-image: url("../media/content/b-goods/vip/bg-2.jpg");
+  background-image: url("../media/content/b-goods/vip/1.2.jpg");
 }
 
 .b-goods-vip_3 {
-  background-image: url("../media/content/b-goods/vip/bg-3.jpg");
+  background-image: url("../media/content/b-goods/vip/1.3.jpg");
 }
 
 .b-goods-vip_2 .b-goods-vip__slogan {
@@ -2308,7 +2310,8 @@ html, body {
 }
 
 .b-isotope {
-  padding-bottom: 70px;
+  padding-bottom: 0px;
+  padding-top: 0px ;
 }
 
 .b-isotope-filter {
@@ -2425,7 +2428,7 @@ html, body {
 
 .main-slider__figure-1 {
   bottom: 134px;
-  left: 12%;
+  left: 4%;
   width: 1400px;
   height: 260px;
 }
@@ -2973,6 +2976,7 @@ html, body {
   position: relative;
   padding-top: 50px;
   padding-bottom: 40px;
+  margin-bottom: 50px;
 }
 
 .b-progress-list__wrap:after {
@@ -3009,7 +3013,7 @@ html, body {
 }
 
 .section-reviews {
-  background-image: url("../media/content/b-reviews/bg-1.jpg");
+  background-image: url("../media/content/b-reviews/hero-bg.jpeg");
 }
 
 .section-reviews__decor {
