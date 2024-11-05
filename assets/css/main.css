@@ -1042,6 +1042,7 @@ html, body {
   padding-left: 28px;
   font-size: 14px;
   text-transform: none;
+  margin-top: 20px;
 }
 
 .section-carousel__btn .ic {
@@ -1071,7 +1072,7 @@ html, body {
 
 .section-carousel .slick-prev {
   right: calc(20vw + 53px);
-  left: auto;
+  left: 55vw;
 }
 
 .section-carousel .slick-prev:before {
@@ -4092,5 +4093,4 @@ html, body {
   color: #fff;
   text-decoration: none;
 }
-
 /*# sourceMappingURL=main.css.map */
