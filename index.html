@@ -16,6 +16,100 @@
     <!--[if lt IE 9 ]>
 <script src="/assets/js/separate-js/html5shiv-3.7.2.min.js" type="text/javascript"></script><meta content="no" http-equiv="imagetoolbar">
 <![endif]-->
+    <style>
+        .section-carousel__inner {
+            position: relative;
+        }
+
+        .b-goods-f__media {
+            position: relative;
+        }
+
+        .b-goods-f__media::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.2) 100%);
+        }
+
+        .slick-next.slick-arrow {
+            position: absolute;
+            top: 31%;
+            right: -21px;
+            transform: translateY(-50%);
+            background: rgba(182, 182, 182, 0.9);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 2;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+        }
+
+        .slick-next.slick-arrow:hover {
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .slick-next.slick-arrow i {
+            color: #333;
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .slick-next.slick-arrow {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .slick-next.slick-arrow i {
+                font-size: 14px;
+            }
+        }
+
+        /* Add these new styles for the prev button */
+        .slick-prev.slick-arrow {
+            position: absolute;
+            top: 31%;
+            left: -21px;  /* Changed from right to left */
+            transform: translateY(-50%);
+            background: rgba(182, 182, 182, 0.9);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 2;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+        }
+
+        .slick-prev.slick-arrow:hover {
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .slick-prev.slick-arrow i {
+            color: #333;
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .slick-prev.slick-arrow {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .slick-prev.slick-arrow i {
+                font-size: 14px;
+            }
+        }
+    </style>
 </head>
 
 <body class="page">
@@ -284,12 +378,11 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="ui-title-slogan">Helps you to find your next car easily</div>
-                            <h2 class="ui-title">Featured <span class="text-primary"> Vehicles</span></h2>
+                            <h2 class="ui-title">Featured<span class="text-primary"> Vehicles</span></h2>
                         </div>
                     </div>
                 </div>
                 <div class="section-carousel__inner bg-dark">
-                
                     <div class="js-slider" data-slick="{&quot;slidesToShow&quot;: 5,  &quot;slidesToScroll&quot;: 5, &quot;infinite&quot;: true, &quot;responsive&quot;: [{&quot;breakpoint&quot;: 1800, &quot;settings&quot;: {&quot;slidesToShow&quot;: 4, &quot;slidesToScroll&quot;: 4}}, {&quot;breakpoint&quot;: 1400, &quot;settings&quot;: {&quot;slidesToShow&quot;: 3, &quot;slidesToScroll&quot;: 1}}, {&quot;breakpoint&quot;: 1040, &quot;settings&quot;: {&quot;slidesToShow&quot;: 2, &quot;slidesToScroll&quot;: 1}}, {&quot;breakpoint&quot;: 767, &quot;settings&quot;: {&quot;slidesToShow&quot;: 1, &quot;slidesToScroll&quot;: 1}}]}">
                         <div class="b-goods-f b-goods-f_mod-a">
                             <div class="b-goods-f__media">
@@ -452,11 +545,6 @@
                             </div>
                         </div>
                         <!-- end .b-goods-->
-                    </div>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12"><a class="section-carousel__btn btn btn-primary" href="#"><i class="ic icon-list"></i> View All Cars Listings</a></div>
-                        </div>
                     </div>
                 </div>
             </section>
@@ -637,14 +725,18 @@
             <!-- end .b-isotope-->
             <!--VEHICLE LISTING  -->
 
-            <!-- Most SEarched -->
-             
+            <!-- MOST SEARCHED VEHICLES -->
             <section class="section-carousel">
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
                             <div class="ui-title-slogan">Helps you to find your next car easily</div>
-                            <h2 class="ui-title">Featured<span class="text-primary"> Vehicles</span></h2>
+                            <h2 class="ui-title">Most<span class="text-primary"> Searched</span></h2>      
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-12"><a class="section-carousel__btn btn btn-primary" href="#"><i class="ic icon-list"></i> View All Cars Listings</a></div>
+                                </div>
+                            </div>                      
                         </div>
                     </div>
                 </div>
@@ -812,16 +904,10 @@
                         </div>
                         <!-- end .b-goods-->
                     </div>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12"><a class="section-carousel__btn btn btn-primary" href="#"><i class="ic icon-list"></i> View All Cars Listings</a></div>
-                        </div>
-                    </div>
                 </div>
             </section>
             <!-- end .b-carousel-->
-            
-            <!-- Most SEarched -->
+              <!-- Most Searcher VEHICLES -->
 
             
 
