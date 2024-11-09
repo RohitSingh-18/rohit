@@ -364,3 +364,71 @@ if ($('.player').length) {
 
 });
 
+
+document.addEventListener('DOMContentLoaded', function() {
+    const track = document.querySelector('.goods-vip-track');
+    const slides = track.children;
+    const prevButton = document.querySelector('.slider-arrow-prev');
+    const nextButton = document.querySelector('.slider-arrow-next');
+    let currentIndex = 0;
+
+    // Clone slides for infinite effect
+    [...slides].forEach(slide => {
+        const clone = slide.cloneNode(true);
+        track.appendChild(clone);
+    });
+
+    function updateSlider() {
+        const slideWidth = slides[0].offsetWidth;
+        track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+    }
+
+    function moveToSlide(index) {
+        currentIndex = index;
+        updateSlider();
+
+        // Reset to start when reaching the end
+        if (currentIndex >= slides.length) {
+            setTimeout(() => {
+                track.style.transition = 'none';
+                currentIndex = 0;
+                updateSlider();
+                setTimeout(() => {
+                    track.style.transition = 'transform 0.5s ease-in-out';
+                }, 50);
+            }, 500);
+        }
+
+        // Reset to end when going before start
+        if (currentIndex < 0) {
+            setTimeout(() => {
+                track.style.transition = 'none';
+                currentIndex = slides.length - 1;
+                updateSlider();
+                setTimeout(() => {
+                    track.style.transition = 'transform 0.5s ease-in-out';
+                }, 50);
+            }, 500);
+        }
+    }
+
+    prevButton.addEventListener('click', () => {
+        moveToSlide(currentIndex - 1);
+    });
+
+    nextButton.addEventListener('click', () => {
+        moveToSlide(currentIndex + 1);
+    });
+
+    // Auto slide every 5 seconds
+    setInterval(() => {
+        moveToSlide(currentIndex + 1);
+    }, 5000);
+
+    // Initial setup
+    updateSlider();
+
+    // Update on window resize
+    window.addEventListener('resize', updateSlider);
+});
+

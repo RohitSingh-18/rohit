@@ -1,4 +1,3 @@
-
 /*------------------------------------------------------------------
 
 [TABLE OF CONTENTS]
@@ -58,7 +57,7 @@ body {
 .ui-title {
   color: #222222;
   font: 700 40px Montserrat;
-  margin-bottom: 19px;
+  margin-bottom: 45px;
 }
 
 .ui-title-sm {
@@ -745,6 +744,7 @@ blockquote cite {
 /* ======= COMPONENTS ======= */
 html, body {
   height: 100%;
+  margin-top: -12px;
 }
 
 .page__wrapper {
@@ -4093,4 +4093,92 @@ html, body {
   color: #fff;
   text-decoration: none;
 }
-/*# sourceMappingURL=main.css.map */
+
+/* Add these styles to your existing CSS */
+.section-goods-vip {
+    position: relative;
+    overflow: hidden;
+}
+
+.goods-vip-slider {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+.goods-vip-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+}
+
+.slider-arrow:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.slider-arrow-prev {
+    left: 20px;
+}
+
+.slider-arrow-next {
+    right: 20px;
+}
+
+/* Maintain existing responsive styles */
+.b-goods-vip {
+    flex-shrink: 0;
+    width: 100%;
+}
+
+.header-main {
+  height: 80px; /* Fixed height for the header */
+  display: flex; /* Use flexbox for alignment */
+  align-items: center; /* Center items vertically */
+}
+
+.navbar-brand {
+  display: flex; /* Align logo and items properly */
+  align-items: center; /* Center the logo */
+}
+
+.normal-logo {
+    height: 261px;
+    width: auto;
+    margin: -161px;
+}
+
+/* If using mobile-specific styles */
+.scroll-logo {
+  height: 80px; /* or whatever size you want for the mobile logo */
+  width: auto; /* Maintain aspect ratio */
+}
+.navbar-nav {
+  margin: 0; /* Remove any default margins */
+  padding: 0; /* Remove any default paddings */
+  display: flex; /* Ensure nav items are in a row */
+  align-items: center; /* Align items vertically */
+}
+
+.nav-item {
+  margin: 0 15px; /* Adjust this for spacing between nav items */
+}
+@media (max-width: 768px) {
+  .normal-logo {
+      height: 195px; /* Adjust height for mobile view */
+      margin: -4px;
+      width: auto;
+  }
+}
