@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="assets/css/master.css">
     <link rel="stylesheet" href="./assets/css/search.css">l̥
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script src="https://kit.fontawesome.com/2f346a55b2.js" crossorigin="anonymous"></script>
     <!--[if lt IE 9 ]>
 <script src="/assets/js/separate-js/html5shiv-3.7.2.min.js" type="text/javascript"></script><meta content="no" http-equiv="imagetoolbar">
 <![endif]-->
@@ -231,8 +232,8 @@
                     <div class="main-slider__slide sp-slide"><img class="sp-image" src="./images/bg-1 slider.jpg" alt="slider" />
                         <div class="sp-layer" data-width="100%" data-show-transition="left" data-hide-transition="left" data-show-duration="200" data-show-delay="200" data-hide-delay="200">
                             <div class="main-slider__wrap">
-                                <div class="main-slider__slogan">You Dream, We Deliver</div>
-                                <div class="main-slider__title">Odisha's No.1 <span><br>Used Car Dealers Hub</span></div>
+                                <div class="main-slider__slogan">Trusted Cars, Simplified Buying</div>
+                                <div class="main-slider__title">Odisha's Trusted Hub <span><br>for Quality Used Cars</span></div>
                                 <div class="text-center">
                                     <!-- <div class="main-slider__price"><span class="main-slider__price_up">$</span>249<span class="main-slider__price_down">/m</span><span class="main-slider__price_info">for 24 months</span></div> -->
                                 </div>
@@ -258,96 +259,118 @@
             <!-- end .main-slider-->
             <section class="b-search">
                 <div class="container">
-                  
-                  <div class="b-search__main wow zoomInUp" data-wow-delay="0.3s">
-                    <h4>SELECT VEHICLE BODY TYPE</h4>
-                    <form action="listingsTwo.html" method="POST" class="b-search__main-form">
-                      <div class="row">
-                        <div class="col-sm-12 col-md-8">
-                          <div class="m-firstSelects">
-                            <div class="col-sm-4">
-                              <select name="select1">
-                                <option value="0" selected="selected">Any Make</option>
-                                <option value="1">Make 1</option>
-                                <option value="2">Make 2</option>
-                                <option value="3">Make 3</option>
-                                <option value="4">Make 4</option>
-                              </select>
-                              <!-- <span class="fa fa-caret-down"></span> -->
-                              <p>MISSING MANUFACTURER?</p>
-                            </div>
-                            <div class="col-sm-4">
-                              <select name="select2">
-                                <option value="0" selected="selected">Any Model</option>
-                                <option value="1">Model 1</option>
-                                <option value="2">Model 2</option>
-                                <option value="3">Model 3</option>
-                              </select>
-                              <!-- <span class="fa fa-caret-down"></span> -->
-                              <p>MISSING MODEL?</p>
-                            </div>
-                            <div class="col-sm-4">
-                              <select name="select3">
-                                <option value="1" selected="selected">Vehicle Status</option>
-                                <option value="2">New</option>
-                                <option value="3">Used</option>
-                                <option value="4">Certified</option>
-                              </select>
-                              <!-- <span class="fa fa-caret-down"></span> -->
-                              <p>E.G: NEW, USED, CERTIFIED</p>
-                            </div>
-                          </div>
-                          <div class="m-secondSelects">
-                            <div class="col-sm-4">
-                              <select name="select4">
-                                <option value="0" selected="selected">Min Year</option>
-                                <option value="1">2000</option>
-                                <option value="2">2005</option>
-                                <option value="3">2010</option>
-                                <option value="4">2015</option>
-                              </select>
-                              <!-- <span class="fa fa-caret-down"></span> -->
-                            </div>
-                            <div class="col-sm-4">
-                              <select name="select5">
-                                <option value="0" selected="selected">Max Year</option>
-                                <option value="1">2020</option>
-                                <option value="2">2021</option>
-                                <option value="3">2022</option>
-                                <option value="4">2023</option>
-                              </select>
-                              <!-- <span class="fa fa-caret-down"></span> -->
-                            </div>
-                          </div>
+                    <div class="b-search__main">
+                        <div class="search-header text-center">
+                            <h4>FIND YOUR PERFECT CAR</h4>
                         </div>
-                        <div class="col-md-4 col-sm-12 text-left s-noPadding">
-                          <div class="b-search__main-form-range">
-                            <label>PRICE RANGE</label>
-                            <input type="range" id="minPrice" min="100" max="1000" value="100" class="slider">
-                            <input type="range" id="maxPrice" min="100" max="1000" value="1000" class="slider">
-                            <div class="price-values">
-                              <span id="min-value">100</span> - <span id="max-value">1000</span>
+                        
+                        <form class="b-search__form" id="carSearchForm">
+                            <div class="row g-3">
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="search-box">
+                                        <i class="fas fa-car icon"></i>
+                                        <select class="custom-select" id="brandSelect">
+                                            <option value=""selected disabled  >Select Brand</option>
+                                            <option value="toyota">Toyota</option>
+                                            <option value="honda">Honda</option>
+                                            <option value="bmw">BMW</option>
+                                            <option value="mercedes">Mercedes</option>
+                                        </select>
+                                    </div>
+                                </div>
+            
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="search-box">
+                                        <i class="fas fa-car-side icon"></i>
+                                        <select class="custom-select" id="modelSelect" >
+                                            <option value="" selected disabled>Select Model</option>
+                                        </select>
+                                    </div>
+                                </div>
+            
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="search-box">
+                                        <i class="fas fa-rupee-sign icon"></i>
+                                        <select class="custom-select" id="budgetSelect">
+                                            <option value="" selected disabled>Budget Range</option>
+                                            <option value="0-500000">Under 5L</option>
+                                            <option value="500000-1000000">5L - 10L</option>
+                                            <option value="1000000-2000000">10L - 20L</option>
+                                            <option value="2000000+">Above 20L</option>
+                                        </select>
+                                    </div>
+                                </div>
+            
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="search-box">
+                                        <i class="fas fa-gas-pump icon"></i>
+                                        <select class="custom-select" id="fuelSelect">
+                                            <option value="" selected disabled>Fuel Type</option>
+                                            <option value="petrol">Petrol</option>
+                                            <option value="diesel">Diesel</option>
+                                            <option value="electric">Electric</option>
+                                            <option value="hybrid">Hybrid</option>
+                                        </select>
+                                    </div>
+                                </div>
+            
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="search-box">
+                                        <i class="fas fa-calendar icon"></i>
+                                        <select class="custom-select" id="yearFromSelect">
+                                            <option value="" selected disabled>Year From</option>
+                                        </select>
+                                    </div>
+                                </div>
+            
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="search-box">
+                                        <i class="fas fa-calendar-alt icon"></i>
+                                        <select class="custom-select" id="yearToSelect">
+                                            <option value="" selected disabled>Year To</option>
+                                        </select>
+                                    </div>
+                                </div>
+            
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="search-box">
+                                        <i class="fas fa-cog icon"></i>
+                                        <select class="custom-select" id="transmissionSelect">
+                                            <option value="" selected disabled>Transmission</option>
+                                            <option value="manual">Manual</option>
+                                            <option value="automatic">Automatic</option>
+                                            <option value="cvt">CVT</option>
+                                        </select>
+                                    </div>
+                                </div>
+            
+                                <div class="col-lg-3 col-md-6">
+                                    <button type="submit" class="search-btn" id="searchButton">
+                                        <i class="fas fa-search"></i>
+                                        Find Cars
+                                    </button>
+                                </div>
                             </div>
-                          </div>
-                          <div class="b-search__main-form-submit">
-                            <a href="#">Advanced search</a>
-                            <button type="submit" class="btn m-btn">Search the Vehicle<span class="fa fa-angle-right"></span></button>
-                          </div>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
+            
+                            <div class="quick-links">
+                                <div class="quick-search">
+                                    <a href="#" data-budget="0-500000">Under 5L</a>
+                                    <a href="#" data-type="premium">Premium Cars</a>
+                                    <a href="#" data-sort="latest">Latest Models</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-              </section>
-              
-            <!-- end .b-find-->
+            </section>
 
             <!-- BRAND ICONS -->
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <div class="ui-title-slogan">Shakti, Pragati, Vijay</div>
-                        <h2 class="ui-title">Partner<span class="text-primary"> Brands</span></h2>
+                        <div class="ui-title-slogan">Budget-friendly, quality, and luxury cars
+                        </div>
+                        <h2 class="ui-title">Find cars by<span class="text-primary"> Brands</span></h2>
                     </div>
                 </div>
             </div>
@@ -377,12 +400,13 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
-                            <div class="ui-title-slogan">Helps you to find your next car easily</div>
+                            <div class="ui-title-slogan">Explore Top Deals and Trusted Listings
+                            </div>
                             <h2 class="ui-title">Featured<span class="text-primary"> Vehicles</span></h2>
                         </div>
                         <div class="container">
                             <div class="row">
-                                <div class="col-12"><a class="section-carousel__btn btn btn-primary" href="#"><i class="ic icon-list"></i> View All Cars Listings</a></div>
+                                <div class="col-12"><a class="section-carousel__btn btn btn-primary" href="#"><i class="ic icon-list"></i> View All Featured Vehicles</a></div>
                             </div>
                         </div>
                     </div>
@@ -561,7 +585,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-12 text-center">
-                            <div class="ui-title-slogan">Helps you to find perfect car</div>
+                            <div class="ui-title-slogan">Choose your perfect car from a wide selection</div>
                             <h2 class="ui-title">Our Vehicles<span class="text-primary"> Listing</span></h2>
                             <ul class="b-isotope-filter list-unstyled">
                                 <li class="current"><a href="" data-filter="*">Show All</a></li>
@@ -735,11 +759,11 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
-                            <div class="ui-title-slogan">Helps you to find your next car easily</div>
+                            <div class="ui-title-slogan">Discover the Most Searched Cars near by your location</div>
                             <h2 class="ui-title">Most<span class="text-primary"> Searched</span></h2>      
                             <div class="container">
                                 <div class="row">
-                                    <div class="col-12"><a class="section-carousel__btn btn btn-primary" href="#"><i class="ic icon-list"></i> View All Cars Listings</a></div>
+                                    <div class="col-12"><a class="section-carousel__btn btn btn-primary" href="#"><i class="ic icon-list"></i> View all Searched Cars</a></div>
                                 </div>
                             </div>                      
                         </div>
@@ -753,7 +777,7 @@
                             </div>
                             <div class="b-goods-f__main">
                                 <div class="b-goods-f__descrip">
-                                    <div class="b-goods-f__title"><span>Bolero 2016</span></div>
+                                    <div class="b-goods-f__title"><span>Bolero 2016</span><br><i class="fa-solid fa-location-dot"></i> Cuttack</div>
                                     <div class="b-goods-f__info">Magna aliqua enim aduas veniam quis nostrud exercitation ullam laboris aliquip.</div>
                                     <ul class="b-goods-f__list list-unstyled">
                                         <li class="b-goods-f__list-item"><i class="ic flaticon-speedometer"></i> 35,000km</li>
@@ -773,7 +797,7 @@
                             </div>
                             <div class="b-goods-f__main">
                                 <div class="b-goods-f__descrip">
-                                    <div class="b-goods-f__title"><span> Suzuki Wagon R</span></div>
+                                    <div class="b-goods-f__title"><span> Suzuki Wagon R</span><br><i class="fa-solid fa-location-dot"></i> Bhubaneswar</div>
                                     <div class="b-goods-f__info">Magna aliqua enim aduas veniam quis nostrud exercitation ullam laboris aliquip.</div>
                                     <ul class="b-goods-f__list list-unstyled">
                                         <li class="b-goods-f__list-item"><i class="ic flaticon-speedometer"></i> 35,000km</li>
@@ -793,7 +817,7 @@
                             </div>
                             <div class="b-goods-f__main">
                                 <div class="b-goods-f__descrip">
-                                    <div class="b-goods-f__title"><span>Bolero 2010</span></div>
+                                    <div class="b-goods-f__title"><span>Bolero 2010</span><br><i class="fa-solid fa-location-dot"></i> Angul</div>
                                     <div class="b-goods-f__info">Magna aliqua enim aduas veniam quis nostrud exercitation ullam laboris aliquip.</div>
                                     <ul class="b-goods-f__list list-unstyled">
                                         <li class="b-goods-f__list-item"><i class="ic flaticon-speedometer"></i> 35,000km</li>
@@ -813,7 +837,7 @@
                             </div>
                             <div class="b-goods-f__main">
                                 <div class="b-goods-f__descrip">
-                                    <div class="b-goods-f__title"><span>Bolero 2017</span></div>
+                                    <div class="b-goods-f__title"><span>Bolero 2017 </span><br><i class="fa-solid fa-location-dot"></i> Khorda</div>
                                     <div class="b-goods-f__info">Magna aliqua enim aduas veniam quis nostrud exercitation ullam laboris aliquip.</div>
                                     <ul class="b-goods-f__list list-unstyled">
                                         <li class="b-goods-f__list-item"><i class="ic flaticon-speedometer"></i> 35,000km</li>
@@ -833,7 +857,7 @@
                             </div>
                             <div class="b-goods-f__main">
                                 <div class="b-goods-f__descrip">
-                                    <div class="b-goods-f__title"><span>Bolero 2016</span></div>
+                                    <div class="b-goods-f__title"><span>Bolero 2016 <br><i class="fa-solid fa-location-dot"></i> Bhubaneswar</span></div>
                                     <div class="b-goods-f__info">Magna aliqua enim aduas veniam quis nostrud exercitation ullam laboris aliquip.</div>
                                     <ul class="b-goods-f__list list-unstyled">
                                         <li class="b-goods-f__list-item"><i class="ic flaticon-speedometer"></i> 35,000km</li>
@@ -853,7 +877,7 @@
                             </div>
                             <div class="b-goods-f__main">
                                 <div class="b-goods-f__descrip">
-                                    <div class="b-goods-f__title"><span>Suzuki Omni</span></div>
+                                    <div class="b-goods-f__title"><span>Suzuki Omni</span> <br><i class="fa-solid fa-location-dot"></i> Angul</div>
                                     <div class="b-goods-f__info">Magna aliqua enim aduas veniam quis nostrud exercitation ullam laboris aliquip.</div>
                                     <ul class="b-goods-f__list list-unstyled">
                                         <li class="b-goods-f__list-item"><i class="ic flaticon-speedometer"></i> 35,000km</li>
@@ -873,7 +897,7 @@
                             </div>
                             <div class="b-goods-f__main">
                                 <div class="b-goods-f__descrip">
-                                    <div class="b-goods-f__title"><span>Bolero 2018</span></div>
+                                    <div class="b-goods-f__title"><span>Bolero 2018</span><br><i class="fa-solid fa-location-dot"></i> Cuttack</div>
                                     <div class="b-goods-f__info">Magna aliqua enim aduas veniam quis nostrud exercitation ullam laboris aliquip.</div>
                                     <ul class="b-goods-f__list list-unstyled">
                                         <li class="b-goods-f__list-item"><i class="ic flaticon-speedometer"></i> 35,000km</li>
@@ -893,7 +917,7 @@
                             </div>
                             <div class="b-goods-f__main">
                                 <div class="b-goods-f__descrip">
-                                    <div class="b-goods-f__title"><span>Bolero 2017</span></div>
+                                    <div class="b-goods-f__title"><span>Bolero 2017</span><br><i class="fa-solid fa-location-dot"></i> Khorda</div>
                                     <div class="b-goods-f__info">Magna aliqua enim aduas veniam quis nostrud exercitation ullam laboris aliquip.</div>
                                     <ul class="b-goods-f__list list-unstyled">
                                         <li class="b-goods-f__list-item"><i class="ic flaticon-speedometer"></i> 35,000km</li>
@@ -922,14 +946,15 @@
                     <div class="row">
                         <div class="col-xl-6">
                             <div class="b-bnr__main">
-                                <h2 class="b-bnr__title">Book your Free Car Inspection</h2>
-                                <div class="b-bnr__info">Labore dolore magna aliqua minim ipsum veniam quis nostrud exercitation</div>
+                                <h2 class="b-bnr__title">Hey, Dealers get registered with us Today!</h2>
+                                <div class="b-bnr__info">Register today to list your vehicles, connect with potential buyers, and grow your business. Start reaching more customers with ease!
+                                </div>
                             </div>
                         </div>
                         <div class="col-xl-6">
                             <div class="b-bnr__second"><a class="btn btn-primary" href="#">get rigistered</a>
                                 <div class="b-bnr-contacts">
-                                    <div class="b-bnr-contacts__info">Call Us For Booking Vehicle</div><a class="b-bnr-contacts__phone" href="tel:+917978456529"><i class="ic icon-call-end text-primary"></i>+91 79 7845 6529</a>
+                                    <div class="b-bnr-contacts__info">Give us a call for Registration</div><a class="b-bnr-contacts__phone" href="tel:+917978456529"><i class="ic icon-call-end text-primary"></i>+91 79 7845 6529</a>
                                 </div>
                             </div>
                         </div>
@@ -1098,7 +1123,7 @@
                     <div class="row">
                         <div class="col-lg-4 col-sm-5">
                             <div class="footer-section footer-section_info">
-                                <div class="footer-info">Ceipisicing elit sed do eiusmod tempor laboe dolore magna aliqa Ut enim ad minim veniam quis nostrud exercitation ullam co laboris nis aliquip comsecd sed ipsum.</div>
+                                <div class="footer-info">At Gaadiyaan we connect buyers in Odisha with trusted, certified pre-owned vehicles through our network of reputable dealerships. Our goal is to make car buying simple, transparent, and reliable. With verified listings, easy-to-use filters, and a focus on customer satisfaction, we’re here to help you find your ideal car quickly and confidently. Discover your next vehicle with us!</div>
                                 <div class="footer-contacts">
                                     <div class="footer-contacts__item"><i class="ic icon-location-pin"></i>Odisha, Cuttack, India</div>
                                     <div class="footer-contacts__item"><i class="ic icon-envelope"></i><a href="mailto:iamanarshad@gmail.com">iamanarshad@gmail.com</a></div>
@@ -1169,6 +1194,7 @@
     <!-- ++++++++++++-->
     <!-- MAIN SCRIPTS-->
     <!-- ++++++++++++-->
+     
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-migrate-1.4.1.min.js"></script>
     <!-- Bootstrap-->
