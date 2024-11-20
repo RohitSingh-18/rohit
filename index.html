@@ -265,6 +265,48 @@
       <div id="page-preloader"><span class="spinner border-t_second_b border-t_prim_a"></span></div>
     <!-- Loader end-->
 
+<!-- Tutorial Box -->
+<div id="tutorialBox" style="position: fixed; right: 20px; top: 50%; transform: translateY(-50%); background: #fff; padding: 8px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); cursor: pointer; z-index: 999; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-50%) scale(1.02)'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(-50%)'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.1)'">
+    <!-- Larger Close Button with hover effects -->
+    <div id="closeButton" style="position: absolute; top: -12px; left: -12px; width: 30px; height: 30px; background: #ff5555; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.2); z-index: 1000; transition: transform 0.2s, background-color 0.2s;" 
+        onclick="event.stopPropagation(); hideTutorialBox();"
+        onmouseover="this.style.transform='scale(1.1)'; this.style.backgroundColor='#ff3333';"
+        onmouseout="this.style.transform='scale(1)'; this.style.backgroundColor='#ff5555';">
+        <span style="color: white; font-size: 20px; line-height: 1; font-family: Arial; font-weight: bold;">&times;</span>
+    </div>
+    
+    <div style="position: relative; display: flex; align-items: center;">
+        <img id="tutorialImage" src="assets/media/content/b-goods/360x260/1.1.jpg" alt="Tutorial" style="object-fit: cover; border-radius: 8px;">
+        <i class="fas fa-play-circle" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font-size: 50px; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.3); opacity: 0.9; transition: opacity 0.2s;"></i>
+    </div>
+</div>
+
+<!-- Tutorial Modal -->
+<div id="tutorialModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000;">
+    <!-- Desktop Video Container -->
+    <div id="desktopVideoContainer" style="position: relative; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #000; padding: 0; border-radius: 15px; width: 80%; max-width: 1000px; aspect-ratio: 16/9; display: none;">
+        <div id="modalCloseButton" style="position: absolute; top: -15px; right: -15px; width: 30px; height: 30px; background: #ff5555; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.2); z-index: 1000;" onclick="closeModal()">
+            <span style="color: white; font-size: 20px; line-height: 1; font-family: Arial;">&times;</span>
+        </div>
+        <video id="desktopVideo" style="width: 100%; height: 100%; border-radius: 15px; object-fit: contain;" controls>
+            <source src="path/to/your/desktop-video.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- Mobile Video Container -->
+    <div id="mobileVideoContainer" style="position: relative; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #000; padding: 0; width: 100%; height: 100%; max-width: 420px; display: none;">
+        <div id="mobileModalCloseButton" style="position: absolute; top: 20px; right: 20px; width: 30px; height: 30px; background: #ff5555; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.2); z-index: 1000;" onclick="closeModal()">
+            <span style="color: white; font-size: 20px; line-height: 1; font-family: Arial;">&times;</span>
+        </div>
+        <video id="mobileVideo" style="width: 100%; height: 100%; object-fit: cover;" controls>
+            <source src="path/to/your/mobile-video.mp4" type="video/mp4">
+        </video>
+    </div>
+</div>
+
+    
+
+
 
     <div class="l-theme animated-css animsition" data-header="sticky" data-header-top="200" >
         <!-- ==========================-->
@@ -1308,6 +1350,8 @@
                 </div>
             </section>
             <!-- end .b-reviews-->
+
+             
             
             <!-- end .b-gallery-->
             <footer class="footer">
@@ -1405,6 +1449,8 @@
     <!-- ++++++++++++-->
     <!-- MAIN SCRIPTS-->
     <!-- ++++++++++++-->
+
+    <script src="./assets/js/tutorial.js"></script>
      
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-migrate-1.4.1.min.js"></script>
