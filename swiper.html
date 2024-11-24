@@ -125,6 +125,24 @@
             let startX;
             let buttonLeft;
 
+            // Reset swiper state when page loads
+            resetSwiper();
+
+            // Add this function to reset the swiper
+            function resetSwiper() {
+                button.classList.remove('completed');
+                circle.style.left = '5px';
+                progress.style.width = '0';
+            }
+
+            // Also reset when user navigates back to the page
+            window.addEventListener('pageshow', function(event) {
+                // Reset even if page is loaded from cache
+                if (event.persisted) {
+                    resetSwiper();
+                }
+            });
+
             circle.addEventListener('mousedown', initSwipe);
             document.addEventListener('mousemove', swipe);
             document.addEventListener('mouseup', stopSwipe);
