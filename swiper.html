@@ -62,7 +62,7 @@
             color: white;
             font-size: 14px;
             z-index: 2;
-            transition: left 0.3s ease;
+            transition: left 0.5s ease, background-color 0.5s ease;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
@@ -85,7 +85,7 @@
             height: 100%;
             width: 0;
             background: rgba(208, 24, 24, 0.1);
-            transition: width 0.3s ease;
+            transition: width 0.5s ease, background-color 0.5s ease;
         }
 
         .completed .swipe-circle {
@@ -175,21 +175,41 @@
                 const maxLeft = button.offsetWidth - circle.offsetWidth - 5;
                 const currentLeft = circle.offsetLeft;
 
-                // If not swiped far enough, reset
+                // If not swiped far enough, reset with animation
                 if (currentLeft < maxLeft * 0.9) {
+                    circle.style.transition = 'left 0.3s ease';
+                    progress.style.transition = 'width 0.3s ease';
                     circle.style.left = '5px';
                     progress.style.width = '0';
+                    
+                    // Remove transition after animation
+                    setTimeout(() => {
+                        circle.style.transition = '';
+                        progress.style.transition = '';
+                    }, 300);
                 }
             }
 
             function completeSwipe() {
                 button.classList.add('completed');
                 
-                // Store a flag in sessionStorage before redirecting
-                sessionStorage.setItem('needsReload', 'true');
-                
-                // Redirect to coming soon page
-                window.location.href = '/comingsoon.html';
+                // First show the green completion state
+                setTimeout(() => {
+                    // Then animate back to initial state
+                    button.classList.remove('completed');
+                    circle.style.transition = 'left 0.5s ease, background-color 0.5s ease';
+                    progress.style.transition = 'width 0.5s ease, background-color 0.5s ease';
+                    circle.style.left = '5px';
+                    progress.style.width = '0';
+                    
+                    // After reset animation completes, redirect
+                    setTimeout(() => {
+                        // Store reload flag
+                        sessionStorage.setItem('needsReload', 'true');
+                        // Redirect
+                        window.location.href = '/comingsoon.html';
+                    }, 600); // Wait for reset animation to complete
+                }, 300); // Show completed state briefly
             }
         });
     </script>
