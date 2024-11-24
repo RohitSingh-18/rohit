@@ -62,7 +62,7 @@
             color: white;
             font-size: 14px;
             z-index: 2;
-            transition: left 0.5s ease, background-color 0.5s ease;
+            transition: left 0.5s ease;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
@@ -84,18 +84,28 @@
             top: 0;
             height: 100%;
             width: 0;
-            background: rgba(208, 24, 24, 0.1);
-            transition: width 0.5s ease, background-color 0.5s ease;
+            background: rgba(208, 24, 24, 0.15);
+            transition: width 0.3s ease;
+            border-radius: 25px;
         }
 
         .completed .swipe-circle {
             left: calc(100% - 40px);
-            background: #22c55e;
         }
 
         .completed .swipe-progress {
             width: 100%;
-            background: rgba(34, 197, 94, 0.1);
+        }
+
+        .swipe-progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40px;
+            height: 100%;
+            background: linear-gradient(to right, rgba(208, 24, 24, 0.15), rgba(208, 24, 24, 0));
+            border-radius: 0 25px 25px 0;
         }
 
         .motorcycle-icon {
@@ -157,15 +167,17 @@
                 const maxLeft = button.offsetWidth - circle.offsetWidth - 5;
                 newLeft = Math.max(5, Math.min(newLeft, maxLeft));
 
-                // Update circle position and progress bar
-                circle.style.left = `${newLeft}px`;
-                const progressWidth = (newLeft - 5) / (maxLeft - 5) * 100;
-                progress.style.width = `${progressWidth}%`;
+                // Update circle position and progress bar with smooth animation
+                requestAnimationFrame(() => {
+                    circle.style.left = `${newLeft}px`;
+                    const progressWidth = (newLeft - 5) / (maxLeft - 5) * 100;
+                    progress.style.width = `${progressWidth}%`;
 
-                // Check if swipe is complete
-                if (newLeft >= maxLeft * 0.9) {
-                    completeSwipe();
-                }
+                    // Check if swipe is complete
+                    if (newLeft >= maxLeft * 0.9) {
+                        completeSwipe();
+                    }
+                });
             }
 
             function stopSwipe() {
@@ -193,18 +205,13 @@
             function completeSwipe() {
                 button.classList.add('completed');
                 
-                // First show the green completion state
+                // Brief pause before reset and redirect
                 setTimeout(() => {
-                    // Reset color first
-                    circle.style.backgroundColor = '#d01818'; // Set back to red
-                    
-                    // Then animate back to initial state
-                    button.classList.remove('completed');
-                    circle.style.transition = 'left 0.5s ease, background-color 0.5s ease';
-                    progress.style.transition = 'width 0.5s ease, background-color 0.5s ease';
+                    // Animate back to initial state
+                    circle.style.transition = 'left 0.5s ease';
+                    progress.style.transition = 'width 0.5s ease';
                     circle.style.left = '5px';
                     progress.style.width = '0';
-                    progress.style.backgroundColor = 'rgba(208, 24, 24, 0.1)'; // Set progress bar back to red
                     
                     // After reset animation completes, redirect
                     setTimeout(() => {
