@@ -2294,6 +2294,109 @@
             }
         }
     </script>
+    <script>function initializeSwiper() {
+        // Check if elements exist before initializing
+        const button = document.querySelector('.swipe-button');
+        const circle = document.querySelector('.swipe-circle');
+        const progress = document.querySelector('.swipe-progress');
+    
+        if (!button || !circle || !progress) {
+            console.error('Swiper elements not found');
+            return;
+        }
+    
+        let isDragging = false;
+        let startX;
+        let buttonLeft;
+    
+        // Add event listeners with passive: false for better mobile handling
+        circle.addEventListener('mousedown', initSwipe, { passive: false });
+        document.addEventListener('mousemove', swipe, { passive: false });
+        document.addEventListener('mouseup', stopSwipe);
+    
+        circle.addEventListener('touchstart', initSwipe, { passive: false });
+        document.addEventListener('touchmove', swipe, { passive: false });
+        document.addEventListener('touchend', stopSwipe);
+    
+        function initSwipe(e) {
+            isDragging = true;
+            startX = e.type === 'mousedown' ? e.clientX : e.touches[0].clientX;
+            buttonLeft = circle.offsetLeft;
+            e.preventDefault(); // Prevent default touch behavior
+        }
+    
+        function swipe(e) {
+            if (!isDragging) return;
+    
+            e.preventDefault();
+            const x = e.type === 'mousemove' ? e.clientX : e.touches[0].clientX;
+            const walk = x - startX;
+            let newLeft = buttonLeft + walk;
+    
+            // Constrain movement
+            const maxLeft = button.offsetWidth - circle.offsetWidth - 5;
+            newLeft = Math.max(5, Math.min(newLeft, maxLeft));
+    
+            // Update circle position and progress bar
+            requestAnimationFrame(() => {
+                circle.style.left = `${newLeft}px`;
+                const progressWidth = (newLeft - 5) / (maxLeft - 5) * 100;
+                progress.style.width = `${progressWidth}%`;
+    
+                // Check if swipe is complete
+                if (newLeft >= maxLeft * 0.9) {
+                    completeSwipe();
+                }
+            });
+        }
+    
+        function stopSwipe() {
+            if (!isDragging) return;
+            isDragging = false;
+    
+            const maxLeft = button.offsetWidth - circle.offsetWidth - 5;
+            const currentLeft = circle.offsetLeft;
+    
+            // If not swiped far enough, reset with animation
+            if (currentLeft < maxLeft * 0.9) {
+                circle.style.transition = 'left 0.3s ease';
+                progress.style.transition = 'width 0.3s ease';
+                circle.style.left = '5px';
+                progress.style.width = '0';
+                
+                // Remove transition after animation
+                setTimeout(() => {
+                    circle.style.transition = '';
+                    progress.style.transition = '';
+                }, 300);
+            }
+        }
+    
+        function completeSwipe() {
+            button.classList.add('completed');
+            
+            // Store reload flag in sessionStorage
+            sessionStorage.setItem('needsReload', 'true');
+            
+            // Small delay before redirect
+            setTimeout(() => {
+                window.location.href = '/comingsoon.html';
+            }, 200);
+        }
+    }
+    
+    // Wait for DOM to be fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        // Check if page needs reload
+        if (sessionStorage.getItem('needsReload')) {
+            sessionStorage.removeItem('needsReload');
+            window.location.reload();
+        }
+    
+        // Initialize swiper
+        initializeSwiper();
+    });
+    </script>
 
     <!-- Add SweetAlert2 for better alerts -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
