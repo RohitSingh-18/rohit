@@ -195,21 +195,23 @@
                 
                 // First show the green completion state
                 setTimeout(() => {
+                    // Reset color first
+                    circle.style.backgroundColor = '#d01818'; // Set back to red
+                    
                     // Then animate back to initial state
                     button.classList.remove('completed');
                     circle.style.transition = 'left 0.5s ease, background-color 0.5s ease';
                     progress.style.transition = 'width 0.5s ease, background-color 0.5s ease';
                     circle.style.left = '5px';
                     progress.style.width = '0';
+                    progress.style.backgroundColor = 'rgba(208, 24, 24, 0.1)'; // Set progress bar back to red
                     
                     // After reset animation completes, redirect
                     setTimeout(() => {
-                        // Store reload flag
                         sessionStorage.setItem('needsReload', 'true');
-                        // Redirect
                         window.location.href = '/comingsoon.html';
-                    }, 600); // Wait for reset animation to complete
-                }, 300); // Show completed state briefly
+                    }, 600);
+                }, 300);
             }
         });
     </script>
