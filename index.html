@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="assets/css/master.css">
     <link rel="stylesheet" href="./assets/css/search.css">l̥
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style id="swiper-styles"></style>
     <script src="https://kit.fontawesome.com/2f346a55b2.js" crossorigin="anonymous"></script>
     <!--[if lt IE 9 ]>
 <script src="/assets/js/separate-js/html5shiv-3.7.2.min.js" type="text/javascript"></script><meta content="no" http-equiv="imagetoolbar">
@@ -510,37 +513,13 @@
                 <li class="nav-item active"><a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a></li>
                 <li class="nav-item"><a class="nav-link" href="#">All Cars</a></li>
 
-                <!-- <li class="nav-item "><a class="nav-link">All Cars</a>
-
-
-                    <ul>
-                        <li><a class="dropdown-item" href="inventory-list.html">Inventory list</a></li>
-                        <li><a class="dropdown-item" href="inventory-grid.html">Inventory grid</a><a class="dropdown-item" href="dealers.html">Dealers list</a></li>
-                        <li><a class="dropdown-item" href="dealers-info.html">Dealers info</a></li>
-                    </ul> 
-
-
-                </li>-->
                 <li class="nav-item"><a class="nav-link" href="#">About</a></li>
 
-                <!-- <li class="nav-item "><a class="nav-link" href="#">Pages</a>
-
-                    <ul>
-                        <li><a class="dropdown-item" href="typography.html">Typography</a></li>
-
-                    </ul>
-                </li> -->
-                <!-- <li class="nav-item"><a class="nav-link" href="#">News</a>
-
-                    <ul>
-                        <li><a class="dropdown-item" href="blog-main.html">Blog main</a></li>
-                        <li><a class="dropdown-item" href="blog-post.html">Blog post</a></li>
-                    </ul>
-                </li> -->
                 
                 <li class="nav-item"><a class="nav-link" href="/auth/signup.html">Sign Up</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                <div id="swiper-container"></div>
             </ul>
 
         </div>
@@ -556,7 +535,10 @@
                                         <li class="top-bar__item"><a class="top-bar__link" href="gaadiyaanodisha@gmail.com">gaadiyaanodisha@gmail.com</a></li>
                                         <li class="top-bar__item">Mon to Fri : 9:00am to 6:00pm</li>
                                         <li class="top-bar__item">India, Odisha, Cuttack</li>
-                                    </ul><a class="btn btn-primary btn-sm col-auto" href="#"><i class="ic icon-list"></i> Add Listings</a>
+                                    </ul>
+                                    <a class="btn btn-primary btn-sm col-auto d-block d-xl-block" href="comingsoon.html">
+                                        <i class="fas fa-motorcycle"></i> For Bike Lovers
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -2222,6 +2204,95 @@
             return false;
         }
     });
+    </script>
+     <script>
+        // Fetch and inject the swiper content
+        fetch('swiper.html')
+            .then(response => response.text())
+            .then(html => {
+                // Create a temporary container
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                
+                // Extract and inject the styles
+                const styles = doc.querySelector('style').textContent;
+                document.getElementById('swiper-styles').textContent = styles;
+                
+                // Extract and inject the swiper HTML
+                const swiperContent = doc.querySelector('.swipe-button-wrapper').outerHTML;
+                document.getElementById('swiper-container').innerHTML = swiperContent;
+                
+                // Initialize the swiper functionality
+                initializeSwiper();
+            })
+            .catch(error => console.error('Error loading swiper:', error));
+
+        // Separate function to initialize swiper functionality
+        function initializeSwiper() {
+            const button = document.querySelector('.swipe-button');
+            const circle = document.querySelector('.swipe-circle');
+            const progress = document.querySelector('.swipe-progress');
+            let isDragging = false;
+            let startX;
+            let buttonLeft;
+
+            circle.addEventListener('mousedown', initSwipe);
+            document.addEventListener('mousemove', swipe);
+            document.addEventListener('mouseup', stopSwipe);
+
+            circle.addEventListener('touchstart', initSwipe);
+            document.addEventListener('touchmove', swipe);
+            document.addEventListener('touchend', stopSwipe);
+
+            function initSwipe(e) {
+                isDragging = true;
+                startX = e.type === 'mousedown' ? e.clientX : e.touches[0].clientX;
+                buttonLeft = circle.offsetLeft;
+            }
+
+            function swipe(e) {
+                if (!isDragging) return;
+
+                e.preventDefault();
+                const x = e.type === 'mousemove' ? e.clientX : e.touches[0].clientX;
+                const walk = x - startX;
+                let newLeft = buttonLeft + walk;
+
+                // Constrain movement
+                const maxLeft = button.offsetWidth - circle.offsetWidth - 5;
+                newLeft = Math.max(5, Math.min(newLeft, maxLeft));
+
+                // Update circle position and progress bar
+                circle.style.left = `${newLeft}px`;
+                const progressWidth = (newLeft - 5) / (maxLeft - 5) * 100;
+                progress.style.width = `${progressWidth}%`;
+
+                // Check if swipe is complete
+                if (newLeft >= maxLeft * 0.9) {
+                    completeSwipe();
+                }
+            }
+
+            function stopSwipe() {
+                if (!isDragging) return;
+                isDragging = false;
+
+                const maxLeft = button.offsetWidth - circle.offsetWidth - 5;
+                const currentLeft = circle.offsetLeft;
+
+                // If not swiped far enough, reset
+                if (currentLeft < maxLeft * 0.9) {
+                    circle.style.left = '5px';
+                    progress.style.width = '0';
+                }
+            }
+
+            function completeSwipe() {
+                button.classList.add('completed');
+                // Redirect or trigger your desired action
+                window.location.href = '/comingsoon.html';
+            }
+        }
     </script>
 
     <!-- Add SweetAlert2 for better alerts -->

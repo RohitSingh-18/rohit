@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swipe Button</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .swipe-container * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .swipe-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #1a1a1a;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .swipe-button-wrapper {
+            width: 280px;
+            padding: 20px;
+        }
+
+        .swipe-button {
+            position: relative;
+            height: 45px;
+            background: #1a1a1a;
+            border-radius: 25px;
+            box-shadow: 
+                5px 5px 10px rgba(0, 0, 0, 0.5),
+                -5px -5px 10px rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .swipe-button:hover {
+            box-shadow: 
+                inset 5px 5px 10px rgba(0, 0, 0, 0.5),
+                inset -5px -5px 10px rgba(255, 255, 255, 0.05);
+        }
+
+        .swipe-circle {
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 35px;
+            height: 35px;
+            background: #d01818;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            z-index: 2;
+            transition: left 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .swipe-text {
+            position: absolute;
+            left: 50px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            user-select: none;
+        }
+
+        .swipe-progress {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 0;
+            background: rgba(208, 24, 24, 0.1);
+            transition: width 0.3s ease;
+        }
+
+        .completed .swipe-circle {
+            left: calc(100% - 40px);
+            background: #22c55e;
+        }
+
+        .completed .swipe-progress {
+            width: 100%;
+            background: rgba(34, 197, 94, 0.1);
+        }
+
+        .motorcycle-icon {
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="swipe-container">
+        <div class="swipe-button-wrapper">
+            <div class="swipe-button">
+                <div class="swipe-circle">
+                    <i class="fas fa-motorcycle motorcycle-icon"></i>
+                </div>
+                <div class="swipe-text">FOR BIKE LOVERS</div>
+                <div class="swipe-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const button = document.querySelector('.swipe-button');
+            const circle = document.querySelector('.swipe-circle');
+            const progress = document.querySelector('.swipe-progress');
+            let isDragging = false;
+            let startX;
+            let buttonLeft;
+
+            circle.addEventListener('mousedown', initSwipe);
+            document.addEventListener('mousemove', swipe);
+            document.addEventListener('mouseup', stopSwipe);
+
+            circle.addEventListener('touchstart', initSwipe);
+            document.addEventListener('touchmove', swipe);
+            document.addEventListener('touchend', stopSwipe);
+
+            function initSwipe(e) {
+                isDragging = true;
+                startX = e.type === 'mousedown' ? e.clientX : e.touches[0].clientX;
+                buttonLeft = circle.offsetLeft;
+            }
+
+            function swipe(e) {
+                if (!isDragging) return;
+
+                e.preventDefault();
+                const x = e.type === 'mousemove' ? e.clientX : e.touches[0].clientX;
+                const walk = x - startX;
+                let newLeft = buttonLeft + walk;
+
+                // Constrain movement
+                const maxLeft = button.offsetWidth - circle.offsetWidth - 5;
+                newLeft = Math.max(5, Math.min(newLeft, maxLeft));
+
+                // Update circle position and progress bar
+                circle.style.left = `${newLeft}px`;
+                const progressWidth = (newLeft - 5) / (maxLeft - 5) * 100;
+                progress.style.width = `${progressWidth}%`;
+
+                // Check if swipe is complete
+                if (newLeft >= maxLeft * 0.9) {
+                    completeSwipe();
+                }
+            }
+
+            function stopSwipe() {
+                if (!isDragging) return;
+                isDragging = false;
+
+                const maxLeft = button.offsetWidth - circle.offsetWidth - 5;
+                const currentLeft = circle.offsetLeft;
+
+                // If not swiped far enough, reset
+                if (currentLeft < maxLeft * 0.9) {
+                    circle.style.left = '5px';
+                    progress.style.width = '0';
+                }
+            }
+
+            function completeSwipe() {
+                button.classList.add('completed');
+                // Redirect or trigger your desired action
+                window.location.href = '/comingsoon.html';
+            }
+        });
+    </script>
+</body>
+</html> 
