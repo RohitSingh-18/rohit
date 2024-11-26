@@ -316,5 +316,23 @@
             <a href="#">Terms of Service</a>
         </div>
     </div>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.querySelector('input[type="email"]').value;
+            const password = document.querySelector('input[type="password"]').value;
+
+            // Check for demo credentials
+            if (email === 'test@123' && password === '1234') {
+                // Successful login
+                window.location.href = '../dashboard/user.html';
+            } else {
+                // Show error message
+                alert('Invalid credentials! Please try again.');
+            }
+        });
+    </script>
 </body>
 </html>
