@@ -1,0 +1,254 @@
+<div class="profile-container">
+   
+
+    <!-- Profile Form -->
+    <div class="profile-content">
+        <form class="profile-form" id="profileForm">
+            <!-- Personal Information -->
+            <div class="form-section">
+                <h2>Personal Information</h2>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="dealerName">Full Name</label>
+                        <input type="text" id="dealerName" name="dealerName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dealerEmail">Email Address</label>
+                        <input type="email" id="dealerEmail" name="dealerEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dealerPhone">Phone Number</label>
+                        <input type="tel" id="dealerPhone" name="dealerPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dealershipName">Dealership Name</label>
+                        <input type="text" id="dealershipName" name="dealershipName" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Business Information -->
+            <div class="form-section">
+                <h2>Business Information</h2>
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <label for="dealerAddress">Business Address</label>
+                        <textarea id="dealerAddress" name="dealerAddress" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="dealerCity">City</label>
+                        <input type="text" id="dealerCity" name="dealerCity" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dealerState">State</label>
+                        <input type="text" id="dealerState" name="dealerState" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dealerPincode">Pincode</label>
+                        <input type="text" id="dealerPincode" name="dealerPincode" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="gstNumber">GST Number</label>
+                        <input type="text" id="gstNumber" name="gstNumber" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Business Hours
+            <div class="form-section">
+                <h2>Business Hours</h2>
+                <div class="business-hours">
+                    <div class="day-row">
+                        <span class="day">Monday - Friday</span>
+                        <div class="hours-input">
+                            <input type="time" id="weekdayOpen" name="weekdayOpen">
+                            <span>to</span>
+                            <input type="time" id="weekdayClose" name="weekdayClose">
+                        </div>
+                    </div>
+                    <div class="day-row">
+                        <span class="day">Saturday</span>
+                        <div class="hours-input">
+                            <input type="time" id="saturdayOpen" name="saturdayOpen">
+                            <span>to</span>
+                            <input type="time" id="saturdayClose" name="saturdayClose">
+                        </div>
+                    </div>
+                    <div class="day-row">
+                        <span class="day">Sunday</span>
+                        <div class="hours-input">
+                            <label>
+                                <input type="checkbox" id="sundayClosed" name="sundayClosed">
+                                Closed
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- Password Change -->
+            <div class="form-section">
+                <h2>Change Password</h2>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="currentPassword">Current Password</label>
+                        <input type="password" id="currentPassword" name="currentPassword">
+                    </div>
+                    <div class="form-group">
+                        <label for="newPassword">New Password</label>
+                        <input type="password" id="newPassword" name="newPassword">
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm New Password</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form Actions -->
+            <div class="form-actions">
+                <button type="button" class="btn-secondary" onclick="resetForm()">Cancel Changes</button>
+                <button type="submit" class="btn-primary">Save Changes</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Success Modal -->
+<div id="successModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Success</h2>
+            <button class="modal-close" onclick="closeSuccessModal()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="modal-icon">
+            <i class="fas fa-check-circle" style="color: #059669;"></i>
+        </div>
+        <div class="modal-body">
+            <p>Your profile has been updated successfully!</p>
+        </div>
+        <div class="modal-actions">
+            <button class="btn-primary" onclick="closeSuccessModal()">OK</button>
+        </div>
+    </div>
+</div>
+
+<!-- Avatar Update Success Modal -->
+<div id="avatarSuccessModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Success</h2>
+            <button class="modal-close" onclick="closeAvatarModal()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="modal-icon">
+            <i class="fas fa-check-circle" style="color: #059669;"></i>
+        </div>
+        <div class="modal-body">
+            <p>Profile photo updated successfully!</p>
+        </div>
+        <div class="modal-actions">
+            <button class="btn-primary" onclick="closeAvatarModal()">OK</button>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const avatarInput = document.getElementById('avatarInput');
+    const avatarPreview = document.getElementById('avatarPreview');
+    const updateAvatarBtn = document.getElementById('updateAvatarBtn');
+    let selectedFile = null;
+
+    if (avatarInput && avatarPreview) {
+        avatarInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            
+            if (file) {
+                // Validate file type
+                if (!file.type.match('image.*')) {
+                    alert('Please select an image file (JPEG, PNG)');
+                    return;
+                }
+
+                // Validate file size (5MB max)
+                if (file.size > 5 * 1024 * 1024) {
+                    alert('Please select an image less than 5MB');
+                    return;
+                }
+
+                selectedFile = file;
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    avatarPreview.src = e.target.result;
+                    // Show update button
+                    updateAvatarBtn.style.display = 'flex';
+                };
+
+                reader.onerror = function(e) {
+                    console.error('Error reading file:', e);
+                    alert('Error reading file. Please try again.');
+                };
+
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Handle direct avatar update
+        updateAvatarBtn.addEventListener('click', async function() {
+            if (!selectedFile) return;
+
+            try {
+                // Here you would normally send the file to your server
+                // For demo, we'll simulate an upload
+                updateAvatarBtn.disabled = true;
+                updateAvatarBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Updating...';
+
+                // Simulate upload delay
+                await new Promise(resolve => setTimeout(resolve, 1500));
+
+                // Show success modal
+                document.getElementById('avatarSuccessModal').classList.add('show');
+                
+                // Hide update button
+                updateAvatarBtn.style.display = 'none';
+                selectedFile = null;
+
+            } catch (error) {
+                console.error('Error updating avatar:', error);
+                alert('Failed to update profile photo. Please try again.');
+            } finally {
+                updateAvatarBtn.disabled = false;
+                updateAvatarBtn.innerHTML = '<i class="fas fa-check"></i> Update Photo';
+            }
+        });
+    }
+
+    // Form handling
+    const profileForm = document.getElementById('profileForm');
+    if (profileForm) {
+        profileForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.getElementById('successModal').classList.add('show');
+        });
+    }
+});
+
+function resetForm() {
+    document.getElementById('profileForm').reset();
+    // Reset avatar preview to default
+    document.getElementById('avatarPreview').src = '../../../assets/media/dealers/default-avatar.jpg';
+}
+
+function closeSuccessModal() {
+    document.getElementById('successModal').classList.remove('show');
+}
+
+function closeAvatarModal() {
+    document.getElementById('avatarSuccessModal').classList.remove('show');
+}
+</script> 

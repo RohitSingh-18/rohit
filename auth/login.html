@@ -326,9 +326,19 @@
 
             // Check for demo credentials
             if (email === 'test@123' && password === '1234') {
-                // Successful login
-                window.location.href = '../dashboard/user.html';
-            } else {
+                // Set session for client
+                sessionStorage.setItem('userType', 'client');
+                sessionStorage.setItem('isLoggedIn', 'true');
+                window.location.href = '../../dashboard/client/user.html';
+            } 
+            // Check for dealer demo credentials
+            else if (email === 'dealer@123' && password === '1234') {
+                // Set session for dealer
+                sessionStorage.setItem('userType', 'dealer');
+                sessionStorage.setItem('isLoggedIn', 'true');
+                window.location.href = '../../dashboard/dealer/pages/portal.html';
+            }
+            else {
                 // Show error message
                 alert('Invalid credentials! Please try again.');
             }
