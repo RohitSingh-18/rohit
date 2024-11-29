@@ -1,0 +1,224 @@
+/* Support Page Styles */
+.support-page {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Tickets List Styles */
+.tickets-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem;
+}
+
+.ticket-item {
+    background: white;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.ticket-item:hover {
+    box-shadow: var(--hover-shadow);
+    transform: translateY(-2px);
+}
+
+.ticket-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background: #F8FAFC;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.ticket-id {
+    font-family: monospace;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.ticket-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 100px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.ticket-status.urgent {
+    background: rgba(239, 68, 68, 0.1);
+    color: #EF4444;
+}
+
+.ticket-status.open {
+    background: rgba(245, 158, 11, 0.1);
+    color: #F59E0B;
+}
+
+.ticket-status.resolved {
+    background: rgba(16, 185, 129, 0.1);
+    color: #10B981;
+}
+
+.ticket-content {
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 2rem;
+    align-items: start;
+}
+
+.dealer-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: center;
+}
+
+.dealer-info img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.dealer-info h4 {
+    font-size: 0.875rem;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.dealer-info span {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.ticket-details {
+    flex: 1;
+}
+
+.ticket-details h3 {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.ticket-details p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+}
+
+.ticket-meta {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.ticket-meta span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.ticket-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.btn-success {
+    background: #10B981;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-success:hover {
+    background: #059669;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .ticket-content {
+        grid-template-columns: auto 1fr;
+    }
+
+    .ticket-actions {
+        grid-column: 1 / -1;
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+}
+
+@media (max-width: 768px) {
+    .ticket-content {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .dealer-info {
+        flex-direction: row;
+        text-align: left;
+    }
+
+    .ticket-actions {
+        flex-wrap: wrap;
+        justify-content: stretch;
+    }
+
+    .ticket-actions button {
+        flex: 1;
+    }
+}
+
+@media (max-width: 1024px) {
+    .ticket-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .dealer-info {
+        flex-direction: row;
+        text-align: left;
+        gap: 1rem;
+    }
+
+    .ticket-actions {
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .ticket-header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+
+    .ticket-status {
+        align-self: flex-start;
+    }
+
+    .ticket-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+} 

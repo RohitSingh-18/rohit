@@ -338,6 +338,13 @@
                 sessionStorage.setItem('isLoggedIn', 'true');
                 window.location.href = '../../dashboard/dealer/pages/portal.html';
             }
+            // Check for admin demo credentials
+            else if (email === 'admin@123' && password === '1234') {
+                // Set session for admin
+                sessionStorage.setItem('userType', 'admin');
+                sessionStorage.setItem('isLoggedIn', 'true');
+                window.location.href = '../../dashboard/admin/pages/portal.html';
+            }
             else {
                 // Show error message
                 alert('Invalid credentials! Please try again.');

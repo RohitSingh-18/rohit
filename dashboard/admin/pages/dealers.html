@@ -1,0 +1,165 @@
+<div class="dealers-page">
+    <!-- Stats Overview -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-users"></i>
+            </div>
+            <div class="stat-info">
+                <h3>Total Dealers</h3>
+                <div class="stat-value">156</div>
+                <div class="stat-trend positive">
+                    <i class="fas fa-arrow-up"></i> 12% this month
+                </div>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon active">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="stat-info">
+                <h3>Active Dealers</h3>
+                <div class="stat-value">142</div>
+                <div class="stat-trend positive">
+                    <i class="fas fa-arrow-up"></i> 8% this month
+                </div>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon pending">
+                <i class="fas fa-clock"></i>
+            </div>
+            <div class="stat-info">
+                <h3>Pending Approval</h3>
+                <div class="stat-value">8</div>
+                <div class="stat-trend">
+                    <i class="fas fa-minus"></i> No change
+                </div>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon inactive">
+                <i class="fas fa-ban"></i>
+            </div>
+            <div class="stat-info">
+                <h3>Inactive Dealers</h3>
+                <div class="stat-value">6</div>
+                <div class="stat-trend negative">
+                    <i class="fas fa-arrow-down"></i> 2% this month
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dealers List Section -->
+    <div class="content-card">
+        <div class="card-header">
+            <div class="header-left">
+                <h2>Dealer Management</h2>
+                <span class="subtitle">Manage and monitor dealer accounts</span>
+            </div>
+           
+        </div>
+
+        <div class="filters-bar">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search dealers...">
+            </div>
+            <div class="filter-actions">
+                <select class="filter-select">
+                    <option value="">Status</option>
+                    <option value="active">Active</option>
+                    <option value="pending">Pending</option>
+                    <option value="inactive">Inactive</option>
+                </select>
+                <select class="filter-select">
+                    <option value="">Sort By</option>
+                    <option value="name">Name</option>
+                    <option value="date">Join Date</option>
+                    <option value="listings">Listings</option>
+                </select>
+                <button class="btn-outline">
+                    <i class="fas fa-filter"></i> More Filters
+                </button>
+            </div>
+        </div>
+
+        <div class="dealers-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Dealer Info</th>
+                        <th>Status</th>
+                        <th>Listings</th>
+                        <th>Performance</th>
+                        <th>Last Active</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="dealer-info">
+                            <img src="../../../assets/media/dealers/dealer1.jpg" alt="Dealer">
+                            <div>
+                                <h4>John's Auto</h4>
+                                <span>john@autodealer.com</span>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="status-badge active">Active</span>
+                        </td>
+                        <td>
+                            <div class="listings-info">
+                                <span class="count">24</span>
+                                <span class="label">Active Listings</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="performance-rating">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <span>4.5</span>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="last-active">2 hours ago</span>
+                        </td>
+                        <td class="actions">
+                            <button class="btn-icon" title="View Details">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="btn-icon" title="Edit">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn-icon delete" title="Delete">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <!-- More dealer rows... -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="pagination">
+            <button class="btn-page"><i class="fas fa-chevron-left"></i></button>
+            <div class="page-numbers">
+                <button class="active">1</button>
+                <button>2</button>
+                <button>3</button>
+                <span>...</span>
+                <button>12</button>
+            </div>
+            <button class="btn-page"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
+</div> 
