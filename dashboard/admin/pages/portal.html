@@ -115,6 +115,9 @@
             const mainContent = document.getElementById('mainContent');
             const pageTitle = document.getElementById('pageTitle');
             
+            // Show loader
+            showLoader();
+            
             // Update active state in sidebar
             document.querySelectorAll('.sidebar-nav li').forEach(item => {
                 item.classList.remove('active');
@@ -132,13 +135,16 @@
                     
                     // Initialize page specific scripts
                     if(page === 'settings') {
-                        // Reinitialize settings tabs
                         initializeSettings();
                     }
+                    
+                    // Hide loader after content is loaded
+                    setTimeout(hideLoader, 500); // Add small delay for smoother transition
                 })
                 .catch(error => {
                     console.error('Error loading page:', error);
                     mainContent.innerHTML = '<p>Error loading content</p>';
+                    hideLoader();
                 });
         }
 
@@ -221,6 +227,17 @@
                 }
             }
         });
+
+        // Add this to your existing script
+        function showLoader() {
+            const loader = document.querySelector('.loader-container');
+            loader.classList.add('loading');
+        }
+
+        function hideLoader() {
+            const loader = document.querySelector('.loader-container');
+            loader.classList.remove('loading');
+        }
     </script>
 
     <!-- Logout Modal -->
@@ -243,6 +260,12 @@
                 <button class="btn-secondary" onclick="closeLogoutModal()">No, Stay</button>
                 <button class="btn-primary" onclick="confirmLogout()">Yes, Logout</button>
             </div>
+        </div>
+    </div>
+
+    <div class="loader-container">
+        <div class="progress-bar-container">
+            <div class="progress-bar"></div>
         </div>
     </div>
 </body>
