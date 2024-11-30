@@ -24,6 +24,7 @@
 
     <!-- Chart.js for Performance Analytics -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../assets/js/performance.js" defer></script>
     
     <!-- Core Scripts -->
     <script src="../assets/js/dealers.js" defer></script>
@@ -46,12 +47,12 @@
                             <span>Dealer Management</span>
                         </a>
                     </li>
-                    <li data-page="performance">
+                    <!-- <li data-page="performance">
                         <a href="javascript:void(0)" class="nav-link">
                             <i class="fas fa-chart-line"></i>
                             <span>Performance</span>
                         </a>
-                    </li>
+                    </li> -->
                     <li data-page="content">
                         <a href="javascript:void(0)" class="nav-link">
                             <i class="fas fa-tasks"></i>
@@ -148,6 +149,14 @@
                             initializeDealers();
                         }
                     }
+                    if(page === 'performance') {
+                        // Initialize charts after content is loaded
+                        if (typeof initializeCharts === 'function') {
+                            setTimeout(() => {
+                                initializeCharts();
+                            }, 100);
+                        }
+                    }
                     
                     // Hide loader after content is loaded
                     setTimeout(hideLoader, 500);
@@ -202,15 +211,23 @@
         // Show modal with animation
         function showModal(modalId) {
             const modal = document.getElementById(modalId);
-            modal.classList.add('show');
-            document.body.style.overflow = 'hidden';
+            if (modal) {
+                modal.style.display = 'flex';
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
         }
 
         // Hide modal with animation
         function hideModal(modalId) {
             const modal = document.getElementById(modalId);
-            modal.classList.remove('show');
-            document.body.style.overflow = '';
+            if (modal) {
+                modal.classList.remove('active');
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = '';
+                }, 300);
+            }
         }
 
         // Updated logout functions
@@ -285,8 +302,12 @@
                 <p>You will be redirected to the login page.</p>
             </div>
             <div class="modal-actions">
-                <button class="btn-secondary" onclick="closeLogoutModal()">No, Stay</button>
-                <button class="btn-primary" onclick="confirmLogout()">Yes, Logout</button>
+                <button class="btn-secondary" onclick="closeLogoutModal()">
+                    <i class="fas fa-times"></i> No, Stay
+                </button>
+                <button class="btn-primary" onclick="confirmLogout()">
+                    <i class="fas fa-sign-out-alt"></i> Yes, Logout
+                </button>
             </div>
         </div>
     </div>

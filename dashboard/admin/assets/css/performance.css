@@ -1,378 +1,132 @@
 /* Performance Page Styles */
 .performance-page {
+    padding: 1.5rem;
     display: flex;
     flex-direction: column;
     gap: 2rem;
 }
 
-/* Charts Grid */
-.charts-grid {
+/* Stats Grid */
+.stats-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
 }
 
+/* Chart Card Styles */
 .chart-card {
-    background: var(--bg-card);
-    border-radius: 16px;
-    box-shadow: var(--card-shadow);
-    overflow: hidden;
-}
-
-.chart-container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     padding: 1.5rem;
-    height: 300px;
+    margin-bottom: 1.5rem;
 }
 
-/* Performance Table Styles */
-.performance-table {
-    overflow-x: auto;
-}
-
-.sales-info {
+.chart-header {
     display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.sales-info .count {
-    font-weight: 600;
-    color: var(--text-primary);
-}
-
-.progress-bar {
-    width: 100px;
-    height: 4px;
-    background: #E2E8F0;
-    border-radius: 2px;
-    overflow: hidden;
-}
-
-.progress {
-    height: 100%;
-    background: var(--primary-color);
-    border-radius: 2px;
-}
-
-.revenue {
-    font-weight: 600;
-    color: var(--primary-color);
-}
-
-.rating {
-    display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 0.5rem;
+    margin-bottom: 1.5rem;
 }
 
-.stars {
-    color: #F59E0B;
+.chart-title h3 {
+    font-size: 1.25rem;
+    color: var(--text-primary);
+    margin: 0 0 0.25rem 0;
 }
 
-.trend-chart {
-    width: 100px;
-    height: 40px;
-}
-
-/* Time Filter */
-.time-filter {
-    padding: 0.5rem;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
+.chart-title span {
     font-size: 0.875rem;
     color: var(--text-secondary);
 }
 
-/* Responsive Design */
-@media (max-width: 1200px) {
-    .charts-grid {
-        grid-template-columns: 1fr;
-    }
+.chart-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
 }
 
+.time-filter {
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 0.875rem;
+    color: var(--text-primary);
+    background: white;
+}
+
+.btn-export {
+    padding: 0.5rem 1rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background-color 0.2s;
+}
+
+.btn-export:hover {
+    background: var(--primary-dark);
+}
+
+.chart-container {
+    position: relative;
+    height: 300px;
+    width: 100%;
+}
+
+/* Responsive Styles */
 @media (max-width: 768px) {
-    .chart-container {
-        height: 250px;
-    }
-}
-
-@media (max-width: 1024px) {
-    .charts-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-
-    .chart-container {
-        height: 250px;
-    }
-}
-
-@media (max-width: 768px) {
-    .performance-table {
-        overflow-x: auto;
-    }
-
-    .trend-chart {
-        width: 80px;
-        height: 30px;
-    }
-
-    .sales-info .progress-bar {
-        width: 80px;
-    }
-}
-
-/* Mobile Responsive Styles */
-@media (max-width: 1024px) {
-    .charts-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-
-    .chart-container {
-        height: 250px;
+    .performance-page {
         padding: 1rem;
     }
 
-    .card-header {
+    .chart-header {
         flex-direction: column;
-        gap: 1rem;
-        padding: 1rem;
-    }
-
-    .time-filter {
-        width: 100%;
-    }
-}
-
-@media (max-width: 768px) {
-    .performance-table {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .performance-table table {
-        font-size: 0.875rem;
-    }
-
-    td, th {
-        padding: 0.75rem;
-        white-space: nowrap;
-    }
-
-    .trend-chart {
-        width: 80px;
-        height: 30px;
-    }
-
-    .sales-info {
-        white-space: normal;
-    }
-
-    .sales-info .count {
-        font-size: 1rem;
-    }
-
-    .progress-bar {
-        width: 60px;
-    }
-
-    .revenue {
-        font-size: 0.875rem;
-    }
-
-    .rating {
-        flex-direction: column;
-        gap: 0.25rem;
         align-items: flex-start;
-    }
-
-    .stars {
-        font-size: 0.75rem;
-    }
-
-    .stats-grid {
-        padding: 0 0.5rem;
-    }
-
-    .stat-card {
-        padding: 1rem;
-    }
-
-    .stat-icon {
-        width: 40px;
-        height: 40px;
-        font-size: 1.25rem;
-    }
-
-    .stat-value {
-        font-size: 1.5rem;
-    }
-}
-
-/* Small screen optimizations */
-@media (max-width: 480px) {
-    .chart-card {
-        margin: 0 -1rem;
-        border-radius: 0;
-    }
-
-    .performance-table td {
-        padding: 0.5rem;
-    }
-
-    .dealer-info img {
-        width: 32px;
-        height: 32px;
-    }
-
-    .dealer-info h4 {
-        font-size: 0.8125rem;
-    }
-
-    .dealer-info span {
-        font-size: 0.75rem;
-    }
-}
-
-/* Mobile Optimized Styles */
-@media (max-width: 768px) {
-    .performance-page {
-        padding: 0.5rem;
-    }
-
-    /* Stats Cards */
-    .stats-grid {
-        display: grid;
-        grid-template-columns: 1fr;
         gap: 1rem;
-        padding: 0.5rem;
     }
 
-    .stat-card {
-        background: white;
-        border-radius: 16px;
-        padding: 1rem;
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        box-shadow: var(--card-shadow);
-        transition: var(--transition);
-    }
-
-    .stat-icon {
-        width: 48px;
-        height: 48px;
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.25rem;
-        background: var(--primary-color);
-        color: white;
-    }
-
-    .stat-info {
-        flex: 1;
-    }
-
-    .stat-info h3 {
-        font-size: 0.875rem;
-        color: var(--text-secondary);
-        margin-bottom: 0.25rem;
-    }
-
-    .stat-value {
-        font-size: 1.5rem;
-        font-weight: 600;
-        color: var(--text-primary);
-        margin-bottom: 0.25rem;
-    }
-
-    /* Charts Section */
-    .charts-section {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        margin-top: 1rem;
-    }
-
-    .chart-card {
-        background: white;
-        border-radius: 16px;
-        box-shadow: var(--card-shadow);
-        overflow: hidden;
-    }
-
-    .chart-header {
-        padding: 1rem;
-        border-bottom: 1px solid var(--border-color);
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-    }
-
-    .chart-title h3 {
-        font-size: 1rem;
-        color: var(--text-primary);
-        margin-bottom: 0.25rem;
-    }
-
-    .chart-title span {
-        font-size: 0.75rem;
-        color: var(--text-secondary);
+    .chart-actions {
+        width: 100%;
+        flex-wrap: wrap;
     }
 
     .time-filter {
-        width: 100%;
-        padding: 0.5rem;
-        border: 1px solid var(--border-color);
-        border-radius: 8px;
-        font-size: 0.875rem;
-        color: var(--text-secondary);
-        background: white;
+        flex: 1;
+        min-width: 150px;
     }
 
     .chart-container {
-        padding: 1rem;
         height: 250px;
-        position: relative;
-    }
-
-    /* Touch Interactions */
-    .stat-card:active,
-    .chart-card:active {
-        transform: scale(0.98);
-        opacity: 0.9;
     }
 }
 
-/* Extra Small Devices */
-@media (max-width: 360px) {
-    .performance-page {
-        padding: 0.25rem;
-    }
+/* Loading State */
+.chart-container.loading {
+    opacity: 0.5;
+    pointer-events: none;
+}
 
-    .stats-grid {
-        padding: 0.25rem;
-    }
+.chart-container.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
 
-    .stat-card {
-        padding: 0.875rem;
-    }
-
-    .stat-icon {
-        width: 40px;
-        height: 40px;
-        font-size: 1rem;
-    }
-
-    .chart-header {
-        padding: 0.875rem;
-    }
-
-    .chart-container {
-        padding: 0.875rem;
-        height: 200px;
-    }
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
 } 

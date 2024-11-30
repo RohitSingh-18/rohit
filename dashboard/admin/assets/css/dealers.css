@@ -44,7 +44,7 @@
 }
 
 .stat-icon.pending {
-    background: #F59E0B;
+    background: #d01818;
 }
 
 .stat-icon.inactive {
@@ -334,7 +334,7 @@ td[data-label="Status"] .status-badge {
 
 .status-badge.pending {
     background: rgba(245, 158, 11, 0.1);
-    color: #F59E0B;
+    color: #d01818;
 }
 
 .status-badge.inactive {
@@ -1376,5 +1376,80 @@ td[data-label="Status"] .status-badge {
     
     .action-buttons button i {
         font-size: 0.875rem;
+    }
+}
+
+/* Toast Notification Styles */
+.toast-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: white;
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.3s ease;
+}
+
+.toast-notification.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.toast-notification.success {
+    border-left: 4px solid #10B981;
+}
+
+.toast-notification.error {
+    border-left: 4px solid #EF4444;
+}
+
+.toast-notification i {
+    font-size: 1.25rem;
+}
+
+.toast-notification.success i {
+    color: #10B981;
+}
+
+.toast-notification.error i {
+    color: #EF4444;
+}
+
+.toast-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.toast-title {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.875rem;
+}
+
+.toast-message {
+    color: var(--text-secondary);
+    font-size: 0.813rem;
+}
+
+/* Mobile Responsive Toast */
+@media (max-width: 768px) {
+    .toast-notification {
+        top: auto;
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+        transform: translateY(100%);
+    }
+
+    .toast-notification.show {
+        transform: translateY(0);
     }
 }

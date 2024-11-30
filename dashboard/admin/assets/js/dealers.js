@@ -96,6 +96,9 @@ function confirmDealerRemoval() {
             return;
         }
 
+        // Get dealer name for the notification
+        const dealerName = dealerRow.querySelector('.dealer-info h4')?.textContent || 'Dealer';
+
         // Add removing class for animation
         dealerRow.classList.add('removing');
 
@@ -112,14 +115,22 @@ function confirmDealerRemoval() {
                     totalDealersElement.textContent = (currentTotal - 1).toString();
                 }
             }
+
+            // Show success toast notification
+            showToast(
+                'Dealer Removed',
+                `${dealerName} has been successfully removed from the platform.`,
+                'success'
+            );
         }, 300);
 
-        // Here you would typically make an API call to remove the dealer
-        // For now, we're just handling the UI updates
-        
     } catch (error) {
         console.error('Error in confirmDealerRemoval:', error);
-        alert('Unable to remove dealer. Please try again.');
+        showToast(
+            'Error',
+            'Unable to remove dealer. Please try again.',
+            'error'
+        );
     }
 }
 
@@ -138,6 +149,38 @@ function showNotification(message, type = 'success') {
     setTimeout(() => {
         notification.classList.remove('show');
         setTimeout(() => notification.remove(), 300);
+    }, 3000);
+}
+
+// Add this function to show toast notifications
+function showToast(title, message, type = 'success') {
+    // Remove existing toast if any
+    const existingToast = document.querySelector('.toast-notification');
+    if (existingToast) {
+        existingToast.remove();
+    }
+
+    // Create toast element
+    const toast = document.createElement('div');
+    toast.className = `toast-notification ${type}`;
+    toast.innerHTML = `
+        <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+        <div class="toast-content">
+            <div class="toast-title">${title}</div>
+            <div class="toast-message">${message}</div>
+        </div>
+    `;
+
+    // Add toast to document
+    document.body.appendChild(toast);
+
+    // Trigger animation
+    setTimeout(() => toast.classList.add('show'), 10);
+
+    // Remove toast after 3 seconds
+    setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 300);
     }, 3000);
 }
 
