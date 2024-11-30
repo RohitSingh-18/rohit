@@ -143,20 +143,20 @@
     gap: 1rem;
 }
 
-/* Table Styles */
+/* Table Styles - Desktop */
 .dealers-table {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
 }
 
+/* Set consistent grid layout for both header and body rows */
 .dealers-table thead tr,
 .dealers-table tbody tr {
     display: grid;
-    grid-template-columns: 2fr 1.5fr 1fr 0.8fr 1fr 1.2fr;
+    grid-template-columns: minmax(250px, 2fr) minmax(180px, 1.5fr) minmax(120px, 1fr) minmax(100px, 0.8fr) minmax(120px, 1fr) minmax(200px, 1.2fr);
     align-items: center;
-    width: 100%;
-    padding: 1rem 30px;
+    padding: 1rem 1.5rem;
     gap: 1rem;
 }
 
@@ -173,18 +173,74 @@
     transition: all 0.3s ease;
 }
 
+/* Align header and cell content */
 .dealers-table th,
 .dealers-table td {
-    padding: 0.5rem;
+    padding: 0;
     display: flex;
     align-items: center;
 }
 
-/* Dealer Info Column */
+/* Specific column alignments */
+.dealers-table th:first-child,
+.dealers-table td:first-child {
+    justify-content: flex-start;
+}
+
+.dealers-table th:nth-child(2),
+.dealers-table td:nth-child(2) {
+    justify-content: flex-start;
+}
+
+.dealers-table th:nth-child(3),
+.dealers-table td:nth-child(3) {
+    justify-content: flex-start;
+}
+
+.dealers-table th:nth-child(4),
+.dealers-table td:nth-child(4) {
+    justify-content: flex-start;
+}
+
+.dealers-table th:nth-child(5),
+.dealers-table td:nth-child(5) {
+    justify-content: flex-start;
+}
+
+.dealers-table th:last-child,
+.dealers-table td:last-child {
+    justify-content: flex-end;
+}
+
+/* Dealer info column styles */
 .dealer-info {
     display: flex;
     align-items: center;
     gap: 1rem;
+    width: 100%;
+}
+
+.dealer-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.dealer-info div {
+    flex: 1;
+}
+
+/* Status badge alignment */
+td[data-label="Status"] .status-badge {
+    margin: 0;
+}
+
+/* Action buttons container */
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
     width: 100%;
 }
 
@@ -943,23 +999,45 @@
 
     /* Pagination Adjustments */
     .pagination {
-        flex-wrap: wrap;
+        display: flex;
+        align-items: center;
         justify-content: center;
         gap: 0.5rem;
         margin-top: 1rem;
+        padding: 0 1rem;
+        flex-wrap: nowrap; /* Prevent wrapping */
     }
 
     .page-numbers {
-        order: 2;
-        width: 100%;
+        display: flex;
+        gap: 0.5rem;
         justify-content: center;
+        order: 2; /* Reset the order */
+        width: auto; /* Reset the width */
     }
 
     .prev-page,
     .next-page {
+        order: unset; /* Reset the order */
+        flex: 0 0 auto; /* Don't grow or shrink */
+        max-width: none; /* Reset max-width */
+    }
+
+    .prev-page {
         order: 1;
-        flex: 1;
-        max-width: 100px;
+    }
+
+    .next-page {
+        order: 3;
+    }
+
+    .pagination button {
+        min-width: 36px;
+        height: 36px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     /* Confirmation Modal Adjustments */
@@ -1193,4 +1271,110 @@
 .dealers-table tbody tr {
     position: relative;
     transform-origin: top;
-} 
+}
+
+@media screen and (max-width: 768px) {
+    .dealers-table {
+        border: 0;
+        display: block;
+        width: 100%;
+    }
+    
+    .dealers-table thead {
+        display: none;
+    }
+    
+    .dealers-table tbody {
+        display: block;
+        width: 100%;
+    }
+    
+    .dealers-table .dealer-row {
+        display: block;
+        margin-bottom: 1rem;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        background: #fff;
+        padding: 0;
+    }
+    
+    .dealers-table .dealer-row td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px;
+        border-bottom: 1px solid #eee;
+        text-align: left;
+    }
+    
+    .dealers-table .dealer-row td:last-child {
+        border-bottom: none;
+    }
+    
+    .dealers-table .dealer-row td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        margin-right: 12px;
+        min-width: 120px;
+    }
+    
+    /* Special handling for dealer info cell */
+    .dealers-table .dealer-row td:first-child {
+        display: block;
+        text-align: left;
+    }
+    
+    .dealers-table .dealer-row td:first-child::before {
+        display: none;
+    }
+    
+    /* Adjust dealer info layout */
+    .dealer-info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+    }
+    
+    /* Adjust action buttons in mobile view */
+    .action-buttons {
+        display: flex;
+        justify-content: flex-end;
+        gap: 8px;
+        width: 100%;
+        flex-direction: row; /* Ensure buttons are in a row */
+    }
+    
+    .action-buttons button {
+        flex: 1;
+        padding: 8px;
+        font-size: 0.875rem;
+        white-space: nowrap;
+        min-width: 0; /* Allow buttons to shrink if needed */
+    }
+    
+    .action-buttons button i {
+        margin-right: 4px;
+    }
+    
+    /* Ensure the text doesn't wrap */
+    .btn-view-listings,
+    .btn-remove {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: calc(50% - 4px); /* Take up half the space minus gap */
+    }
+}
+
+/* Extra small screens */
+@media screen and (max-width: 360px) {
+    .action-buttons button {
+        padding: 8px 4px;
+        font-size: 0.813rem;
+    }
+    
+    .action-buttons button i {
+        font-size: 0.875rem;
+    }
+}

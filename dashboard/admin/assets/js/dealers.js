@@ -3,77 +3,124 @@ let currentDealerToRemove = null;
 
 // Function to view dealer listings
 function viewDealerListings(dealerId) {
-    // Get dealer data from the table row
-    const dealerRow = document.querySelector(`tr[data-dealer-id="${dealerId}"]`);
-    if (!dealerRow) return;
+    try {
+        // Find the dealer row
+        const dealerRow = document.querySelector(`tr[data-dealer-id="${dealerId}"]`);
+        if (!dealerRow) {
+            console.error(`Dealer row not found for ID: ${dealerId}`);
+            return;
+        }
 
-    const dealerData = {
-        id: dealerId,
-        name: dealerRow.querySelector('.dealer-info h4').textContent,
-        owner: dealerRow.querySelector('.dealer-info span').textContent,
-        location: dealerRow.querySelector('[data-label="Location"]').textContent,
-        totalListings: dealerRow.querySelector('[data-label="Listings"]').textContent,
-        status: dealerRow.querySelector('.status-badge').textContent,
-        joinDate: dealerRow.querySelector('[data-label="Join Date"]').textContent,
-        avatar: dealerRow.querySelector('.dealer-info img').src
-    };
+        // Get dealer info
+        const dealerName = dealerRow.querySelector('.dealer-info h4')?.textContent || 'Unknown Dealer';
+        const dealerLocation = dealerRow.querySelector('[data-label="Location"]')?.textContent || 'Location not available';
 
-    // Store dealer data in sessionStorage
-    sessionStorage.setItem('currentDealer', JSON.stringify(dealerData));
-    
-    // Navigate to dealer listings page
-    window.location.href = 'dealer-listings.html?id=' + dealerId;
+        // Store dealer info in session storage for the listings page
+        sessionStorage.setItem('selectedDealer', JSON.stringify({
+            id: dealerId,
+            name: dealerName,
+            location: dealerLocation
+        }));
+
+        // Redirect to dealer listings page
+        window.location.href = 'dealer-listings.html';
+    } catch (error) {
+        console.error('Error in viewDealerListings:', error);
+        alert('Unable to view dealer listings at this time. Please try again later.');
+    }
 }
 
 // Function to show dealer remove modal
 function showDealerRemoveModal(button) {
-    const row = button.closest('tr');
-    const modal = document.getElementById('dealerRemoveModal');
-    
-    // Get dealer details
-    const dealerInfo = row.querySelector('.dealer-info');
-    const name = dealerInfo.querySelector('h4').textContent;
-    const location = row.querySelector('[data-label="Location"]').textContent;
-    const avatar = dealerInfo.querySelector('img').src;
-    
-    // Update modal content
-    document.getElementById('dealerPreviewName').textContent = name;
-    document.getElementById('dealerPreviewLocation').innerHTML = `<i class="fas fa-map-marker-alt"></i> ${location}`;
-    document.getElementById('dealerPreviewImage').src = avatar;
-    
-    currentDealerToRemove = row;
-    modal.classList.add('active');
+    try {
+        const dealerRow = button.closest('tr');
+        if (!dealerRow) {
+            console.error('Dealer row not found');
+            return;
+        }
+
+        const modal = document.getElementById('dealerRemoveModal');
+        if (!modal) {
+            console.error('Remove modal not found');
+            return;
+        }
+
+        // Get dealer info
+        const dealerInfo = dealerRow.querySelector('.dealer-info');
+        const dealerImage = dealerInfo.querySelector('img')?.src || '';
+        const dealerName = dealerInfo.querySelector('h4')?.textContent || 'Unknown Dealer';
+        const dealerLocation = dealerRow.querySelector('[data-label="Location"]')?.textContent || '';
+
+        // Update modal with dealer info
+        const previewImage = modal.querySelector('#dealerPreviewImage');
+        const previewName = modal.querySelector('#dealerPreviewName');
+        const previewLocation = modal.querySelector('#dealerPreviewLocation');
+
+        if (previewImage) previewImage.src = dealerImage;
+        if (previewName) previewName.textContent = dealerName;
+        if (previewLocation) previewLocation.textContent = dealerLocation;
+
+        // Store dealer ID for removal
+        modal.dataset.dealerId = dealerRow.dataset.dealerId;
+
+        // Show modal
+        modal.classList.add('active');
+    } catch (error) {
+        console.error('Error in showDealerRemoveModal:', error);
+        alert('Unable to show removal dialog. Please try again.');
+    }
 }
 
 // Function to close dealer remove modal
 function closeDealerRemoveModal() {
     const modal = document.getElementById('dealerRemoveModal');
-    modal.classList.remove('active');
-    currentDealerToRemove = null;
+    if (modal) {
+        modal.classList.remove('active');
+    }
 }
 
 // Function to confirm dealer removal
 function confirmDealerRemoval() {
-    if (!currentDealerToRemove) return;
-    
-    // Add removing class to current row
-    currentDealerToRemove.classList.add('removing');
-    
-    // Remove the dealer row after animation
-    setTimeout(() => {
-        currentDealerToRemove.remove();
+    try {
+        const modal = document.getElementById('dealerRemoveModal');
+        const dealerId = modal?.dataset.dealerId;
         
-        // Update total dealers count
-        const totalDealersElement = document.querySelector('.stat-card .stat-value');
-        if (totalDealersElement) {
-            const currentCount = parseInt(totalDealersElement.textContent);
-            totalDealersElement.textContent = currentCount - 1;
+        if (!dealerId) {
+            console.error('Dealer ID not found');
+            return;
         }
+
+        const dealerRow = document.querySelector(`tr[data-dealer-id="${dealerId}"]`);
+        if (!dealerRow) {
+            console.error('Dealer row not found');
+            return;
+        }
+
+        // Add removing class for animation
+        dealerRow.classList.add('removing');
+
+        // Remove the row after animation
+        setTimeout(() => {
+            dealerRow.remove();
+            closeDealerRemoveModal();
+            
+            // Update total dealers count if exists
+            const totalDealersElement = document.querySelector('.stat-value');
+            if (totalDealersElement) {
+                const currentTotal = parseInt(totalDealersElement.textContent) || 0;
+                if (currentTotal > 0) {
+                    totalDealersElement.textContent = (currentTotal - 1).toString();
+                }
+            }
+        }, 300);
+
+        // Here you would typically make an API call to remove the dealer
+        // For now, we're just handling the UI updates
         
-        showNotification('Dealer has been removed successfully', 'success');
-    }, 300);
-    
-    closeDealerRemoveModal();
+    } catch (error) {
+        console.error('Error in confirmDealerRemoval:', error);
+        alert('Unable to remove dealer. Please try again.');
+    }
 }
 
 // Function to show notification
@@ -111,33 +158,40 @@ document.addEventListener('DOMContentLoaded', function() {
     const statusFilter = document.getElementById('statusFilter');
 
     if (searchInput) {
-        searchInput.addEventListener('input', debounce(function() {
-            filterDealers();
-        }, 300));
+        searchInput.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const dealerRows = document.querySelectorAll('.dealers-table tbody tr');
+            
+            dealerRows.forEach(row => {
+                const dealerName = row.querySelector('.dealer-info h4')?.textContent.toLowerCase() || '';
+                const dealerLocation = row.querySelector('[data-label="Location"]')?.textContent.toLowerCase() || '';
+                
+                if (dealerName.includes(searchTerm) || dealerLocation.includes(searchTerm)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
     }
 
     if (statusFilter) {
-        statusFilter.addEventListener('change', function() {
-            filterDealers();
+        statusFilter.addEventListener('change', function(e) {
+            const selectedStatus = e.target.value.toLowerCase();
+            const dealerRows = document.querySelectorAll('.dealers-table tbody tr');
+            
+            dealerRows.forEach(row => {
+                const status = row.querySelector('.status-badge')?.textContent.toLowerCase() || '';
+                
+                if (selectedStatus === 'all' || status === selectedStatus) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
         });
     }
 });
-
-// Filter dealers based on search and status
-function filterDealers() {
-    const searchValue = document.getElementById('dealerSearch').value.toLowerCase();
-    const statusValue = document.getElementById('statusFilter').value;
-    const rows = document.querySelectorAll('.dealers-table tbody tr');
-
-    rows.forEach(row => {
-        const dealerName = row.querySelector('.dealer-info h4').textContent.toLowerCase();
-        const dealerStatus = row.querySelector('.status-badge').textContent.toLowerCase();
-        const matchesSearch = dealerName.includes(searchValue);
-        const matchesStatus = statusValue === 'all' || dealerStatus === statusValue;
-
-        row.style.display = matchesSearch && matchesStatus ? '' : 'none';
-    });
-}
 
 // Debounce helper function
 function debounce(func, wait) {
