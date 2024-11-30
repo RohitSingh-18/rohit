@@ -24,6 +24,10 @@
 
     <!-- Chart.js for Performance Analytics -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Core Scripts -->
+    <script src="../assets/js/dealers.js" defer></script>
+    <script src="../assets/js/settings.js" defer></script>
 </head>
 <body>
     <div class="dashboard-container">
@@ -80,12 +84,12 @@
         <main class="main-content">
             <header class="dashboard-header">
                 <div class="header-left">
-                    <button class="hamburger-menu" id="menuToggle">
-                        <div class="hamburger-lines">
-                            <span class="line line1"></span>
-                            <span class="line line2"></span>
-                            <span class="line line3"></span>
-                        </div>
+                    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 12H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M3 6H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
                     </button>
                     <h1 class="header-title" id="pageTitle">Dealer Management</h1>
                 </div>
@@ -96,7 +100,7 @@
                         <span class="notification-badge">3</span>
                     </div>
                     <div class="admin-profile">
-                        <img src="../../../assets/media/general/admin-avatar.png" alt="Admin">
+                        <img src="../assets/media/admin-avatar.png" alt="Admin">
                         <span>Admin</span>
                     </div>
                 </div>
@@ -108,7 +112,6 @@
 
     <!-- JavaScript Files -->
     <script src="../assets/js/settings.js"></script>
-    <script src="../assets/js/mobile-menu.js"></script>
     <script>
         // Function to load page content
         function loadPage(page) {
@@ -126,20 +129,28 @@
                 }
             });
 
+            // Update page title
+            pageTitle.textContent = page.charAt(0).toUpperCase() + page.slice(1);
+
             // Load page content
             fetch(`${page}.html`)
                 .then(response => response.text())
                 .then(html => {
                     mainContent.innerHTML = html;
-                    pageTitle.textContent = page.charAt(0).toUpperCase() + page.slice(1);
                     
                     // Initialize page specific scripts
                     if(page === 'settings') {
                         initializeSettings();
                     }
+                    if(page === 'dealers') {
+                        // Re-initialize dealers page functionality
+                        if (typeof initializeDealers === 'function') {
+                            initializeDealers();
+                        }
+                    }
                     
                     // Hide loader after content is loaded
-                    setTimeout(hideLoader, 500); // Add small delay for smoother transition
+                    setTimeout(hideLoader, 500);
                 })
                 .catch(error => {
                     console.error('Error loading page:', error);
@@ -157,7 +168,12 @@
 
         // Load default page
         document.addEventListener('DOMContentLoaded', function() {
-            loadPage('dealers');
+            // Check for page parameter in URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const pageParam = urlParams.get('page');
+            
+            // Load specified page or default to dealers
+            loadPage(pageParam || 'dealers');
 
             // Add click handlers to sidebar navigation
             document.querySelectorAll('.sidebar-nav a').forEach(link => {
@@ -165,10 +181,22 @@
                     e.preventDefault();
                     const page = this.closest('li').dataset.page;
                     if(page) {
+                        // Update URL without reloading
+                        const newUrl = `${window.location.pathname}?page=${page}`;
+                        window.history.pushState({ page }, '', newUrl);
                         loadPage(page);
                     }
                 });
             });
+        });
+
+        // Add popstate event listener to handle browser back/forward
+        window.addEventListener('popstate', function(event) {
+            if (event.state && event.state.page) {
+                loadPage(event.state.page);
+            } else {
+                loadPage('dealers');
+            }
         });
 
         // Show modal with animation
@@ -268,5 +296,8 @@
             <div class="progress-bar"></div>
         </div>
     </div>
+
+    <!-- Add this before the closing body tag -->
+    <script src="../assets/js/mobile-nav.js"></script>
 </body>
 </html> 

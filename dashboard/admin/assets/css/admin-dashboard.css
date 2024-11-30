@@ -54,8 +54,10 @@ body {
     padding: 2rem 1rem;
     color: var(--text-light);
     overflow-y: auto;
-    transition: var(--transition);
-    z-index: 100;
+    transition: transform 0.3s ease;
+    z-index: 1000;
+    left: 0;
+    top: 0;
 }
 
 .sidebar-header {
@@ -247,10 +249,6 @@ body {
         padding: 0.75rem 1rem;
     }
 
-    .hamburger-menu {
-        display: block;
-    }
-
     .header-title {
         font-size: 1.2rem;
     }
@@ -266,74 +264,6 @@ body {
     /* Stats Grid */
     .stats-grid {
         grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-}
-
-/* Hamburger Menu Styles */
-.hamburger-menu {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-    z-index: 200;
-    position: relative;
-}
-
-.hamburger-lines {
-    width: 24px;
-    height: 20px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.line {
-    display: block;
-    height: 2px;
-    width: 100%;
-    background: var(--text-primary);
-    border-radius: 10px;
-    transition: transform 0.3s ease-in-out,
-                opacity 0.2s ease-in-out;
-}
-
-/* Hamburger Animation */
-.hamburger-menu.active .line1 {
-    transform: translateY(9px) rotate(45deg);
-}
-
-.hamburger-menu.active .line2 {
-    opacity: 0;
-}
-
-.hamburger-menu.active .line3 {
-    transform: translateY(-9px) rotate(-45deg);
-}
-
-/* Show hamburger in mobile */
-@media (max-width: 768px) {
-    .hamburger-menu {
-        display: block;
-        margin-right: 1rem;
-    }
-
-    /* Overlay when sidebar is open */
-    .sidebar.active::after {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: -1;
-    }
-
-    /* Adjust header spacing */
-    .header-left {
         gap: 1rem;
     }
 }
@@ -472,5 +402,59 @@ body {
 
 .loader-container.loading .progress-bar {
     animation: loading 1s ease-in-out infinite;
+}
+
+/* Mobile Menu Styles - New, isolated classes */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+}
+
+.mobile-menu-btn:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Mobile specific styles */
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 8px;
+    }
+
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+
+    .sidebar.mobile-active {
+        transform: translateX(0);
+    }
+
+    /* Overlay when sidebar is open */
+    .mobile-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .mobile-overlay.active {
+        display: block;
+        opacity: 1;
+    }
 }
   
