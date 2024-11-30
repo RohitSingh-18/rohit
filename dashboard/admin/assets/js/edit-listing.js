@@ -140,11 +140,10 @@ function updateFeaturesDisplay() {
 }
 
 // Update listing
-function updateListing(event) {
-    event.preventDefault();
-    
+function updateListing() {
     // Get form data
-    const formData = new FormData(event.target);
+    const form = document.getElementById('editListingForm');
+    const formData = new FormData(form);
     const data = {
         title: formData.get('title'),
         price: formData.get('price'),
@@ -166,6 +165,9 @@ function updateListing(event) {
     
     // Show success message
     showNotification('Listing updated successfully', 'success');
+    
+    // Close the modal
+    closeSaveModal();
     
     // Redirect back to listings page after a short delay
     setTimeout(goBack, 1500);
@@ -250,7 +252,6 @@ function closeSaveModal() {
 // Confirm save changes
 function confirmSaveChanges() {
     updateListing();
-    closeSaveModal();
 }
 
 // Get changed fields

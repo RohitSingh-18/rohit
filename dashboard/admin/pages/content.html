@@ -56,12 +56,12 @@
 
     <!-- Content Review Section -->
     <div class="content-card">
-        <div class="card-header">
-            <div class="header-left">
+        <div class="content-review-header">
+            <div class="content-review-header-left">
                 <h2>Content Review Queue</h2>
                 <span class="subtitle">Review and moderate dealer listings</span>
             </div>
-            <div class="header-actions">
+            <div class="content-review-actions">
                 <select class="filter-select">
                     <option value="all">All Content</option>
                     <option value="listings">Listings</option>
@@ -79,7 +79,7 @@
             <div class="review-item">
                 <div class="review-header">
                     <div class="dealer-info">
-                        <img src="../../../assets/media/dealers/dealer1.jpg" alt="Dealer">
+                        <img src="https://via.placeholder.com/300x200" alt="Dealer">
                         <div>
                             <h4>John's Auto</h4>
                             <span>New Listing</span>
@@ -92,7 +92,7 @@
                 
                 <div class="review-content">
                     <div class="content-preview">
-                        <img src="../../../assets/media/cars/car1.jpg" alt="Car">
+                        <img src="https://via.placeholder.com/300x200" alt="Car">
                         <div class="preview-details">
                             <h3>2020 Toyota Camry</h3>
                             <p>Luxury sedan with premium features...</p>
@@ -121,16 +121,22 @@
         </div>
 
         <!-- Pagination -->
-        <div class="pagination">
-            <button class="btn-page"><i class="fas fa-chevron-left"></i></button>
-            <div class="page-numbers">
-                <button class="active">1</button>
-                <button>2</button>
-                <button>3</button>
-                <span>...</span>
-                <button>10</button>
+        <div class="content-pagination">
+            <div class="pagination-container">
+                <button class="pagination-arrow" id="prevPage" disabled>
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="pagination-numbers">
+                    <button class="page-number active">1</button>
+                    <button class="page-number">2</button>
+                    <button class="page-number">3</button>
+                    <button class="page-number">4</button>
+                    <button class="page-number">5</button>
+                </div>
+                <button class="pagination-arrow" id="nextPage">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
-            <button class="btn-page"><i class="fas fa-chevron-right"></i></button>
         </div>
     </div>
 </div> 

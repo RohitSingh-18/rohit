@@ -56,80 +56,89 @@
 
     <!-- Support Tickets Section -->
     <div class="content-card">
-        <div class="card-header">
-            <div class="header-left">
-                <h2>Support Tickets</h2>
-                <span class="subtitle">Manage dealer support requests</span>
-            </div>
-            <div class="header-actions">
-                <select class="filter-select">
-                    <option value="all">All Tickets</option>
-                    <option value="open">Open</option>
-                    <option value="urgent">Urgent</option>
-                    <option value="resolved">Resolved</option>
-                </select>
-                <button class="btn-outline">
-                    <i class="fas fa-filter"></i> Filters
-                </button>
-            </div>
-        </div>
-
-        <div class="tickets-list">
-            <!-- Ticket Item -->
-            <div class="ticket-item">
-                <div class="ticket-header">
-                    <div class="ticket-id">#TK-2023-001</div>
-                    <div class="ticket-status urgent">
-                        <i class="fas fa-exclamation-circle"></i> Urgent
-                    </div>
+        <div class="support-card">
+            <div class="support-header">
+                <div class="support-header-left">
+                    <h2>Support Tickets</h2>
+                    <span class="subtitle">Manage dealer support requests</span>
                 </div>
-
-                <div class="ticket-content">
-                    <div class="dealer-info">
-                        <img src="../../../assets/media/dealers/dealer1.jpg" alt="Dealer">
-                        <div>
-                            <h4>John's Auto</h4>
-                            <span>Premium Dealer</span>
+                <div class="support-header-actions">
+                    <select class="filter-select">
+                        <option value="all">All Tickets</option>
+                        <option value="urgent">Urgent</option>
+                        <option value="open">Open</option>
+                        <option value="resolved">Resolved</option>
+                    </select>
+                    <button class="btn-outline">
+                        <i class="fas fa-filter"></i> Filters
+                    </button>
+                </div>
+            </div>
+            
+            <div class="tickets-list">
+                <!-- Ticket Item -->
+                <div class="ticket-item">
+                    <div class="ticket-header">
+                        <div class="ticket-id">#TK-2023-001</div>
+                        <div class="ticket-status urgent">
+                            <i class="fas fa-exclamation-circle"></i> Urgent
                         </div>
                     </div>
 
-                    <div class="ticket-details">
-                        <h3>Unable to upload listing images</h3>
-                        <p>Having issues with the image upload feature. The system keeps showing an error...</p>
-                        <div class="ticket-meta">
-                            <span><i class="fas fa-calendar"></i> Created: 2 hours ago</span>
-                            <span><i class="fas fa-reply"></i> Last Reply: 30 mins ago</span>
+                    <div class="ticket-content">
+                        <div class="dealer-info">
+                            <img src="https://via.placeholder.com/150" alt="Dealer">
+                            <div>
+                                <h4>John's Auto</h4>
+                                <span>Premium Dealer</span>
+                            </div>
+                        </div>
+
+                        <div class="ticket-details">
+                            <h3>Unable to upload listing images</h3>
+                            <p>Having issues with the image upload feature. The system keeps showing an error...</p>
+                            <div class="ticket-meta">
+                                <span><i class="fas fa-calendar"></i> Created: 2 hours ago</span>
+                                <span><i class="fas fa-reply"></i> Last Reply: 30 mins ago</span>
+                            </div>
+                        </div>
+
+                        <div class="ticket-actions">
+                            <button class="btn-primary">
+                                <i class="fas fa-reply"></i> Respond
+                            </button>
+                           
+                            <button class="btn-success">
+                                <i class="fas fa-check"></i> Mark Resolved
+                            </button>
+                            <!-- <button class="btn-outline">
+                                <i class="fas fa-eye"></i> View Details
+                            </button> -->
                         </div>
                     </div>
+                </div>
 
-                    <div class="ticket-actions">
-                        <button class="btn-primary">
-                            <i class="fas fa-reply"></i> Respond
-                        </button>
-                        <button class="btn-outline">
-                            <i class="fas fa-eye"></i> View Details
-                        </button>
-                        <button class="btn-success">
-                            <i class="fas fa-check"></i> Mark Resolved
-                        </button>
+                <!-- Add more ticket items here -->
+            </div>
+
+            <!-- Pagination -->
+            <div class="support-pagination">
+                <div class="pagination-container">
+                    <button class="pagination-arrow" id="prevPage" disabled>
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="pagination-numbers">
+                        <button class="page-number active">1</button>
+                        <button class="page-number">2</button>
+                        <button class="page-number">3</button>
+                        <button class="page-number">4</button>
+                        <button class="page-number">5</button>
                     </div>
+                    <button class="pagination-arrow" id="nextPage">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
             </div>
-
-            <!-- Add more ticket items here -->
-        </div>
-
-        <!-- Pagination -->
-        <div class="pagination">
-            <button class="btn-page"><i class="fas fa-chevron-left"></i></button>
-            <div class="page-numbers">
-                <button class="active">1</button>
-                <button>2</button>
-                <button>3</button>
-                <span>...</span>
-                <button>10</button>
-            </div>
-            <button class="btn-page"><i class="fas fa-chevron-right"></i></button>
         </div>
     </div>
 </div> 
