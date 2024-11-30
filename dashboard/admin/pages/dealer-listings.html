@@ -19,20 +19,20 @@
                     <h1>AutoMax Motors</h1>
                     <div class="dealer-meta">
                         <span><i class="fas fa-map-marker-alt"></i> Mumbai, Maharashtra</span>
-                        <span><i class="fas fa-car"></i> 24 Active Listings</span>
-                        <span><i class="fas fa-star"></i> 4.8 Rating</span>
+                        <span id="listingsCount"><i class="fas fa-car"></i> <span class="count">24</span> Active Listings</span>
                     </div>
                 </div>
             </div>
             <div class="dealer-actions">
-                <button class="btn-outline" onclick="goBackToDealers()">
-                    <i class="fas fa-arrow-left"></i> Back to Dealers
-                </button>
+               
                 <button class="btn-warning" onclick="confirmRemoveAllListings()">
                     <i class="fas fa-trash-alt"></i> Remove All Listings
                 </button>
                 <button class="btn-danger" onclick="confirmRemoveDealer()">
                     <i class="fas fa-trash"></i> Remove Dealer
+                </button>
+                <button class="btn-outline" onclick="goBackToDealers()">
+                    <i class="fas fa-arrow-left"></i> Back to Dealers
                 </button>
             </div>
         </div>
