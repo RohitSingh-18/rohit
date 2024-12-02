@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./styles/wishlist.css">
     <link rel="stylesheet" href="./styles/settings.css">
     <link rel="stylesheet" href="./styles/loading.css">
+    <link rel="stylesheet" href="./styles/support.css">
   </head>
   <body>
     <div class="loading-bar"></div>
@@ -56,6 +57,12 @@
             <a href="#" class="nav-link">
               <i class="fas fa-cog"></i>
               <span>Account Settings</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fas fa-headset"></i>
+              <span>Support</span>
             </a>
           </li>
           <li class="nav-item">
@@ -141,7 +148,8 @@
           // Extract the main content section and modals
           const pageContent = temp.querySelector('.appointments-section') || 
                             temp.querySelector('.wishlist-section') || 
-                            temp.querySelector('.settings-section');
+                            temp.querySelector('.settings-section') ||
+                            temp.querySelector('.support-section');
           
           // Get all modals from the loaded page
           const modals = temp.querySelectorAll('.modal');
@@ -159,6 +167,8 @@
               initializeScheduleModal();
             } else if (pageName === 'wishlist') {
               initializeWishlistFunctionality();
+            } else if (pageName === 'support') {
+              initializeSupportFunctionality();
             }
           }
 
@@ -323,6 +333,164 @@
         });
       }
 
+      // Add this function to initialize support functionality
+      function initializeSupportFunctionality() {
+        const newTicketModal = document.getElementById('newTicketModal');
+        const newTicketBtns = document.querySelectorAll('.new-ticket-btn');
+        const ticketForm = document.getElementById('supportTicketForm');
+
+        // Open modal when clicking New Ticket button
+        newTicketBtns.forEach(btn => {
+          btn.addEventListener('click', () => {
+            newTicketModal.classList.add('active');
+          });
+        });
+
+        // Close modal when clicking outside
+        newTicketModal?.addEventListener('click', (e) => {
+          if (e.target === newTicketModal) {
+            newTicketModal.classList.remove('active');
+          }
+        });
+
+        // Close modal with X button
+        newTicketModal?.querySelector('.close-modal')?.addEventListener('click', () => {
+          newTicketModal.classList.remove('active');
+        });
+
+        // Handle Cancel button
+        document.getElementById('cancelTicket')?.addEventListener('click', () => {
+          newTicketModal.classList.remove('active');
+          ticketForm.reset();
+        });
+
+        // Toast notification function
+        function showToast(message, type = 'success') {
+          const toast = document.createElement('div');
+          toast.className = `toast ${type}`;
+          toast.innerHTML = `
+            <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+            <span>${message}</span>
+          `;
+          
+          document.querySelector('.toast-container').appendChild(toast);
+          
+          // Remove toast after 3 seconds
+          setTimeout(() => {
+            toast.style.animation = 'slideOut 0.3s ease-out forwards';
+            setTimeout(() => toast.remove(), 300);
+          }, 3000);
+        }
+
+        // Handle ticket submission
+        document.getElementById('submitTicket')?.addEventListener('click', () => {
+          const form = document.getElementById('supportTicketForm');
+          if (form.checkValidity()) {
+            // Here you would typically send the data to your backend
+            newTicketModal.classList.remove('active');
+            form.reset();
+            
+            // Show success toast
+            showToast('Support ticket submitted successfully!');
+            
+            // Hide empty state and show tickets list
+            document.querySelector('.empty-state').style.display = 'none';
+            document.querySelector('.tickets-list').style.display = 'block';
+          } else {
+            form.reportValidity();
+          }
+        });
+
+        // Handle View Details button
+        document.querySelectorAll('.view-ticket-btn').forEach(btn => {
+          btn.addEventListener('click', function() {
+            try {
+              const ticketCard = this.closest('.ticket-card');
+              const ticketDetailsModal = document.getElementById('ticketDetailsModal');
+              
+              if (!ticketDetailsModal) {
+                console.error('Ticket details modal not found');
+                return;
+              }
+
+              // Get ticket data
+              const subject = ticketCard.querySelector('.ticket-subject')?.textContent || '';
+              const status = ticketCard.querySelector('.ticket-status')?.textContent || '';
+              const preview = ticketCard.querySelector('.ticket-preview')?.textContent || '';
+              const date = ticketCard.querySelector('.ticket-date')?.textContent.replace('Created: ', '') || '';
+              
+              // Get modal elements
+              const subjectElement = ticketDetailsModal.querySelector('.ticket-info-item:nth-child(2) .ticket-info-value');
+              const statusBadge = ticketDetailsModal.querySelector('.status-badge');
+              const descriptionElement = ticketDetailsModal.querySelector('.ticket-description p');
+              const dateElement = ticketDetailsModal.querySelector('.ticket-info-item:nth-child(4) .ticket-info-value');
+              
+              // Update modal elements if they exist
+              if (subjectElement) subjectElement.textContent = subject;
+              if (statusBadge) statusBadge.textContent = status;
+              if (descriptionElement) descriptionElement.textContent = preview;
+              if (dateElement) dateElement.textContent = date;
+              
+              // Update status badge class
+              if (statusBadge) {
+                statusBadge.className = 'status-badge';
+                statusBadge.classList.add(status.toLowerCase());
+              }
+              
+              // Show modal
+              ticketDetailsModal.classList.add('active');
+            } catch (error) {
+              console.error('Error showing ticket details:', error);
+              showToast('Error showing ticket details', 'error');
+            }
+          });
+        });
+
+        // Handle Edit Ticket button
+        document.querySelector('.edit-ticket-btn')?.addEventListener('click', function() {
+          try {
+            const ticketDetailsModal = document.getElementById('ticketDetailsModal');
+            const newTicketModal = document.getElementById('newTicketModal');
+            
+            if (!ticketDetailsModal || !newTicketModal) {
+              console.error('Required modals not found');
+              return;
+            }
+            
+            // Get current ticket details
+            const subject = ticketDetailsModal.querySelector('.ticket-info-item:nth-child(2) .ticket-info-value')?.textContent || '';
+            const description = ticketDetailsModal.querySelector('.ticket-description p')?.textContent || '';
+            
+            // Get form elements
+            const subjectInput = document.getElementById('subject');
+            const descriptionInput = document.getElementById('description');
+            
+            // Populate form if elements exist
+            if (subjectInput) subjectInput.value = subject;
+            if (descriptionInput) descriptionInput.value = description;
+            
+            // Close details modal and open edit modal
+            ticketDetailsModal.classList.remove('active');
+            newTicketModal.classList.add('active');
+          } catch (error) {
+            console.error('Error editing ticket:', error);
+            showToast('Error editing ticket', 'error');
+          }
+        });
+
+        // Close ticket details modal
+        const ticketDetailsModal = document.getElementById('ticketDetailsModal');
+        ticketDetailsModal?.querySelector('.close-modal')?.addEventListener('click', () => {
+          ticketDetailsModal.classList.remove('active');
+        });
+
+        ticketDetailsModal?.addEventListener('click', (e) => {
+          if (e.target === ticketDetailsModal) {
+            ticketDetailsModal.classList.remove('active');
+          }
+        });
+      }
+
       // Handle navigation clicks
       navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
@@ -352,6 +520,8 @@
             pageName = 'wishlist';
           } else if (link.textContent.includes('Settings')) {
             pageName = 'settings';
+          } else if (link.textContent.includes('Support')) {
+            pageName = 'support';
           } else if (link.textContent.includes('Logout')) {
             // Show logout modal
             document.getElementById('logoutModal').classList.add('active');
