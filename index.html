@@ -441,6 +441,264 @@
 #callbackModal {
     z-index: 99998;
 }
+
+/* Add this CSS after the existing styles */
+.feedback-modal {
+    z-index: 99999;
+}
+
+.feedback-modal .modal-content {
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 3px 20px rgba(0,0,0,0.2);
+}
+
+.feedback-modal .modal-header {
+    background: #D01818;
+    color: white;
+    border-radius: 15px 15px 0 0;
+    padding: 1.5rem;
+}
+
+.feedback-modal .modal-title {
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+
+.feedback-modal .modal-body {
+    padding: 2rem;
+}
+
+.feedback-modal .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.feedback-modal .form-control {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.feedback-modal .form-control:focus {
+    border-color: #D01818;
+    box-shadow: 0 0 0 0.2rem rgba(208,24,24,0.15);
+}
+
+.feedback-modal .file-upload {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.feedback-modal .file-upload-label {
+    background: #f8f9fa;
+    border: 2px dashed #ddd;
+    border-radius: 8px;
+    padding: 2rem 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.feedback-modal .file-upload-label:hover {
+    border-color: #D01818;
+    background: #fff;
+}
+
+.feedback-modal .file-upload-input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.feedback-modal .upload-preview {
+    margin-top: 1rem;
+    display: none;
+}
+
+.feedback-modal .upload-preview img {
+    max-width: 100px;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+@media (max-width: 767px) {
+    .feedback-modal .modal-dialog {
+        margin: 1rem;
+    }
+    
+    .feedback-modal .modal-body {
+        padding: 1rem;
+    }
+}
+
+.feedback-modal .modal-dialog {
+    max-width: 900px;
+}
+
+.feedback-modal .modal-content {
+    border-radius: 8px;
+}
+
+.feedback-modal .file-upload-label {
+    height: auto;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8f9fa;
+    border: 2px dashed #ddd;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.feedback-modal .file-upload-label:hover {
+    border-color: #D01818;
+    background: #fff;
+}
+
+.feedback-modal .upload-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.feedback-modal .upload-preview img {
+    height: 60px;
+    width: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+    .feedback-modal .modal-dialog {
+        margin: 10px;
+        max-width: calc(100% - 20px);
+    }
+    
+    .feedback-modal .row {
+        margin: 0;
+    }
+    
+    .feedback-modal .col-md-4,
+    .feedback-modal .col-md-8 {
+        padding: 0;
+    }
+}
+
+.feedback-modal .btn-primary {
+    padding: 10px 30px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.feedback-modal .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(208,24,24,0.2);
+}
+
+/* Update existing feedback modal styles */
+.feedback-modal .modal-body {
+    padding: 1.5rem;
+}
+
+.feedback-modal .message-group {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.feedback-modal .message-group textarea {
+    flex-grow: 1;
+    min-height: 120px;
+}
+
+.feedback-modal .upload-text {
+    margin-left: 8px;
+}
+
+.feedback-modal .upload-hint {
+    margin-left: 8px;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+    .feedback-modal .modal-dialog {
+        margin: 0.5rem;
+        max-width: calc(100% - 1rem);
+    }
+    
+    .feedback-modal .modal-content {
+        border-radius: 12px;
+    }
+    
+    .feedback-modal .modal-header {
+        padding: 1rem;
+    }
+    
+    .feedback-modal .modal-body {
+        padding: 1rem;
+    }
+    
+    .feedback-modal .modal-title {
+        font-size: 1.1rem;
+    }
+    
+    .feedback-modal .form-group {
+        margin-bottom: 1rem;
+    }
+    
+    .feedback-modal .message-group textarea {
+        min-height: 100px;
+    }
+    
+    .feedback-modal .file-upload-label {
+        flex-direction: column;
+        padding: 0.75rem;
+        text-align: center;
+    }
+    
+    .feedback-modal .upload-text {
+        margin: 0.5rem 0;
+        font-size: 0.9rem;
+    }
+    
+    .feedback-modal .upload-hint {
+        margin: 0;
+        font-size: 0.8rem;
+    }
+    
+    .feedback-modal .btn-primary {
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+    
+    .feedback-modal .feedback-form-row {
+        margin: 0 -0.5rem;
+    }
+    
+    .feedback-modal .feedback-form-row > div {
+        padding: 0 0.5rem;
+    }
+}
+
+/* Tablet optimizations */
+@media (min-width: 769px) and (max-width: 991px) {
+    .feedback-modal .message-group textarea {
+        min-height: 150px;
+    }
+    
+    .feedback-modal .modal-dialog {
+        max-width: 90%;
+    }
+}
     </style>
 </head>
 
@@ -511,14 +769,12 @@
             
             <ul class="navbar-nav">
                 <li class="nav-item active"><a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a></li>
-                <li class="nav-item"><a class="nav-link" href="#">All Cars</a></li>
-
-                <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-
-                
+                <li class="nav-item"><a class="nav-link" href="inventory-grid.html">All Cars</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
                 <li class="nav-item"><a class="nav-link" href="/auth/signup.html">Sign Up</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                <li class="nav-item"><a class="nav-link" href="blogs.html">Blogs</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#feedbackModal"> Feedback</a></li>
+                <li class="nav-item"><a class="nav-link" href="contacts.html">Contact</a></li>
                 <div id="swiper-container"></div>
             </ul>
 
@@ -570,9 +826,9 @@
                                             <div class="dropdown-menu" aria-labelledby="navbarDropdown2"><a class="dropdown-item" href="inventory-list.html">Inventory list</a><a class="dropdown-item" href="inventory-grid.html">Inventory grid</a><a class="dropdown-item" href="dealers.html">Dealers list</a><a class="dropdown-item" href="dealers-info.html">Dealers info</a></div>
                                         </li> -->
 
-                                        <li class="nav-item"><a class="nav-link" href="#">All Cars</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="inventory-grid.html">All Cars</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="blogs.html">Blogs</a></li>
                                         <li class="nav-item"><a class="nav-link" href="/auth/signup.html">Sign Up</a></li>
 
                                         <!-- <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="navbarDropdown1" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages</a>
@@ -581,7 +837,8 @@
                                         <!-- <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="navbarDropdown4" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">News</a>
                                             <div class="dropdown-menu" aria-labelledby="navbarDropdown4"><a class="dropdown-item" href="blog-main.html">Blog main</a><a class="dropdown-item" href="blog-post.html">Blog post</a></div>
                                         </li> -->
-                                        <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#feedbackModal"></i> Feedback</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="contacts.html">Contact</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -1401,438 +1658,7 @@
                 </div>
             </section>
             <!-- end .b-carousel-->
-              <!-- FEATURED VEHICLES -->
-           
-             <!-- OUR VEHICLE LISTING -->
-             <section class="b-isotope section-default">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12 text-center">
-                            <div class="ui-title-slogan">Choose your perfect car from a wide selection</div>
-                            <h2 class="ui-title">Our Vehicles<span class="text-primary"> Listing</span></h2>
-                            <br>
-                            <!-- <ul class="b-isotope-filter list-unstyled">
-                                <li class="current"><a href="" data-filter="*">Show All</a></li>
-                                <li><a href="" data-filter=".bmw">BMW</a></li>
-                                <li><a href="" data-filter=".honda">Honda</a></li>
-                                <li><a href="" data-filter=".mercedes">Mercedes</a></li>
-                                <li><a href="" data-filter=".rover">Range Rover</a></li>
-                            </ul> -->
-                        </div>
-                    </div>
-                    <ul class="b-isotope-grid grid list-unstyled row">
-                        <li class="grid-sizer col-6 col-lg-2 col-md-2 col-sm-6"></li>
-                        <li class="b-isotope-grid__item grid-item col-6 col-lg-4 col-md-6 col-sm-6 web honda">
-                            <div class="b-goods-f b-goods-f_dark">
-                                <div class="b-goods-f__media">
-                                    <a href="#"><img class="b-goods-f__img img-scale" src="assets/media/content/b-goods/360x260/1.1.jpg" alt="foto" /></a>
-                                </div>
-                                <div class="b-goods-f__main">
-                                    <div class="b-goods-f__descrip">
-                                        <div class="b-goods-f__title"><span>Bolero 2018</span>
-                                        </div>
-                                        <div class="b-goods-f__info">Magna aliqua enim aduas veniam quis nostrud exercitation ullam laboris aliquip.</div>
-                                        <ul class="b-goods-f__list list-unstyled">
-                                            <li class="b-goods-f__list-item"><span class="b-goods-f__list-info">35,000km</span></li>
-                                            <li class="b-goods-f__list-item"><span class="b-goods-f__list-info">2018</span></li>
-                                            <li class="b-goods-f__list-item"><span class="b-goods-f__list-info">Manual</span></li>
-                                            <li class="b-goods-f__list-item"><span class="b-goods-f__list-info">Petrol</span></li>
-                                            <li class="b-goods-f__list-item"><span class="b-goods-f__list-info">160 hp</span></li>
-                                        </ul>
-                                    </div>
-                                    <div class="b-goods-f__sidebar"><span class="b-goods-f__price-group"><span class="b-goods-f__price"><span class="b-goods-f__price-numb">₹8.2 Lakhs</span></span>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end .b-goods-->
-                        </li>
-                        <li class="b-isotope-grid__item grid-item col-6 col-lg-4 col-md-6 col-sm-6 web bmw">
-                            <div class="b-goods-f b-goods-f_dark">
-                                <div class="b-goods-f__media">
-                                    <a href="#"><img class="b-goods-f__img img-scale" src="assets/media/content/b-goods/360x260/1.2.jpg" alt="foto" /></a>
-                                </div>
-                                <div class="b-goods-f__main">
-                                    <div class="b-goods-f__descrip">
-                                        <div class="b-goods-f__title"><span class="b-goods-f__label bg-primary">NEW</span><span>Suzuki Wagon R</span>
-                                        </div>
-                                        <div class="b-goods-f__info">Magna aliqua enim aduas veniam quis nostrud exercitation ullam laboris aliquip.</div>
-                                        <ul class="b-goods-f__list list-unstyled">
-                                            <li class="b-goods-f__list-item"><span class="b-goods-f__list-info">35,000km</span></li>
-                                            <li class="b-goods-f__list-item"><span class="b-goods-f__list-info">2016</span></li>
-                                            <li class="b-goods-f__list-item"><span class="b-goods-f__list-info">Manual</span></li>
-                                            <li class="b-goods-f__list-item"><span class="b-goods-f__list-info">Petrol</span></li>
-                                            <li class="b-goods-f__list-item"><span class="b-goods-f__list-info">160 hp</span></li>
-                                        </ul>
-                                    </div>
-                                    <div class="b-goods-f__sidebar"><span class="b-goods-f__price-group"><span class="b-goods-f__price"><span class="b-goods-f__price-numb">₹3.6 Lakhs</span></span>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end .b-goods-->
-                        </li>
-                        <li class="b-isotope-grid__item grid-item col-6 col-lg-4 col-md-6 col-sm-6 web honda">
-                            <div class="b-goods-f b-goods-f_dark">
-                                <div class="b-goods-f__media">
-                                    <a href="#"><img class="b-goods-f__img img-scale" src="assets/media/content/b-goods/360x260/1.3.jpg" alt="foto" /></a>
-                                </div>
-                                <div class="b-goods-f__main">
-                                    <div class="b-goods-f__descrip">
-                                        <div class="b-goods-f__title"><span>Bolero 2016</span>
-                                        </div>
-                                        <div class="b-goods-f__info">Magna aliqua enim aduas veniam quis nostrud exercitation ullam laboris aliquip.</div>
-                                        <ul class="b-goods-f__list list-unstyled">
-                                            <li class="b-goods-f__list-item"><span class="b-goods-f__list-info">35,000km</span></li>
-                                            <li class="b-goods-f__list-item"><span class="b-goods-f__list-info">2016</span></li>
-                                            <li class="b-goods-f__list-item"><span class="b-goods-f__list-info">Manual</span></li>
-                                            <li class="b-goods-f__list-item"><span class="b-goods-f__list-info">Petrol</span></li>
-                                            <li class="b-goods-f__list-item"><span class="b-goods-f__list-info">160 hp</span></li>
-                                        </ul>
-                                    </div>
-                                    <div class="b-goods-f__sidebar"><span class="b-goods-f__price-group"><span class="b-goods-f__price"><span class="b-goods-f__price-numb">₹6.7 Lakhs</span></span>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end .b-goods-->
-                        </li>
-                        <li class="b-isotope-grid__item grid-item col-6 col-lg-4 col-md-6 col-sm-6 web rover">
-                            <div class="b-goods-f b-goods-f_dark">
-                                <div class="b-goods-f__media">
-                                    <a href="#"><img class="b-goods-f__img img-scale" src="assets/media/content/b-goods/360x260/1.4.jpg" alt="foto" /></a>
-                                </div>
-                                <div class="b-goods-f__main">
-                                    <div class="b-goods-f__descrip">
-                                        <div class="b-goods-f__title"><span>Bolero 2010</span>
-                                        </div>
-                                        <div class="b-goods-f__info">Magna aliqua enim aduas veniam quis nostrud exercitation ullam laboris aliquip.</div>
-                                        <ul class="b-goods-f__list list-unstyled">
-                                            <li class="b-goods-f__list-item"><span class="b-goods-f__list-info">35,000km</span></li>
-                                            <li class="b-goods-f__list-item"><span class="b-goods-f__list-info">2010</span></li>
-                                            <li class="b-goods-f__list-item"><span class="b-goods-f__list-info">Manual</span></li>
-                                            <li class="b-goods-f__list-item"><span class="b-goods-f__list-info">Petrol</span></li>
-                                            <li class="b-goods-f__list-item"><span class="b-goods-f__list-info">160 hp</span></li>
-                                        </ul>
-                                    </div>
-                                    <div class="b-goods-f__sidebar"><span class="b-goods-f__price-group"><span class="b-goods-f__price"><span class="b-goods-f__price-numb">₹2.9 Lakhs</span></span>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end .b-goods-->
-                        </li>
-                        <li class="b-isotope-grid__item grid-item col-6 col-lg-4 col-md-6 col-sm-6 web mercedes">
-                            <div class="b-goods-f b-goods-f_dark">
-                                <div class="b-goods-f__media">
-                                    <a href="#"><img class="b-goods-f__img img-scale" src="assets/media/content/b-goods/360x260/1.5.jpg" alt="foto" /></a>
-                                </div>
-                                <div class="b-goods-f__main">
-                                    <div class="b-goods-f__descrip">
-                                        <div class="b-goods-f__title"><span>Bolero 2016</span>
-                                        </div>
-                                        <div class="b-goods-f__info">Magna aliqua enim aduas veniam quis nostrud exercitation ullam laboris aliquip.</div>
-                                        <ul class="b-goods-f__list list-unstyled">
-                                            <li class="b-goods-f__list-item"><span class="b-goods-f__list-info">35,000km</span></li>
-                                            <li class="b-goods-f__list-item"><span class="b-goods-f__list-info">2016</span></li>
-                                            <li class="b-goods-f__list-item"><span class="b-goods-f__list-info">Manual</span></li>
-                                            <li class="b-goods-f__list-item"><span class="b-goods-f__list-info">Petrol</span></li>
-                                            <li class="b-goods-f__list-item"><span class="b-goods-f__list-info">160 hp</span></li>
-                                        </ul>
-                                    </div>
-                                    <div class="b-goods-f__sidebar"><span class="b-goods-f__price-group"><span class="b-goods-f__price"><span class="b-goods-f__price-numb">₹6 Lakhs</span></span>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end .b-goods-->
-                        </li>
-                        <li class="b-isotope-grid__item grid-item  col-6 col-lg-4 col-md-6 col-sm-6 web bmw">   
-                            <div class="b-goods-f b-goods-f_dark">
-                                <div class="b-goods-f__media">
-                                    <a href="#"><img class="b-goods-f__img img-scale" src="assets/media/content/b-goods/360x260/1.6.jpg" alt="foto" /></a>
-                                </div>
-                                <div class="b-goods-f__main">
-                                    <div class="b-goods-f__descrip">
-                                        <div class="b-goods-f__title"><span>Bolero 2017</span>
-                                        </div>
-                                        <div class="b-goods-f__info">Magna aliqua enim aduas veniam quis nostrud exercitation ullam laboris aliquip.</div>
-                                        <ul class="b-goods-f__list list-unstyled">
-                                            <li class="b-goods-f__list-item"><span class="b-goods-f__list-info">35,000km</span></li>
-                                            <li class="b-goods-f__list-item"><span class="b-goods-f__list-info">2017</span></li>
-                                            <li class="b-goods-f__list-item"><span class="b-goods-f__list-info">Manual</span></li>
-                                            <li class="b-goods-f__list-item"><span class="b-goods-f__list-info">Petrol</span></li>
-                                            <li class="b-goods-f__list-item"><span class="b-goods-f__list-info">160 hp</span></li>
-                                        </ul>
-                                    </div>
-                                    <div class="b-goods-f__sidebar"><span class="b-goods-f__price-group"><span class="b-goods-f__price"><span class="b-goods-f__price-numb">₹7.8 Lakhs</span></span>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end .b-goods-->
-                        </li>
-                    </ul>
-                    <div class="row">
-                        <div class="col-12 text-center">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-12"><a class="section-carousel__btn btn btn-primary" href="#"><i class="ic    
-                                        icon-list"></i> View All Listings</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- end .b-isotope-->
-            <!--VEHICLE LISTING  -->
-
-            <!-- BOOK CONSULTATION -->           
-            <section class="b-bnr bg-dark">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-6">
-                            <div class="b-bnr__main">
-                                <h2 class="b-bnr__title">Hey, Dealers get registered with us Today!</h2>
-                                <div class="b-bnr__info">Register today to list your vehicles, connect with potential buyers, and grow your business. Start reaching more customers with ease!
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6">
-                            <div class="b-bnr__second"><a class="btn btn-primary" href="#">get rigistered</a>
-                                <div class="b-bnr-contacts">
-                                    <div class="b-bnr-contacts__info">Give us a call for Registration</div><a class="b-bnr-contacts__phone" href="tel:+919583528458"><i class="ic icon-call-end text-primary"></i>+91 95 8352 8458</a>
-                                </div>
-                                <div class="b-bnr-contacts">
-                                    <a class="b-bnr-contacts__phone" href="tel:+918249393960"><i class="ic icon-call-end text-primary"></i>+91 82 4939 3960</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- end .b-bnr-->
-            <div class="section-progress">
-                <div class="container">
-                    <ul class="b-progress-list row list-unstyled">
-                        <li class="b-progress-list__item col-md-3">
-                            <div class="b-progress-list__wrap bg-light"><span class="b-progress-list__name">Vehicles Stock</span><span class="b-progress-list__percent js-chart" data-percent="3874"><span class="js-percent"></span></span>
-                            </div>
-                        </li>
-                        <li class="b-progress-list__item col-md-3">
-                            <div class="b-progress-list__wrap bg-light"><span class="b-progress-list__name">dealers served</span><span class="b-progress-list__percent js-chart" data-percent="299"><span class="js-percent"></span><span>+</span></span>
-                            </div>
-                        </li>
-                        <li class="b-progress-list__item col-md-3">
-                            <div class="b-progress-list__wrap bg-light"><span class="b-progress-list__name">Happy Customers</span><span class="b-progress-list__percent js-chart" data-percent="6403"><span class="js-percent"></span></span>
-                            </div>
-                        </li>
-                        <li class="b-progress-list__item col-md-3">
-                            <div class="b-progress-list__wrap bg-light"><span class="b-progress-list__name">vehicles on Sale</span><span class="b-progress-list__percent js-chart" data-percent="1450"><span class="js-percent"></span><span>+</span></span>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <!-- BOOK CONSULTATION -->
-
-            <!-- MOST SEARCHED VEHICLES -->
-            <section class="section-carousel">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="ui-title-slogan">Discover the Most Searched Cars near by your location</div>
-                            <h2 class="ui-title">Most<span class="text-primary"> Searched</span></h2>      
-                            <!-- <div class="container">
-                                <div class="row">
-                                    <div class="col-12"><a class="section-carousel__btn btn btn-primary" href="#"><i class="ic icon-list"></i> View all Searched Cars</a></div>
-                                </div>
-                            </div>                       -->
-                        </div>
-                    </div>
-                </div>
-                <div class="section-carousel__inner bg-dark">
-                    <div class="js-slider" data-slick="{&quot;slidesToShow&quot;: 5,  &quot;slidesToScroll&quot;: 5, &quot;infinite&quot;: true, &quot;responsive&quot;: [{&quot;breakpoint&quot;: 1800, &quot;settings&quot;: {&quot;slidesToShow&quot;: 4, &quot;slidesToScroll&quot;: 4}}, {&quot;breakpoint&quot;: 1400, &quot;settings&quot;: {&quot;slidesToShow&quot;: 3, &quot;slidesToScroll&quot;: 1}}, {&quot;breakpoint&quot;: 1040, &quot;settings&quot;: {&quot;slidesToShow&quot;: 2, &quot;slidesToScroll&quot;: 1}}, {&quot;breakpoint&quot;: 767, &quot;settings&quot;: {&quot;slidesToShow&quot;: 1, &quot;slidesToScroll&quot;: 1}}]}">
-                        <div class="b-goods-f b-goods-f_mod-a">
-                            <div class="b-goods-f__media">
-                                <a href="#"><img class="b-goods-f__img img-scale" src="assets/media/content/b-goods/375x300/1 (convert.io).jpg" alt="foto" /></a>
-                            </div>
-                            <div class="b-goods-f__main">
-                                <div class="b-goods-f__descrip">
-                                    <div class="b-goods-f__title"><span>Bolero 2016</span><br><i class="fa-solid fa-location-dot"></i> Cuttack</div>
-                                    <div class="b-goods-f__info">Magna aliqua enim aduas veniam quis nostrud exercitation ullam laboris aliquip.</div>
-                                    <ul class="b-goods-f__list list-unstyled">
-                                        <li class="b-goods-f__list-item"><i class="ic flaticon-speedometer"></i> 35,000km</li>
-                                        <li class="b-goods-f__list-item"><i class="ic flaticon-car-1"></i>Price: 6.7 L</li>
-                                        <li class="b-goods-f__list-item"><i class="ic flaticon-gearshift"></i> Auto - Petrol</li>
-                                    </ul>
-                                </div>
-                                <div class="b-goods-f__sidebar"><span class="b-goods-f__price-group"><span class="b-goods-f__price bg-primary"><span class="b-goods-f__price-numb">$45,800</span></span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end .b-goods-->
-                         <div class="b-goods-f b-goods-f_mod-a">
-                            <div class="b-goods-f__media">
-                                <a href="#"><img class="b-goods-f__img img-scale" src="assets/media/content/b-goods/375x300/2 (convert.io).jpg" alt="foto" /></a>
-                            </div>
-                            <div class="b-goods-f__main">
-                                <div class="b-goods-f__descrip">
-                                    <div class="b-goods-f__title"><span> Suzuki Wagon R</span><br><i class="fa-solid fa-location-dot"></i> Bhubaneswar</div>
-                                    <div class="b-goods-f__info">Magna aliqua enim aduas veniam quis nostrud exercitation ullam laboris aliquip.</div>
-                                    <ul class="b-goods-f__list list-unstyled">
-                                        <li class="b-goods-f__list-item"><i class="ic flaticon-speedometer"></i> 35,000km</li>
-                                        <li class="b-goods-f__list-item"><i class="ic flaticon-car-1"></i>Price: 3.6 L</li>
-                                        <li class="b-goods-f__list-item"><i class="ic flaticon-gearshift"></i> Auto - Petrol</li>
-                                    </ul>
-                                </div>
-                                <div class="b-goods-f__sidebar"><span class="b-goods-f__price-group"><span class="b-goods-f__price bg-primary"><span class="b-goods-f__price-numb">$30,480</span></span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end .b-goods-->
-                           <div class="b-goods-f b-goods-f_mod-a">
-                            <div class="b-goods-f__media">
-                                <a href="#"><img class="b-goods-f__img img-scale" src="assets/media/content/b-goods/375x300/3 (convert.io).jpg" alt="foto" /></a>
-                            </div>
-                            <div class="b-goods-f__main">
-                                <div class="b-goods-f__descrip">
-                                    <div class="b-goods-f__title"><span>Bolero 2010</span><br><i class="fa-solid fa-location-dot"></i> Angul</div>
-                                    <div class="b-goods-f__info">Magna aliqua enim aduas veniam quis nostrud exercitation ullam laboris aliquip.</div>
-                                    <ul class="b-goods-f__list list-unstyled">
-                                        <li class="b-goods-f__list-item"><i class="ic flaticon-speedometer"></i> 35,000km</li>
-                                        <li class="b-goods-f__list-item"><i class="ic flaticon-car-1"></i>Price: 2.9 L</li>
-                                        <li class="b-goods-f__list-item"><i class="ic flaticon-gearshift"></i> Auto - Petrol</li>
-                                    </ul>
-                                </div>
-                                <div class="b-goods-f__sidebar"><span class="b-goods-f__price-group"><span class="b-goods-f__price bg-primary"><span class="b-goods-f__price-numb">$30,480</span></span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end .b-goods-->
-                           <div class="b-goods-f b-goods-f_mod-a">
-                            <div class="b-goods-f__media">
-                                <a href="#"><img class="b-goods-f__img img-scale" src="assets/media/content/b-goods/375x300/4 (convert.io).jpg" alt="foto" /></a>
-                            </div>
-                            <div class="b-goods-f__main">
-                                <div class="b-goods-f__descrip">
-                                    <div class="b-goods-f__title"><span>Bolero 2017 </span><br><i class="fa-solid fa-location-dot"></i> Khorda</div>
-                                    <div class="b-goods-f__info">Magna aliqua enim aduas veniam quis nostrud exercitation ullam laboris aliquip.</div>
-                                    <ul class="b-goods-f__list list-unstyled">
-                                        <li class="b-goods-f__list-item"><i class="ic flaticon-speedometer"></i> 35,000km</li>
-                                        <li class="b-goods-f__list-item"><i class="ic flaticon-car-1"></i>Price: 7.8 L</li>
-                                        <li class="b-goods-f__list-item"><i class="ic flaticon-gearshift"></i> Auto - Petrol</li>
-                                    </ul>
-                                </div>
-                                <div class="b-goods-f__sidebar"><span class="b-goods-f__price-group"><span class="b-goods-f__price bg-primary"><span class="b-goods-f__price-numb">$30,480</span></span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end .b-goods-->
-                          <div class="b-goods-f b-goods-f_mod-a">
-                            <div class="b-goods-f__media">
-                                <a href="#"><img class="b-goods-f__img img-scale" src="assets/media/content/b-goods/375x300/5 (convert.io).jpg" alt="foto" /></a>
-                            </div>
-                            <div class="b-goods-f__main">
-                                <div class="b-goods-f__descrip">
-                                    <div class="b-goods-f__title"><span>Bolero 2016 <br><i class="fa-solid fa-location-dot"></i> Bhubaneswar</span></div>
-                                    <div class="b-goods-f__info">Magna aliqua enim aduas veniam quis nostrud exercitation ullam laboris aliquip.</div>
-                                    <ul class="b-goods-f__list list-unstyled">
-                                        <li class="b-goods-f__list-item"><i class="ic flaticon-speedometer"></i> 35,000km</li>
-                                        <li class="b-goods-f__list-item"><i class="ic flaticon-car-1"></i>Price: 6 L</li>
-                                        <li class="b-goods-f__list-item"><i class="ic flaticon-gearshift"></i> Auto - Petrol</li>
-                                    </ul>
-                                </div>
-                                <div class="b-goods-f__sidebar"><span class="b-goods-f__price-group"><span class="b-goods-f__price bg-primary"><span class="b-goods-f__price-numb">$45,800</span></span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end .b-goods-->
-                           <div class="b-goods-f b-goods-f_mod-a">
-                            <div class="b-goods-f__media">
-                                <a href="#"><img class="b-goods-f__img img-scale" src="assets/media/content/b-goods/375x300/6 (convert.io).jpg" alt="foto" /></a>
-                            </div>
-                            <div class="b-goods-f__main">
-                                <div class="b-goods-f__descrip">
-                                    <div class="b-goods-f__title"><span>Suzuki Omni</span> <br><i class="fa-solid fa-location-dot"></i> Angul</div>
-                                    <div class="b-goods-f__info">Magna aliqua enim aduas veniam quis nostrud exercitation ullam laboris aliquip.</div>
-                                    <ul class="b-goods-f__list list-unstyled">
-                                        <li class="b-goods-f__list-item"><i class="ic flaticon-speedometer"></i> 35,000km</li>
-                                        <li class="b-goods-f__list-item"><i class="ic flaticon-car-1"></i>Price: 4.1 L</li>
-                                        <li class="b-goods-f__list-item"><i class="ic flaticon-gearshift"></i> Auto - Petrol</li>
-                                    </ul>
-                                </div>
-                                <div class="b-goods-f__sidebar"><span class="b-goods-f__price-group"><span class="b-goods-f__price bg-primary"><span class="b-goods-f__price-numb">$30,480</span></span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end .b-goods-->
-                          <div class="b-goods-f b-goods-f_mod-a">
-                            <div class="b-goods-f__media">
-                                <a href="#"><img class="b-goods-f__img img-scale" src="assets/media/content/b-goods/375x300/7 (convert.io).jpg" alt="foto" /></a>
-                            </div>
-                            <div class="b-goods-f__main">
-                                <div class="b-goods-f__descrip">
-                                    <div class="b-goods-f__title"><span>Bolero 2018</span><br><i class="fa-solid fa-location-dot"></i> Cuttack</div>
-                                    <div class="b-goods-f__info">Magna aliqua enim aduas veniam quis nostrud exercitation ullam laboris aliquip.</div>
-                                    <ul class="b-goods-f__list list-unstyled">
-                                        <li class="b-goods-f__list-item"><i class="ic flaticon-speedometer"></i> 35,000km</li>
-                                        <li class="b-goods-f__list-item"><i class="ic flaticon-car-1"></i>Price: 8.2 L</li>
-                                        <li class="b-goods-f__list-item"><i class="ic flaticon-gearshift"></i> Auto - Petrol</li>
-                                    </ul>
-                                </div>
-                                <div class="b-goods-f__sidebar"><span class="b-goods-f__price-group"><span class="b-goods-f__price bg-primary"><span class="b-goods-f__price-numb">$30,480</span></span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end .b-goods-->
-                       <div class="b-goods-f b-goods-f_mod-a">
-                            <div class="b-goods-f__media">
-                                <a href="#"><img class="b-goods-f__img img-scale" src="assets/media/content/b-goods/375x300/4 (convert.io).jpg" alt="foto" /></a>
-                            </div>
-                            <div class="b-goods-f__main">
-                                <div class="b-goods-f__descrip">
-                                    <div class="b-goods-f__title"><span>Bolero 2017</span><br><i class="fa-solid fa-location-dot"></i> Khorda</div>
-                                    <div class="b-goods-f__info">Magna aliqua enim aduas veniam quis nostrud exercitation ullam laboris aliquip.</div>
-                                    <ul class="b-goods-f__list list-unstyled">
-                                        <li class="b-goods-f__list-item"><i class="ic flaticon-speedometer"></i> 35,000km</li>
-                                        <li class="b-goods-f__list-item"><i class="ic flaticon-car-1"></i>Price: 7.8 L</li>
-                                        <li class="b-goods-f__list-item"><i class="ic flaticon-gearshift"></i> Auto - Petrol</li>
-                                    </ul> 
-                                    <div class="b-goods-f__sidebar"><span class="b-goods-f__price-group"><span class="b-goods-f__price bg-primary"><span class="b-goods-f__price-numb"></span></span>
-                                    </span>
-                                </div>
-                                </div>
-                               
-                            </div>
-                        </div>
-                        <!-- end .b-goods-->
-                    </div>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12"><a class="section-carousel__btn btn btn-primary" href="#"><i class="ic icon-list"></i> View All Featured Vehicles</a></div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- end .b-carousel-->
-              <!-- Most Searcher VEHICLES -->
-
-            
-
-            
-
-           
-           
+              <!-- FEATURED VEHICLES -->    
             <div class="section-goods-vip">
                 <button class="slider-arrow slider-arrow-prev">
                     <i class="fas fa-chevron-left"></i>
@@ -1990,12 +1816,12 @@
                                     <section class="footer-section footer-section_link">
                                         <h3 class="footer-section__title">About Us</h3>
                                         <ul class="footer-list list-unstyled">
-                                            <li><a href="#">Home</a></li>
-                                            <li><a href="#">Services</a></li>
-                                            <li><a href="#">About us</a></li>
-                                            <li><a href="#">All Cars</a></li>
-                                            <li><a href="#">Terms</a></li>
-                                            <li><a href="#">Contact</a></li>
+                                            <li><a href="index.html">Home</a></li>
+                                            <li><a href="blogs.html">Blogs</a></li>
+                                            <li><a href="about.html">About us</a></li>
+                                            <li><a href="inventory-grid.html">All Cars</a></li>
+                                            <li><a href="signup.html">Signup</a></li>
+                                            <li><a href="contacts.html">Contact</a></li>
                                         </ul>
                                     </section>
                                     </div>
@@ -2120,6 +1946,9 @@
     function handleCallbackSubmit(event) {
         event.preventDefault();
         
+        const submitButton = document.querySelector('#callbackForm button[type="submit"]');
+        submitButton.disabled = true; // Disable the submit button
+
         const nameInput = document.getElementById('name');
         const phoneInput = document.getElementById('phone');
         
@@ -2133,22 +1962,40 @@
         // Validate name
         if (name === '') {
             nameInput.classList.add('is-invalid');
+            submitButton.disabled = false; // Re-enable the button
             return;
         }
         
         // Validate phone number
         if (phone.length !== 10 || !/^\d{10}$/.test(phone)) {
             phoneInput.classList.add('is-invalid');
+            submitButton.disabled = false; // Re-enable the button
             return;
         }
-        
-        // Close modal first
-        $('#callbackModal').modal('hide');
-        $('.modal-backdrop').remove(); // Remove modal backdrop
-        
-        // Small delay to ensure modal is closed
-        setTimeout(() => {
-            // Show success message with updated configuration
+
+        // Send data to backend
+        fetch('http://localhost:3000/api/users/callbacks', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                name: name,
+                phone: phone
+            })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Close modal first
+            $('#callbackModal').modal('hide');
+            $('.modal-backdrop').remove(); // Remove modal backdrop
+            
+            // Show success message
             Swal.fire({
                 icon: 'success',
                 title: 'Thank You!',
@@ -2167,136 +2014,268 @@
             }).then(() => {
                 // Reset form
                 document.getElementById('callbackForm').reset();
+                submitButton.disabled = false; // Re-enable the button
             });
-        }, 150);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong! Please try again later.',
+                confirmButtonColor: '#d01818'
+            });
+            submitButton.disabled = false; // Re-enable the button
+        });
     }
-
-    // Phone number input handling
-    document.getElementById('phone').addEventListener('input', function(e) {
-        // Remove any non-digit characters
-        let value = this.value.replace(/\D/g, '');
-        
-        // Limit to 10 digits
-        if (value.length > 10) {
-            value = value.slice(0, 10);
-        }
-        
-        // Update input value
-        this.value = value;
-        
-        // Remove invalid state if number is valid
-        if (value.length === 10) {
-            this.classList.remove('is-invalid');
-        }
-    });
-
-    // Name input handling
-    document.getElementById('name').addEventListener('input', function(e) {
-        if (this.value.trim() !== '') {
-            this.classList.remove('is-invalid');
-        }
-    });
-
-    // Add this to prevent form submission on enter key
-    document.getElementById('callbackForm').addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            e.preventDefault();
-            return false;
-        }
-    });
-    </script>
-     <script>
-        // Fetch and inject the swiper content
-        fetch('swiper.html')
-            .then(response => response.text())
-            .then(html => {
-                // Create a temporary container
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(html, 'text/html');
-                
-                // Extract and inject the styles
-                const styles = doc.querySelector('style').textContent;
-                document.getElementById('swiper-styles').textContent = styles;
-                
-                // Extract and inject the swiper HTML
-                const swiperContent = doc.querySelector('.swipe-button-wrapper').outerHTML;
-                document.getElementById('swiper-container').innerHTML = swiperContent;
-                
-                // Initialize the swiper functionality
-                initializeSwiper();
-            })
-            .catch(error => console.error('Error loading swiper:', error));
-
-        // Separate function to initialize swiper functionality
-        function initializeSwiper() {
-            const button = document.querySelector('.swipe-button');
-            const circle = document.querySelector('.swipe-circle');
-            const progress = document.querySelector('.swipe-progress');
-            let isDragging = false;
-            let startX;
-            let buttonLeft;
-
-            circle.addEventListener('mousedown', initSwipe);
-            document.addEventListener('mousemove', swipe);
-            document.addEventListener('mouseup', stopSwipe);
-
-            circle.addEventListener('touchstart', initSwipe);
-            document.addEventListener('touchmove', swipe);
-            document.addEventListener('touchend', stopSwipe);
-
-            function initSwipe(e) {
-                isDragging = true;
-                startX = e.type === 'mousedown' ? e.clientX : e.touches[0].clientX;
-                buttonLeft = circle.offsetLeft;
-            }
-
-            function swipe(e) {
-                if (!isDragging) return;
-
-                e.preventDefault();
-                const x = e.type === 'mousemove' ? e.clientX : e.touches[0].clientX;
-                const walk = x - startX;
-                let newLeft = buttonLeft + walk;
-
-                // Constrain movement
-                const maxLeft = button.offsetWidth - circle.offsetWidth - 5;
-                newLeft = Math.max(5, Math.min(newLeft, maxLeft));
-
-                // Update circle position and progress bar
-                circle.style.left = `${newLeft}px`;
-                const progressWidth = (newLeft - 5) / (maxLeft - 5) * 100;
-                progress.style.width = `${progressWidth}%`;
-
-                // Check if swipe is complete
-                if (newLeft >= maxLeft * 0.9) {
-                    completeSwipe();
-                }
-            }
-
-            function stopSwipe() {
-                if (!isDragging) return;
-                isDragging = false;
-
-                const maxLeft = button.offsetWidth - circle.offsetWidth - 5;
-                const currentLeft = circle.offsetLeft;
-
-                // If not swiped far enough, reset
-                if (currentLeft < maxLeft * 0.9) {
-                    circle.style.left = '5px';
-                    progress.style.width = '0';
-                }
-            }
-
-            function completeSwipe() {
-                button.classList.add('completed');
-                // Redirect or trigger your desired action
-                window.location.href = '/comingsoon.html';
-            }
-        }
     </script>
 
     <!-- Add SweetAlert2 for better alerts -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Add this button in the desktop navigation menu before the Contact link -->
+    <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#feedbackModal"></i> Feedback</a></li>
+    <li class="nav-item"><a class="nav-link" href="contacts.html">Contact</a></li>
+
+    <!-- Add this button in the mobile menu before the Contact link -->
+    <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#feedbackModal"></i> Feedback</a></li>
+    <li class="nav-item"><a class="nav-link" href="contacts.html">Contact</a></li>
+
+    <!-- Add the Feedback Modal before the end of body tag -->
+    <div class="modal feedback-modal fade" id="feedbackModal" tabindex="-1" role="dialog" aria-labelledby="feedbackModalLabel" aria-hidden="true" style="z-index: 99999;">
+        <div class="modal-dialog modal-dialog-centered modal-lg" style="max-width: 900px;">
+            <div class="modal-content" style="border-radius: 8px; border: none; box-shadow: 0 3px 20px rgba(0,0,0,0.2);">
+                <div class="modal-header" style="background: #D01818; color: white; border-radius: 8px 8px 0 0; padding: 1.5rem;">
+                    <h5 class="modal-title" id="feedbackModalLabel" style="font-weight: 600; font-size: 1.25rem;">Share Your Feedback</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="padding: 1.5rem;">
+                    <form id="feedbackForm">
+                        <div class="row feedback-form-row">
+                            <div class="col-lg-4 col-md-12">
+                                <div class="form-group" style="margin-bottom: 1.5rem;">
+                                    <label for="feedbackName">Name</label>
+                                    <input type="text" class="form-control" id="feedbackName" required style="border: 1px solid #ddd; border-radius: 8px; padding: 0.75rem; transition: all 0.3s ease;">
+                                </div>
+                                <div class="form-group" style="margin-bottom: 1.5rem;">
+                                    <label for="feedbackEmail">Email</label>
+                                    <input type="email" class="form-control" id="feedbackEmail" required style="border: 1px solid #ddd; border-radius: 8px; padding: 0.75rem; transition: all 0.3s ease;">
+                                </div>
+                                <div class="form-group" style="margin-bottom: 1.5rem;">
+                                    <label for="feedbackType">Feedback Type</label>
+                                    <select class="form-control" id="feedbackType" required style="border: 1px solid #ddd; border-radius: 8px; padding: 0.75rem; transition: all 0.3s ease;">
+                                        <option value="">Select Type</option>
+                                        <option value="suggestion">Suggestion</option>
+                                        <option value="complaint">Complaint</option>
+                                        <option value="appreciation">Appreciation</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-8 col-md-12">
+                                <div class="form-group message-group" style="height: 100%; display: flex; flex-direction: column;">
+                                    <label for="feedbackMessage">Message</label>
+                                    <textarea class="form-control" id="feedbackMessage" required style="flex-grow: 1; min-height: 120px; border: 1px solid #ddd; border-radius: 8px; padding: 0.75rem; transition: all 0.3s ease;"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-12">
+                                <div class="file-upload" style="position: relative; display: inline-block; width: 100%;">
+                                    <label class="file-upload-label py-2" style="height: auto; padding: 10px; display: flex; align-items: center; justify-content: center; background: #f8f9fa; border: 2px dashed #ddd; border-radius: 6px; cursor: pointer; transition: all 0.3s ease;">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        <span class="upload-text" style="margin-left: 8px;">Drop files here or click to upload</span>
+                                        <small class="text-muted upload-hint" style="margin-left: 8px;">(Max: 5MB - jpg, png, pdf)</small>
+                                        <input type="file" class="file-upload-input" id="feedbackAttachment" multiple accept=".jpg,.jpeg,.png,.pdf" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer;">
+                                    </label>
+                                </div>
+                                <div class="upload-preview" id="uploadPreview" style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; display: none;"></div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-12 text-center">
+                                <button type="submit" class="btn btn-primary" style="min-width: 150px; padding: 10px 30px; font-weight: 500; transition: all 0.3s ease;">Submit Feedback</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add this script for mobile responsiveness -->
+    <script>
+    function adjustModalForMobile() {
+        const isMobile = window.innerWidth <= 768;
+        const modal = document.querySelector('#feedbackModal');
+        
+        if (isMobile) {
+            modal.querySelector('.modal-dialog').style.margin = '0.5rem';
+            modal.querySelector('.modal-dialog').style.maxWidth = 'calc(100% - 1rem)';
+            modal.querySelector('.modal-content').style.borderRadius = '12px';
+            modal.querySelector('.modal-header').style.padding = '1rem';
+            modal.querySelector('.modal-body').style.padding = '1rem';
+            modal.querySelector('.modal-title').style.fontSize = '1.1rem';
+            
+            // Adjust file upload label for mobile
+            const fileUploadLabel = modal.querySelector('.file-upload-label');
+            fileUploadLabel.style.flexDirection = 'column';
+            fileUploadLabel.style.padding = '0.75rem';
+            fileUploadLabel.style.textAlign = 'center';
+            
+            // Adjust text sizes for mobile
+            modal.querySelector('.upload-text').style.margin = '0.5rem 0';
+            modal.querySelector('.upload-text').style.fontSize = '0.9rem';
+            modal.querySelector('.upload-hint').style.margin = '0';
+            modal.querySelector('.upload-hint').style.fontSize = '0.8rem';
+            
+            // Make button full width on mobile
+            modal.querySelector('.btn-primary').style.width = '100%';
+            modal.querySelector('.btn-primary').style.marginTop = '0.5rem';
+        }
+    }
+
+    // Run on load and resize
+    window.addEventListener('load', adjustModalForMobile);
+    window.addEventListener('resize', adjustModalForMobile);
+    </script>
+
+    <!-- Add this JavaScript before the end of body tag -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const fileUpload = document.getElementById('feedbackAttachment');
+        const uploadPreview = document.getElementById('uploadPreview');
+        const maxFileSize = 5 * 1024 * 1024; // 5MB in bytes
+        const allowedTypes = ['image/jpeg', 'image/png', 'application/pdf'];
+
+        fileUpload.addEventListener('change', function(e) {
+            uploadPreview.innerHTML = '';
+            uploadPreview.style.display = 'none';
+            
+            const files = Array.from(e.target.files);
+            let hasInvalidFile = false;
+
+            files.forEach(file => {
+                if (file.size > maxFileSize) {
+                    alert(`File ${file.name} is too large. Maximum size is 5MB.`);
+                    hasInvalidFile = true;
+                    return;
+                }
+                
+                if (!allowedTypes.includes(file.type)) {
+                    alert(`File ${file.name} is not allowed. Please upload only jpg, png, or pdf files.`);
+                    hasInvalidFile = true;
+                    return;
+                }
+
+                if (file.type.startsWith('image/')) {
+                    const img = document.createElement('img');
+                    img.src = URL.createObjectURL(file);
+                    uploadPreview.appendChild(img);
+                } else {
+                    const div = document.createElement('div');
+                    div.textContent = file.name;
+                    uploadPreview.appendChild(div);
+                }
+            });
+
+            if (!hasInvalidFile && files.length > 0) {
+                uploadPreview.style.display = 'block';
+            }
+        });
+
+        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Here you would typically send the form data to your server
+            // For now, we'll just show a success message
+            alert('Thank you for your feedback! We will review it shortly.');
+            $('#feedbackModal').modal('hide');
+            this.reset();
+            uploadPreview.innerHTML = '';
+            uploadPreview.style.display = 'none';
+        });
+    });
+    </script>
+
+    <!-- Add this right after the existing feedback modal script -->
+    <script>
+    document.getElementById('feedbackForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        // Show loading state
+        const submitBtn = this.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+        submitBtn.disabled = true;
+
+        try {
+            // Collect form data
+            const formData = new FormData(this);
+            const files = document.getElementById('feedbackAttachment').files;
+            for (let i = 0; i < files.length; i++) {
+                formData.append('attachments[]', files[i]);
+            }
+
+            // Here you would typically send the data to your server
+            // await fetch('/api/feedback', { method: 'POST', body: formData });
+
+            // Show success message
+            $('#feedbackModal').modal('hide');
+            Swal.fire({
+                icon: 'success',
+                title: 'Thank You!',
+                text: 'Your feedback has been submitted successfully.',
+                confirmButtonColor: '#d01818'
+            });
+
+            // Reset form
+            this.reset();
+            document.getElementById('uploadPreview').style.display = 'none';
+            document.getElementById('uploadPreview').innerHTML = '';
+
+        } catch (error) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong! Please try again.',
+                confirmButtonColor: '#d01818'
+            });
+        } finally {
+            // Reset button state
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+        }
+    });
+
+    // Add visual feedback for form validation
+    const inputs = document.querySelectorAll('#feedbackForm input, #feedbackForm textarea, #feedbackForm select');
+    inputs.forEach(input => {
+        input.addEventListener('invalid', function(e) {
+            e.preventDefault();
+            this.style.borderColor = '#dc3545';
+            
+            // Add shake animation
+            this.style.animation = 'shake 0.5s';
+            setTimeout(() => this.style.animation = '', 500);
+        });
+        
+        input.addEventListener('input', function() {
+            this.style.borderColor = '#ddd';
+        });
+    });
+    </script>
+
+    <!-- Add this CSS for the shake animation -->
+    <style>
+    @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-10px); }
+        75% { transform: translateX(10px); }
+    }
+    </style>
 </body>
 
 </html>
