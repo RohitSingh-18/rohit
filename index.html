@@ -769,7 +769,7 @@
             
             <ul class="navbar-nav">
                 <li class="nav-item active"><a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a></li>
-                <li class="nav-item"><a class="nav-link" href="inventory-grid.html">All Cars</a></li>
+                <li class="nav-item"><a class="nav-link" href="allcars.html">All Cars</a></li>
                 <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
                 <li class="nav-item"><a class="nav-link" href="/auth/signup.html">Sign Up</a></li>
                 <li class="nav-item"><a class="nav-link" href="blogs.html">Blogs</a></li>
@@ -826,7 +826,7 @@
                                             <div class="dropdown-menu" aria-labelledby="navbarDropdown2"><a class="dropdown-item" href="inventory-list.html">Inventory list</a><a class="dropdown-item" href="inventory-grid.html">Inventory grid</a><a class="dropdown-item" href="dealers.html">Dealers list</a><a class="dropdown-item" href="dealers-info.html">Dealers info</a></div>
                                         </li> -->
 
-                                        <li class="nav-item"><a class="nav-link" href="inventory-grid.html">All Cars</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="allcars.html">All Cars</a></li>
                                         <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
                                         <li class="nav-item"><a class="nav-link" href="blogs.html">Blogs</a></li>
                                         <li class="nav-item"><a class="nav-link" href="/auth/signup.html">Sign Up</a></li>
@@ -1907,6 +1907,7 @@
     <script src="assets/js/custom.js"></script>
     <!-- Search-->
      <script src="./assets/js/search.js"></script>
+     
 
     <!-- Add this modal HTML right after your header section -->
     <div class="modal fade" id="callbackModal" tabindex="-1" role="dialog" aria-labelledby="callbackModalLabel" aria-hidden="true">
@@ -2033,13 +2034,7 @@
     <!-- Add SweetAlert2 for better alerts -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <!-- Add this button in the desktop navigation menu before the Contact link -->
-    <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#feedbackModal"></i> Feedback</a></li>
-    <li class="nav-item"><a class="nav-link" href="contacts.html">Contact</a></li>
-
-    <!-- Add this button in the mobile menu before the Contact link -->
-    <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#feedbackModal"></i> Feedback</a></li>
-    <li class="nav-item"><a class="nav-link" href="contacts.html">Contact</a></li>
+    
 
     <!-- Add the Feedback Modal before the end of body tag -->
     <div class="modal feedback-modal fade" id="feedbackModal" tabindex="-1" role="dialog" aria-labelledby="feedbackModalLabel" aria-hidden="true" style="z-index: 99999;">
@@ -2107,7 +2102,7 @@
 
     <!-- Add this script for mobile responsiveness -->
     <script>
-    function adjustModalForMobile() {
+    function adjustMwwwwodalForMobile() {
         const isMobile = window.innerWidth <= 768;
         const modal = document.querySelector('#feedbackModal');
         
