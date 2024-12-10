@@ -1308,6 +1308,296 @@
          }, { passive: true });
        });
        </script>
+        <!-- Add the Feedback Modal before the end of body tag -->
+    <div class="modal feedback-modal fade" id="feedbackModal" tabindex="-1" role="dialog" aria-labelledby="feedbackModalLabel" aria-hidden="true" style="z-index: 99999;">
+      <div class="modal-dialog modal-dialog-centered modal-lg" style="max-width: 900px;">
+          <div class="modal-content" style="border-radius: 8px; border: none; box-shadow: 0 3px 20px rgba(0,0,0,0.2);">
+              <div class="modal-header" style="background: #D01818; color: white; border-radius: 8px 8px 0 0; padding: 1.5rem;">
+                  <h5 class="modal-title" id="feedbackModalLabel" style="font-weight: 600; font-size: 1.25rem;">Share Your Feedback</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body" style="padding: 1.5rem;">
+                  <form id="feedbackForm">
+                      <div class="row feedback-form-row">
+                          <div class="col-lg-4 col-md-12">
+                              <div class="form-group" style="margin-bottom: 1.5rem;">
+                                  <label for="feedbackName">Name</label>
+                                  <input type="text" class="form-control" id="feedbackName" required style="border: 1px solid #ddd; border-radius: 8px; padding: 0.75rem; transition: all 0.3s ease;">
+                              </div>
+                              <div class="form-group" style="margin-bottom: 1.5rem;">
+                                  <label for="feedbackEmail">Email</label>
+                                  <input type="email" class="form-control" id="feedbackEmail" required style="border: 1px solid #ddd; border-radius: 8px; padding: 0.75rem; transition: all 0.3s ease;">
+                              </div>
+                              <div class="form-group" style="margin-bottom: 1.5rem;">
+                                  <label for="feedbackType">Feedback Type</label>
+                                  <select class="form-control" id="feedbackType" required style="border: 1px solid #ddd; border-radius: 8px; padding: 0.75rem; transition: all 0.3s ease;">
+                                      <option value="">Select Type</option>
+                                      <option value="suggestion">Suggestion</option>
+                                      <option value="complaint">Complaint</option>
+                                      <option value="appreciation">Appreciation</option>
+                                      <option value="other">Other</option>
+                                  </select>
+                              </div>
+                          </div>
+                          <div class="col-lg-8 col-md-12">
+                              <div class="form-group message-group" style="height: 100%; display: flex; flex-direction: column;">
+                                  <label for="feedbackMessage">Message</label>
+                                  <textarea class="form-control" id="feedbackMessage" required style="flex-grow: 1; min-height: 120px; border: 1px solid #ddd; border-radius: 8px; padding: 0.75rem; transition: all 0.3s ease;"></textarea>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="row mt-3">
+                          <div class="col-12">
+                              <div class="file-upload" style="position: relative; display: inline-block; width: 100%;">
+                                  <label class="file-upload-label py-2" style="height: auto; padding: 10px; display: flex; align-items: center; justify-content: center; background: #f8f9fa; border: 2px dashed #ddd; border-radius: 6px; cursor: pointer; transition: all 0.3s ease;">
+                                      <i class="fas fa-cloud-upload-alt"></i>
+                                      <span class="upload-text" style="margin-left: 8px;">Drop files here or click to upload</span>
+                                      <small class="text-muted upload-hint" style="margin-left: 8px;">(Max: 5MB - jpg, png, pdf)</small>
+                                      <input type="file" class="file-upload-input" id="feedbackAttachment" multiple accept=".jpg,.jpeg,.png,.pdf" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer;">
+                                  </label>
+                              </div>
+                              <div class="upload-preview" id="uploadPreview" style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; display: none;"></div>
+                          </div>
+                      </div>
+                      <div class="row mt-3">
+                          <div class="col-12 text-center">
+                              <button type="submit" class="btn btn-primary" style="min-width: 150px; padding: 10px 30px; font-weight: 500; transition: all 0.3s ease;">Submit Feedback</button>
+                          </div>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- Add this script for mobile responsiveness -->
+  <script>
+  function adjustModalForMobile() {
+      const isMobile = window.innerWidth <= 768;
+      const modal = document.querySelector('#feedbackModal');
+      
+      if (isMobile) {
+          modal.querySelector('.modal-dialog').style.margin = '0.5rem';
+          modal.querySelector('.modal-dialog').style.maxWidth = 'calc(100% - 1rem)';
+          modal.querySelector('.modal-content').style.borderRadius = '12px';
+          modal.querySelector('.modal-header').style.padding = '1rem';
+          modal.querySelector('.modal-body').style.padding = '1rem';
+          modal.querySelector('.modal-title').style.fontSize = '1.1rem';
+          
+          // Adjust file upload label for mobile
+          const fileUploadLabel = modal.querySelector('.file-upload-label');
+          fileUploadLabel.style.flexDirection = 'column';
+          fileUploadLabel.style.padding = '0.75rem';
+          fileUploadLabel.style.textAlign = 'center';
+          
+          // Adjust text sizes for mobile
+          modal.querySelector('.upload-text').style.margin = '0.5rem 0';
+          modal.querySelector('.upload-text').style.fontSize = '0.9rem';
+          modal.querySelector('.upload-hint').style.margin = '0';
+          modal.querySelector('.upload-hint').style.fontSize = '0.8rem';
+          
+          // Make button full width on mobile
+          modal.querySelector('.btn-primary').style.width = '100%';
+          modal.querySelector('.btn-primary').style.marginTop = '0.5rem';
+      }
+  }
+
+  // Run on load and resize
+  window.addEventListener('load', adjustModalForMobile);
+  window.addEventListener('resize', adjustModalForMobile);
+  </script>
+
+  <!-- Add this JavaScript before the end of body tag -->
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+      const fileUpload = document.getElementById('feedbackAttachment');
+      const uploadPreview = document.getElementById('uploadPreview');
+      const maxFileSize = 5 * 1024 * 1024; // 5MB in bytes
+      const allowedTypes = ['image/jpeg', 'image/png', 'application/pdf'];
+
+      fileUpload.addEventListener('change', function(e) {
+          uploadPreview.innerHTML = '';
+          uploadPreview.style.display = 'none';
+          
+          const files = Array.from(e.target.files);
+          let hasInvalidFile = false;
+
+          files.forEach(file => {
+              if (file.size > maxFileSize) {
+                  alert(`File ${file.name} is too large. Maximum size is 5MB.`);
+                  hasInvalidFile = true;
+                  return;
+              }
+              
+              if (!allowedTypes.includes(file.type)) {
+                  alert(`File ${file.name} is not allowed. Please upload only jpg, png, or pdf files.`);
+                  hasInvalidFile = true;
+                  return;
+              }
+
+              if (file.type.startsWith('image/')) {
+                  const img = document.createElement('img');
+                  img.src = URL.createObjectURL(file);
+                  uploadPreview.appendChild(img);
+              } else {
+                  const div = document.createElement('div');
+                  div.textContent = file.name;
+                  uploadPreview.appendChild(div);
+              }
+          });
+
+          if (!hasInvalidFile && files.length > 0) {
+              uploadPreview.style.display = 'block';
+          }
+      });
+
+      document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          // Here you would typically send the form data to your server
+          // For now, we'll just show a success message
+          alert('Thank you for your feedback! We will review it shortly.');
+          $('#feedbackModal').modal('hide');
+          this.reset();
+          uploadPreview.innerHTML = '';
+          uploadPreview.style.display = 'none';
+      });
+  });
+  </script>
+
+  <!-- Add this right after the existing feedback modal script -->
+  <script>
+  document.getElementById('feedbackForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      // Show loading state
+      const submitBtn = this.querySelector('button[type="submit"]');
+      const originalText = submitBtn.innerHTML;
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+      submitBtn.disabled = true;
+
+      try {
+          // Collect form data
+          const formData = new FormData(this);
+          const files = document.getElementById('feedbackAttachment').files;
+          for (let i = 0; i < files.length; i++) {
+              formData.append('attachments[]', files[i]);
+          }
+
+          // Here you would typically send the data to your server
+          // await fetch('/api/feedback', { method: 'POST', body: formData });
+
+          // Show success message
+          $('#feedbackModal').modal('hide');
+          Swal.fire({
+              icon: 'success',
+              title: 'Thank You!',
+              text: 'Your feedback has been submitted successfully.',
+              confirmButtonColor: '#d01818'
+          });
+
+          // Reset form
+          this.reset();
+          document.getElementById('uploadPreview').style.display = 'none';
+          document.getElementById('uploadPreview').innerHTML = '';
+
+      } catch (error) {
+          Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong! Please try again.',
+              confirmButtonColor: '#d01818'
+          });
+      } finally {
+          // Reset button state
+          submitBtn.innerHTML = originalText;
+          submitBtn.disabled = false;
+      }
+  });
+
+  // Add visual feedback for form validation
+  const inputs = document.querySelectorAll('#feedbackForm input, #feedbackForm textarea, #feedbackForm select');
+  inputs.forEach(input => {
+      input.addEventListener('invalid', function(e) {
+          e.preventDefault();
+          this.style.borderColor = '#dc3545';
+          
+          // Add shake animation
+          this.style.animation = 'shake 0.5s';
+          setTimeout(() => this.style.animation = '', 500);
+      });
+      
+      input.addEventListener('input', function() {
+          this.style.borderColor = '#ddd';
+      });
+  });
+  </script>
+
+  <!-- Add this CSS for the shake animation -->
+  <style>
+  @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-10px); }
+      75% { transform: translateX(10px); }
+  }
+  </style>
+
+  <!-- Update the callback modal styles -->
+  <style>
+      /* Modal z-index and mobile/tablet positioning */
+      #callbackModal {
+          z-index: 99999 !important; /* Ensures modal appears above sidebar */
+      }
+
+      /* Mobile and Tablet specific styles */
+      @media (max-width: 991px) {
+          #callbackModal .modal-dialog {
+              width: 90% !important;
+              max-width: 400px !important;
+              margin: 1.75rem auto !important;
+              position: fixed !important;
+              left: 50% !important;
+              top: 50% !important;
+              transform: translate(-50%, -50%) !important;
+          }
+
+          #callbackModal .modal-content {
+              border-radius: 15px !important;
+              box-shadow: 0 5px 15px rgba(0,0,0,0.3) !important;
+          }
+
+          #callbackModal .modal-header {
+              padding: 1rem !important;
+              border-radius: 15px 15px 0 0 !important;
+          }
+
+          #callbackModal .modal-body {
+              padding: 1.5rem !important;
+          }
+
+          #callbackModal .form-group {
+              margin-bottom: 1rem !important;
+          }
+
+          #callbackModal input {
+              height: 45px !important;
+              font-size: 16px !important; /* Prevents zoom on iOS */
+          }
+
+          #callbackModal .btn {
+              height: 45px !important;
+              font-size: 16px !important;
+          }
+      }
+
+      /* Ensure modal backdrop is also above sidebar */
+      .modal-backdrop {
+          z-index: 99998 !important;
+      }
+  </style>
+ 
 </body>
 
 </html>
