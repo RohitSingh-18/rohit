@@ -148,7 +148,7 @@
     </style>
 </head>
 <body>
-    <script>
+    <!-- <script>
         // Check if user is logged in
         function checkAuth() {
             const isLoggedIn = localStorage.getItem('isLoggedIn');
@@ -161,7 +161,7 @@
         
         // Check auth on page load
         checkAuth();
-    </script>
+    </script> -->
 
     <div class="dashboard-container">
         <aside class="sidebar">
@@ -509,7 +509,7 @@
             const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
             
             // Use appropriate WhatsApp link based on device
-            const baseUrl = isMobile ? 'whatsapp://' : 'https://web.whatsapp.com/';
+            const baseUrl = isMobile ? 'whatsapp://' : 'https://web.whatsapp.com/send?phone=919583528458&text=';
             
             return `${baseUrl}send?phone=919583528458&text=${message}`;
         }

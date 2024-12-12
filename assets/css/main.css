@@ -34,7 +34,6 @@ body {
 }
 
 .l-main-content {
-  padding-top: 110px;
   padding-bottom: 110px;
 }
 
@@ -3730,6 +3729,7 @@ html, body {
 
 .footer-info {
   margin-bottom: 27px;
+
 }
 
 .footer-contacts__item {
@@ -3796,6 +3796,7 @@ html, body {
 .footer-copyright {
   margin-top: 90px;
   text-align: center;
+  font-size: 13px;
 }
 
 .footer-copyright__link {

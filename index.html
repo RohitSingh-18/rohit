@@ -742,7 +742,7 @@
         <div id="mobileModalCloseButton" style="position: absolute; top: 20px; right: 20px; width: 30px; height: 30px; background: #ff5555; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.2); z-index: 1000;" onclick="closeModal()">
             <span style="color: white; font-size: 20px; line-height: 1; font-family: Arial;">&times;</span>
         </div>
-        <video id="mobileVideo" style="width: 100%; height: 100%; object-fit: cover;" controls>
+        <video id="mobileVideo" style="width: 100px; height: 100px; object-fit: cover;" controls>
             <source src="path/to/your/mobile-video.mp4" type="video/mp4">
         </video>
     </div>
@@ -775,7 +775,11 @@
                 <li class="nav-item"><a class="nav-link" href="blogs.html">Blogs</a></li>
                 <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#feedbackModal"> Feedback</a></li>
                 <li class="nav-item"><a class="nav-link" href="contacts.html">Contact</a></li>
-                <div id="swiper-container"></div>
+                <br>
+                <li><a class="btn btn-primary btn-sm col-auto d-block d-xl-block" href="comingsoon.html">
+                    <i class="fas fa-motorcycle"></i> For Bike Lovers
+                </a></li>
+              
             </ul>
 
         </div>
@@ -850,7 +854,7 @@
             <div class="main-slider slider-pro" id="main-slider" data-slider-width="100%" data-slider-height="700px" data-slider-arrows="false" data-slider-buttons="false">
                 <div class="sp-slides">
                     <!-- Slide 1-->
-                    <div class="main-slider__slide sp-slide"><img class="sp-image" src="./images/bg-1 slider.jpg" alt="slider" />
+                    <div class="main-slider__slide sp-slide"><img class="sp-image" src="./images/hero-car-bg.png" alt="slider" />
                         <div class="sp-layer" data-width="100%" data-show-transition="left" data-hide-transition="left" data-show-duration="200" data-show-delay="200" data-hide-delay="200">
                             <div class="main-slider__wrap">
                                 <div class="main-slider__slogan">Trusted Cars, Simplified Buying</div>
@@ -864,7 +868,7 @@
                     </div>
                     <!-- Slide 2-->
                     <!-- Slide 2 - Why Choose Us -->
-<div class="main-slider__slide-2 sp-slide">
+ <div class="main-slider__slide-2 sp-slide">
     <img class="sp-image" src="./images/hero-bg.jpeg" alt="slider" />
     <div class="sp-layer" data-width="100%" data-show-transition="left" data-hide-transition="left" data-show-duration="200" data-show-delay="200" data-hide-delay="400">
         <div class="why-choose-container">
@@ -901,119 +905,124 @@
             </div>
         </div>
     </div>
-</div>
+</div> 
                         <!-- <div class="sp-layer" data-width="100%" data-show-transition="left" data-hide-transition="left" data-show-duration="1500" data-show-delay="800" data-hide-delay="400"><img class="main-slider__figure-1 img-fluid" src="./images/Background.png" alt="foto" /></div>
                         <div class="sp-layer" data-width="100%" data-show-transition="right" data-hide-transition="right" data-show-duration="2000" data-show-delay="1200" data-hide-delay="400"><img class="main-slider__figure-2 img-fluid" src="./images/hero-car-bg.png" alt="foto" /></div> -->
                     </div>
                 </div>
             </div>
             <!-- end .main-slider-->
-            <section class="b-search">
-                <div class="container">
-                    <div class="b-search__main">
-                        <div class="search-header text-center">
-                            <h4>FIND YOUR PERFECT CAR</h4>
+            <section class="b-search" style="background: #fff; padding: 20px 0;">
+    <div class="container">
+        <div class="b-search__main">
+            <div class="search-header text-center" style="margin-bottom: 25px;">
+                <h4 style="color: #d01818; font-size: 24px; font-weight: 600; text-transform: uppercase;">FIND YOUR PERFECT CAR</h4>
+            </div>
+            
+            <form class="b-search__form" id="carSearchForm">
+                <div class="mobile-search-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
+                    <!-- Brand Selection -->
+                    <div class="search-item" style="background: #f8f9fa; border-radius: 8px; padding: 12px; position: relative;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-car" style="color: #d01818; font-size: 18px; min-width: 20px;"></i>
+                            <select style="width: 100%; border: none; background: transparent; outline: none; color: #333; font-size: 14px; appearance: none; padding-right: 24px;">
+                                <option value="" disabled selected>Select Brand</option>
+                                <option value="toyota">Toyota</option>
+                                <option value="honda">Honda</option>
+                                <option value="bmw">BMW</option>
+                            </select>
+                            <i class="fas fa-chevron-down" style="color: #666; font-size: 12px; position: absolute; right: 12px; pointer-events: none;"></i>
                         </div>
-                        
-                        <form class="b-search__form" id="carSearchForm">
-                            <div class="row g-3">
-                                <div class="col-lg-3 col-md-6">
-                                    <div class="search-box">
-                                        <i class="fas fa-car icon"></i>
-                                        <select class="custom-select" id="brandSelect">
-                                            <option value=""selected disabled  >Select Brand</option>
-                                            <option value="toyota">Toyota</option>
-                                            <option value="honda">Honda</option>
-                                            <option value="bmw">BMW</option>
-                                            <option value="mercedes">Mercedes</option>
-                                        </select>
-                                    </div>
-                                </div>
-            
-                                <div class="col-lg-3 col-md-6">
-                                    <div class="search-box">
-                                        <i class="fas fa-car-side icon"></i>
-                                        <select class="custom-select" id="modelSelect" >
-                                            <option value="" selected disabled>Select Model</option>
-                                        </select>
-                                    </div>
-                                </div>
-            
-                                <div class="col-lg-3 col-md-6">
-                                    <div class="search-box">
-                                        <i class="fas fa-rupee-sign icon"></i>
-                                        <select class="custom-select" id="budgetSelect">
-                                            <option value="" selected disabled>Budget Range</option>
-                                            <option value="0-500000">Under 5L</option>
-                                            <option value="500000-1000000">5L - 10L</option>
-                                            <option value="1000000-2000000">10L - 20L</option>
-                                            <option value="2000000+">Above 20L</option>
-                                        </select>
-                                    </div>
-                                </div>
-            
-                                <div class="col-lg-3 col-md-6">
-                                    <div class="search-box">
-                                        <i class="fas fa-gas-pump icon"></i>
-                                        <select class="custom-select" id="fuelSelect">
-                                            <option value="" selected disabled>Fuel Type</option>
-                                            <option value="petrol">Petrol</option>
-                                            <option value="diesel">Diesel</option>
-                                            <option value="electric">Electric</option>
-                                            <option value="hybrid">Hybrid</option>
-                                        </select>
-                                    </div>
-                                </div>
-            
-                                <div class="col-lg-3 col-md-6">
-                                    <div class="search-box">
-                                        <i class="fas fa-calendar icon"></i>
-                                        <select class="custom-select" id="yearFromSelect">
-                                            <option value="" selected disabled>Year From</option>
-                                        </select>
-                                    </div>
-                                </div>
-            
-                                <div class="col-lg-3 col-md-6">
-                                    <div class="search-box">
-                                        <i class="fas fa-calendar-alt icon"></i>
-                                        <select class="custom-select" id="yearToSelect">
-                                            <option value="" selected disabled>Year To</option>
-                                        </select>
-                                    </div>
-                                </div>
-            
-                                <div class="col-lg-3 col-md-6">
-                                    <div class="search-box">
-                                        <i class="fas fa-cog icon"></i>
-                                        <select class="custom-select" id="transmissionSelect">
-                                            <option value="" selected disabled>Transmission</option>
-                                            <option value="manual">Manual</option>
-                                            <option value="automatic">Automatic</option>
-                                            <option value="cvt">CVT</option>
-                                        </select>
-                                    </div>
-                                </div>
-            
-                                <div class="col-lg-3 col-md-6">
-                                    <button type="submit" class="search-btn" id="searchButton">
-                                        <i class="fas fa-search"></i>
-                                        Find Cars
-                                    </button>
-                                </div>
-                            </div>
-            
-                            <div class="quick-links">
-                                <div class="quick-search">
-                                    <a href="#" data-budget="0-500000">Under 5L</a>
-                                    <a href="#" data-type="premium">Premium Cars</a>
-                                    <a href="#" data-sort="latest">Latest Models</a>
-                                </div>
-                            </div>
-                        </form>
+                    </div>
+
+                  
+
+                    <!-- Budget Range -->
+                    <div class="search-item" style="background: #f8f9fa; border-radius: 8px; padding: 12px; position: relative;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-rupee-sign" style="color: #d01818; font-size: 18px; min-width: 20px;"></i>
+                            <select style="width: 100%; border: none; background: transparent; outline: none; color: #333; font-size: 14px; appearance: none; padding-right: 24px;">
+                                <option value="" disabled selected>Budget Range</option>
+                                <option value="0-500000">Under 5L</option>
+                                <option value="500000-1000000">5L - 10L</option>
+                                <option value="1000000-2000000">10L - 20L</option>
+                                <option value="2000000+">Above 20L</option>
+                            </select>
+                            <i class="fas fa-chevron-down" style="color: #666; font-size: 12px; position: absolute; right: 12px; pointer-events: none;"></i>
+                        </div>
+                    </div>
+
+                    <!-- Fuel Type -->
+                    <div class="search-item" style="background: #f8f9fa; border-radius: 8px; padding: 12px; position: relative;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-gas-pump" style="color: #d01818; font-size: 18px; min-width: 20px;"></i>
+                            <select style="width: 100%; border: none; background: transparent; outline: none; color: #333; font-size: 14px; appearance: none; padding-right: 24px;">
+                                <option value="" disabled selected>Fuel Type</option>
+                                <option value="petrol">Petrol</option>
+                                <option value="diesel">Diesel</option>
+                                <option value="electric">Electric</option>
+                                <option value="hybrid">Hybrid</option>
+                            </select>
+                            <i class="fas fa-chevron-down" style="color: #666; font-size: 12px; position: absolute; right: 12px; pointer-events: none;"></i>
+                        </div>
+                    </div>
+
+                    <!-- Year From -->
+                    <div class="search-item" style="background: #f8f9fa; border-radius: 8px; padding: 12px; position: relative;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-calendar" style="color: #d01818; font-size: 18px; min-width: 20px;"></i>
+                            <select style="width: 100%; border: none; background: transparent; outline: none; color: #333; font-size: 14px; appearance: none; padding-right: 24px;">
+                                <option value="" disabled selected>Year From</option>
+                                <option value="2023">2023</option>
+                                <option value="2022">2022</option>
+                                <option value="2021">2021</option>
+                            </select>
+                            <i class="fas fa-chevron-down" style="color: #666; font-size: 12px; position: absolute; right: 12px; pointer-events: none;"></i>
+                        </div>
+                    </div>
+
+                    <!-- Year To -->
+                    <div class="search-item" style="background: #f8f9fa; border-radius: 8px; padding: 12px; position: relative;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-calendar-alt" style="color: #d01818; font-size: 18px; min-width: 20px;"></i>
+                            <select style="width: 100%; border: none; background: transparent; outline: none; color: #333; font-size: 14px; appearance: none; padding-right: 24px;">
+                                <option value="" disabled selected>Year To</option>
+                                <option value="2024">2024</option>
+                                <option value="2023">2023</option>
+                                <option value="2022">2022</option>
+                            </select>
+                            <i class="fas fa-chevron-down" style="color: #666; font-size: 12px; position: absolute; right: 12px; pointer-events: none;"></i>
+                        </div>
+                    </div>
+
+                    <!-- Transmission -->
+                    <div class="search-item" style="background: #f8f9fa; border-radius: 8px; padding: 12px; position: relative;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-cog" style="color: #d01818; font-size: 18px; min-width: 20px;"></i>
+                            <select style="width: 100%; border: none; background: transparent; outline: none; color: #333; font-size: 14px; appearance: none; padding-right: 24px;">
+                                <option value="" disabled selected>Transmission</option>
+                                <option value="manual">Manual</option>
+                                <option value="automatic">Automatic</option>
+                                <option value="cvt">CVT</option>
+                            </select>
+                            <i class="fas fa-chevron-down" style="color: #666; font-size: 12px; position: absolute; right: 12px; pointer-events: none;"></i>
+                        </div>
+                    </div>
+
+                    <!-- Find Cars Button -->
+                    <div style="grid-column: 1 / -1;">
+                        <button type="submit" style="width: 100%; background: #d01818; color: white; border: none; border-radius: 8px; padding: 15px; font-size: 16px; font-weight: 500; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                            <i class="fas fa-search"></i>
+                            Find Cars
+                        </button>
                     </div>
                 </div>
-            </section>
+
+               
+            </form>
+        </div>
+    </div>
+</section>
 
             <!-- BRAND ICONS -->
             <div class="container">
@@ -1449,21 +1458,37 @@
             <!-- end .b-bnr-->
             <div class="section-progress">
                 <div class="container">
-                    <ul class="b-progress-list row list-unstyled">
-                        <li class="b-progress-list__item col-md-3">
-                            <div class="b-progress-list__wrap bg-light"><span class="b-progress-list__name">Vehicles Stock</span><span class="b-progress-list__percent js-chart" data-percent="3874"><span class="js-percent"></span></span>
+                    <ul class="b-progress-list row list-unstyled progress-grid">
+                        <li class="b-progress-list__item col-6 col-md-3">
+                            <div class="b-progress-list__wrap bg-light">
+                                <span class="b-progress-list__name">Vehicles Stock</span>
+                                <span class="b-progress-list__percent js-chart" data-percent="3874">
+                                    <span class="js-percent"></span>
+                                </span>
                             </div>
                         </li>
-                        <li class="b-progress-list__item col-md-3">
-                            <div class="b-progress-list__wrap bg-light"><span class="b-progress-list__name">dealers served</span><span class="b-progress-list__percent js-chart" data-percent="299"><span class="js-percent"></span><span>+</span></span>
+                        <li class="b-progress-list__item col-6 col-md-3">
+                            <div class="b-progress-list__wrap bg-light">
+                                <span class="b-progress-list__name">dealers served</span>
+                                <span class="b-progress-list__percent js-chart" data-percent="299">
+                                    <span class="js-percent"></span><span>+</span>
+                                </span>
                             </div>
                         </li>
-                        <li class="b-progress-list__item col-md-3">
-                            <div class="b-progress-list__wrap bg-light"><span class="b-progress-list__name">Happy Customers</span><span class="b-progress-list__percent js-chart" data-percent="6403"><span class="js-percent"></span></span>
+                        <li class="b-progress-list__item col-6 col-md-3">
+                            <div class="b-progress-list__wrap bg-light">
+                                <span class="b-progress-list__name">Happy Customers</span>
+                                <span class="b-progress-list__percent js-chart" data-percent="6403">
+                                    <span class="js-percent"></span>
+                                </span>
                             </div>
                         </li>
-                        <li class="b-progress-list__item col-md-3">
-                            <div class="b-progress-list__wrap bg-light"><span class="b-progress-list__name">vehicles on Sale</span><span class="b-progress-list__percent js-chart" data-percent="1450"><span class="js-percent"></span><span>+</span></span>
+                        <li class="b-progress-list__item col-6 col-md-3">
+                            <div class="b-progress-list__wrap bg-light">
+                                <span class="b-progress-list__name">vehicles on Sale</span>
+                                <span class="b-progress-list__percent js-chart" data-percent="1450">
+                                    <span class="js-percent"></span><span>+</span>
+                                </span>
                             </div>
                         </li>
                     </ul>
@@ -1652,7 +1677,7 @@
                     </div>
                     <div class="container">
                         <div class="row">
-                            <div class="col-12"><a class="section-carousel__btn btn btn-primary" href="#"><i class="ic icon-list"></i> View All Featured Vehicles</a></div>
+                            <div class="col-12"><a class="section-carousel__btn btn btn-primary" href="#"><i class="ic icon-list"></i> View Most Searched Vehicles</a></div>
                         </div>
                     </div>
                 </div>
@@ -1784,13 +1809,28 @@
                                     <a class="footer-logo__link" href="index.html"><img class="img-responsive" style="height: 261px; width: auto; margin: -120px;" src="./assets/media/general/footer_logo.png" alt="Logo"></a>
                         </div>
                                 <ul class="footer-soc list-unstyled">
-                                    <li class="footer-soc__item"><a class="footer-soc__link" href="#" target="_blank"><i class="ic fab fa-twitter"></i></a></li>
-                                    <li class="footer-soc__item"><a class="footer-soc__link" href="#" target="_blank"><i class="ic fab fa-facebook"></i></a></li>
-                                    <li class="footer-soc__item"><a class="footer-soc__link" href="#" target="_blank"><i class="ic fab fa-linkedin"></i></a></li>
-                                    <li class="footer-soc__item"><a class="footer-soc__link" href="#" target="_blank"><i class="ic fab fa-google-plus-g"></i></a></li>
-                                    <li class="footer-soc__item"><a class="footer-soc__link" href="#" target="_blank"><i class="ic fab fa-pinterest"></i></a></li>
-                                    <li class="footer-soc__item"><a class="footer-soc__link" href="#" target="_blank"><i class="ic fas fa-play"></i></a></li>
-                                        </ul>
+                                    <li class="footer-soc__item">
+                                        <a class="footer-soc__link" href="https://www.facebook.com/gaadiyaan?mibextid=ZbWKwL" target="_blank" style="background: #1877F2;">
+                                            <i class="ic fab fa-facebook-f"></i>
+                                        </a>
+                                    </li>
+                                    <li class="footer-soc__item">
+                                        <a class="footer-soc__link" href="https://www.instagram.com/gaadiyaanodisha/profilecard/?igsh=MXQzb3hkMWR6YWNyMA==" target="_blank" style="background: #E4405F;">
+                                            <i class="ic fab fa-instagram"></i>
+                                        </a>
+                                    </li>
+                                    
+                                    <li class="footer-soc__item">
+                                        <a class="footer-soc__link" href="https://www.youtube.com/@gaadiyaan" target="_blank" style="background: #FF0000;">
+                                            <i class="ic fab fa-youtube"></i>
+                                        </a>
+                                    </li>
+                                    <li class="footer-soc__item">
+                                        <a class="footer-soc__link" href="gaadiyaanodisha@gmail.com" style="background: #EA4335;">
+                                            <i class="ic fas fa-envelope"></i>
+                                        </a>
+                                    </li>
+                                </ul>
                                     </div>
                                     </div>
                                 </div>
@@ -2270,6 +2310,50 @@
         25% { transform: translateX(-10px); }
         75% { transform: translateX(10px); }
     }
+    </style>
+
+    <style>
+        .footer-soc {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .footer-soc__link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: #fff !important;
+            transition: all 0.3s ease;
+        }
+
+        .footer-soc__link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .footer-soc__link i {
+            font-size: 18px;
+        }
+
+        @media (max-width: 768px) {
+            .footer-soc {
+                gap: 12px;
+            }
+
+            .footer-soc__link {
+                width: 35px;
+                height: 35px;
+            }
+
+            .footer-soc__link i {
+                font-size: 16px;
+            }
+        }
     </style>
 </body>
 

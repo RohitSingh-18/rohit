@@ -43,7 +43,7 @@
   position: absolute;
 }
 .sp-image {
-  position: relative;
+  position: absolute;
   display: block;
   border: none;
 }
